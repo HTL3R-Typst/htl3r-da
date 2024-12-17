@@ -1,13 +1,13 @@
 #import "../util.typ": blank_page, author
-#import "../abbr.typ": abbr_state
+#import "../state.typ" as state
 
 #let create_page() = context [
   = Abkürzungsverzeichnis
-  <ABBR_BEGIN>
   #author(none)
+  <ABBR_BEGIN>
   #context {
-    for name in abbr_state.get().keys() [
-      #let abbr = abbr_state.get().at(name)
+    for name in state.abbr.get().keys() [
+      #let abbr = state.abbr.get().at(name)
       #let short = abbr.at("short", default: none)
       #if short == none {
         panic("Short for '" + name + "' does not exist!")

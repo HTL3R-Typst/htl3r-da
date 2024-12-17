@@ -1,6 +1,15 @@
 #import "settings.typ" as settings
 #import "@preview/codly:1.1.1": *
 #import "@preview/codly-languages:0.1.1": *
+#import "state.typ" as state
+
+/// Definiert den aktuellen Autor eines Kapitels. Der Autor eines
+/// Kapitels sollte immer nach dem Kapitel-Heading definiert werden.
+/// Definiert man den Autor nicht, so wird der Autor des vorherigen
+/// Kapitels angenommen.
+#let author(name) = context {
+  state.author.update(name)
+}
 
 /// Converts a date to a german format, currently not implemented in typst.
 #let format_date(date) = {
@@ -21,14 +30,6 @@
 #let blank_page() = {
   page(header: none, footer: none, [])
 }
-
-/// Definiert den aktuellen Autor eines Kapitels. Der Autor eines
-/// Kapitels sollte immer nach dem Kapitel-Heading definiert werden.
-/// Definiert man den Autor nicht, so wird der Autor des vorherigen
-/// Kapitels angenommen.
-#let author(name) = [
-  #metadata(name) <CHAPTER_AUTHOR>
-]
 
 /// Markiert eine Abkürzung, sodass diese nachgeschlagen werden kann.
 /// Die Abkürzung sollte in den definierten Abkürzungen

@@ -1,13 +1,12 @@
-#import "../util.typ": blank_page, author
-#import "../abbr.typ": abbr_state
+#import "../util.typ": blank_page
+#import "../state.typ" as state
 
 #let create_page() = context [
   = Glossar
   <GLOSSARY_BEGIN>
-  #author(none)
   #context {
-    for name in abbr_state.get().keys() [
-      #let abbr = abbr_state.get().at(name)
+    for name in state.abbr.get().keys() [
+      #let abbr = state.abbr.get().at(name)
       #let desc = abbr.at("description", default: none)
       #let long = abbr.at("long", default: none)
       #if long == none {

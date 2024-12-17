@@ -13,6 +13,7 @@
 #import "lib/page/printref.typ" as printref
 #import "lib/util.typ" as util
 #import "lib/abbr.typ" as abbr
+#import "lib/state.typ" as state
 #import "@preview/codly:1.1.1": *
 #import "@preview/codly-languages:0.1.1": *
 
@@ -50,7 +51,7 @@
   assert(("ITN", "ITM", "M").contains(abteilung), message: "Abteilung muss entweder \"ITN\", \"ITM\" oder \"M\" sein.")
 
   // state
-  abbr.abbr_state.update(abkuerzungen)
+  state.abbr.update(abkuerzungen)
 
   // document
   show: codly-init.with()
@@ -175,11 +176,7 @@
     footer: context {
       let counter = counter(page)
       let is-odd = calc.odd(counter.at(here()).first())
-      let authors = query(selector(<CHAPTER_AUTHOR>).before(here()))
-      let author = none
-      if authors.len() != 0 {
-        author = authors.last().value
-      }
+      let author = state.author.get()
       line(length: 100%, stroke: 0.5pt)
       v(-5pt)
       if is-odd [
