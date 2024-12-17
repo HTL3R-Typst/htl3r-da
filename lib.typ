@@ -12,15 +12,19 @@
 #import "lib/page/bibliography.typ" as bib
 #import "lib/page/printref.typ" as printref
 #import "lib/util.typ" as util
+#import "lib/abbr.typ" as abbr
 #import "@preview/codly:1.1.1": *
 #import "@preview/codly-languages:0.1.1": *
 
 #let author = util.author
 #let fspace = util.fspace
-#let abbr = util.abbr
-#let abbrp = util.abbrp
 #let code = util.code
 #let code_file = util.code_file
+
+#let shorts = abbr.shorts
+#let shortpl = abbr.shortpl
+#let longs = abbr.longs
+#let longpl = abbr.longpl
 
 #let diplomarbeit(
   titel: "Meine Diplomarbeit",
@@ -44,6 +48,9 @@
 ) = {
   // validate
   assert(("ITN", "ITM", "M").contains(abteilung), message: "Abteilung muss entweder \"ITN\", \"ITM\" oder \"M\" sein.")
+
+  // state
+  abbr.abbr_state.update(abkuerzungen)
 
   // document
   show: codly-init.with()
@@ -204,8 +211,8 @@
     }
   }
   set heading(numbering: none)
-  abbreviation.create_page(abkuerzungen: abkuerzungen)
-  glossary.create_page(abkuerzungen: abkuerzungen)
+  abbreviation.create_page()
+  glossary.create_page()
   bib.create_page(literatur: literatur)
   if druck_referenz {
     printref.create_page()
