@@ -3,23 +3,24 @@
 #let abbr_state = state("abbr", none)
 
 #let display(abbr, display) = {
-  link(label("ABBR_DES_"+abr), label("ABBR_"+abbr, display))
+  link(label("ABBR_DES_"+abbr))[#display#label("ABBR_"+abbr)]
 }
 
 #let link(abbr, length, form) = context {
-  let abbr_dict = abbr_state.get().at(to-string(abbr), default: none)
+  let name = to-string(abbr)
+  let abbr_dict = abbr_state.get().at(name, default: none)
   if abbr_dict == none {
-    panic("Abbreviation '" + to-string(abbr) + "' does not exist!")
+    panic("Abbreviation '" + name + "' does not exist!")
   }
   let form_dict = abbr_dict.at(length, default: none)
   if form_dict == none {
-    panic(length + " for '" + abbr + "' does not exist!")
+    panic(length + " for '" + name + "' does not exist!")
   }
-  let value = singular.at(form, default: none)
+  let value = form_dict.at(form, default: none)
   if value == none {
-    panic(length + " for '" + abbr + "' does not exist in " + form + " form!")
+    panic(length + " for '" + name + "' does not exist in " + form + " form!")
   }
-  display(abbr, value)
+  display(name, value)
 }
 
 #let shorts(abbr) = {

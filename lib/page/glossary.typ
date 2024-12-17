@@ -9,9 +9,6 @@
     for name in abbr_state.get().keys() [
       #let abbr = abbr_state.get().at(name)
       #let desc = abbr.at("description", default: none)
-      #if desc == none {
-        panic("Description for '" + name + "' does not exist!")
-      }
       #let long = abbr.at("long", default: none)
       #if long == none {
         panic("Long for '" + name + "' does not exist!")
