@@ -1,13 +1,14 @@
-#import "util.typ": to-string
-#import "state.typ" as state
+#import "util.typ": to_string
+#import "global.typ" as global
 
 #let display(abbr, display) = {
-  link(label("ABBR_DES_"+abbr))[#display#label("ABBR_"+abbr)]
+  // link(label("ABBR_DES_"+abbr))[#display#label("ABBR_"+abbr)]
+  text[#display#label("ABBR_"+abbr)]
 }
 
 #let link(abbr, length, form) = context {
-  let name = to-string(abbr)
-  let abbr_dict = state.abbr.get().at(name, default: none)
+  let name = to_string(abbr)
+  let abbr_dict = global.abbr.get().at(name, default: none)
   if abbr_dict == none {
     panic("Abbreviation '" + name + "' does not exist!")
   }

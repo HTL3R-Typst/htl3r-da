@@ -1,14 +1,14 @@
 #import "settings.typ" as settings
 #import "@preview/codly:1.1.1": *
 #import "@preview/codly-languages:0.1.1": *
-#import "state.typ" as state
+#import "global.typ" as global
 
 /// Definiert den aktuellen Autor eines Kapitels. Der Autor eines
 /// Kapitels sollte immer nach dem Kapitel-Heading definiert werden.
 /// Definiert man den Autor nicht, so wird der Autor des vorherigen
 /// Kapitels angenommen.
 #let author(name) = context {
-  state.author.update(name)
+  global.author.update(name)
 }
 
 /// Converts a date to a german format, currently not implemented in typst.
@@ -93,7 +93,7 @@
   ]]
 }
 
-#let to-string(content) = {
+#let to_string(content) = {
   if content.has("text") {
     if type(content.text) == "string" {
       content.text
@@ -106,5 +106,14 @@
     to-string(content.body)
   } else if content == [ ] {
     " "
+  }
+}
+
+#let insert_blank_page(begin, end) = context {
+  let begin = query(begin).first()
+  let end = query(end).first()
+  let count = end.location().page() - begin.location().page()
+  if not calc.odd(count) {
+    blank_page()
   }
 }

@@ -13,7 +13,7 @@
 #import "lib/page/printref.typ" as printref
 #import "lib/util.typ" as util
 #import "lib/abbr.typ" as abbr
-#import "lib/state.typ" as state
+#import "lib/global.typ" as global
 #import "@preview/codly:1.1.1": *
 #import "@preview/codly-languages:0.1.1": *
 
@@ -52,7 +52,7 @@
   assert(("ITN", "ITM", "M").contains(abteilung), message: "Abteilung muss entweder \"ITN\", \"ITM\" oder \"M\" sein.")
 
   // state
-  state.abbr.update(abkuerzungen)
+  global.abbr.update(abkuerzungen)
 
   // document
   show: codly-init.with()
@@ -117,13 +117,11 @@
   set page(
     header-ascent: 1cm,
     header: context {
-      let is-odd = calc.odd(counter(page).at(here()).first())
-      let target = heading.where(level: 1)
-      let footer = query(selector(<footer>).after(here())).first()
-      let before = query(target.before(footer.location()))
+      let page_number = counter(page).at(here()).first()
+      let before = query(heading.where(level: 1).before(here()))
       if before.len() > 0 {
         let current = box(height: 28pt, align(left + horizon, before.last().body))
-        if is-odd {
+        if calc.odd(page_number) {
           [#current #h(1fr) #box(height: 28pt, image("lib/assets/htl3r_logo.svg"))]
         } else {
           [#box(height: 28pt, image("lib/assets/htl3r_logo.svg")) #h(1fr) #current]
@@ -143,7 +141,7 @@
       }
       line(length: 100%, stroke: 0.5pt)
       v(-5pt)
-      [#align(aln)[#counter.display("i")] <footer>]
+      [#align(aln)[#counter.display("i")]]
     }
   )
   show page: p => {
@@ -159,42 +157,35 @@
   tot.create_page()
   tof.create_page()
   tol.create_page()
-  text([#metadata("DA_BEGIN") <DA_BEGIN>])
+  text[#metadata("DA_BEGIN")<DA_BEGIN>]
   counter(page).update(1)
   set page(
     footer: context {
-      let counter = counter(page)
-      let is-odd = calc.odd(counter.get().first())
-      let author = state.author.get()
+      let page_text = counter(page).display("1")
+      let is-odd = calc.odd(counter(page).get().first())
+      let author = global.author.get()
       line(length: 100%, stroke: 0.5pt)
       v(-5pt)
       if is-odd [
-        #align(right)[
-          #if author != none [
-            Autor: #author
-          ]
-          #h(1fr)
-          #counter.get()
-        ] <footer>
+        #if author != none [
+          Autor: #author
+        ]
+        #h(1fr)
+        #page_text
       ] else [
-        #align(left)[
-          #counter.display("1")
-          #h(1fr)
-          #if author != none [
-            Autor: #author
-          ]
-        ] <footer>
+        #page_text
+        #h(1fr)
+        #if author != none [
+          Autor: #author
+        ]
       ]
     }
   )
   set heading(numbering: "1.1")
+  let page_count_begin = counter(page).get().first()
   body
-  text([#metadata("DA_END") <DA_END>])
-  context {
-    let body_page_count = query(<DA_END>).first().location().page() - query(<DA_BEGIN>).first().location().page()
-    if not calc.odd(body_page_count) {
-      util.blank_page()
-    }
+  if not calc.odd(counter(page).get().first() - page_count_begin) {
+    util.blank_page()
   }
   set heading(numbering: none)
   abbreviation.create_page()

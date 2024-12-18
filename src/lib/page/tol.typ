@@ -1,4 +1,4 @@
-#import "../util.typ": blank_page
+#import "../util.typ": insert_blank_page
 
 #let create_page() = context [
   #outline(
@@ -8,12 +8,5 @@
   <TOL_BEGIN>
   #hide("TOL_END")
   <TOL_END>
-  #context {
-    let tol_begin = query(<TOL_BEGIN>).first()
-    let tol_end = query(<TOL_END>).first()
-    let count = tol_end.location().page() - tol_begin.location().page()
-    if not calc.odd(count) {
-      blank_page()
-    }
-  }
+  #insert_blank_page(<TOL_BEGIN>, <TOL_END>)
 ]

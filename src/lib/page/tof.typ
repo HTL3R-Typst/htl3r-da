@@ -1,4 +1,4 @@
-#import "../util.typ": blank_page
+#import "../util.typ": insert_blank_page
 
 #let create_page() = [
   #outline(
@@ -8,12 +8,5 @@
   <TOF_BEGIN>
   #hide("TOF_END")
   <TOF_END>
-  #context {
-    let toc_begin = query(<TOF_BEGIN>).first()
-    let toc_end = query(<TOF_END>).first()
-    let count = toc_end.location().page() - toc_begin.location().page()
-    if not calc.odd(count) {
-      blank_page()
-    }
-  }
+  #insert_blank_page(<TOF_BEGIN>, <TOF_END>)
 ]
