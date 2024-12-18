@@ -27,6 +27,7 @@
 #let longs = abbr.longs
 #let longpl = abbr.longpl
 
+// TODO: fix bug with page counter not updating correctly after body
 #let diplomarbeit(
   titel: "Meine Diplomarbeit",
   titel_zusatz: "Wir sind super toll!",
@@ -46,7 +47,7 @@
   abkuerzungen: (),
   literatur: [],
   body,
-) = {
+) = context {
   // validate
   assert(("ITN", "ITM", "M").contains(abteilung), message: "Abteilung muss entweder \"ITN\", \"ITM\" oder \"M\" sein.")
 
@@ -116,28 +117,16 @@
   set page(
     header-ascent: 1cm,
     header: context {
-      let i = counter(page).at(here()).first()
-      let is-odd = calc.odd(i)
-      context {
-        let target = heading.where(level: 1)
-        let footer = query(<footer>).filter((v) => {
-          v.location().page() == here().page()
-        })
-        if footer.len() == 0 {
-          footer = none
+      let is-odd = calc.odd(counter(page).at(here()).first())
+      let target = heading.where(level: 1)
+      let footer = query(selector(<footer>).after(here())).first()
+      let before = query(target.before(footer.location()))
+      if before.len() > 0 {
+        let current = box(height: 28pt, align(left + horizon, before.last().body))
+        if is-odd {
+          [#current #h(1fr) #box(height: 28pt, image("lib/assets/htl3r_logo.svg"))]
         } else {
-          footer = footer.first()
-        }
-        if footer != none {
-          let before = query(target.before(footer.location()))
-          if before.len() > 0 {
-            let current = box(height: 28pt, align(left + horizon, before.last().body))
-            if is-odd {
-              [#current #h(1fr) #box(height: 28pt, image("lib/assets/htl3r_logo.svg"))]
-            } else {
-              [#box(height: 28pt, image("lib/assets/htl3r_logo.svg")) #h(1fr) #current]
-            }
-          }
+          [#box(height: 28pt, image("lib/assets/htl3r_logo.svg")) #h(1fr) #current]
         }
       }
       v(-5pt)
@@ -175,7 +164,7 @@
   set page(
     footer: context {
       let counter = counter(page)
-      let is-odd = calc.odd(counter.at(here()).first())
+      let is-odd = calc.odd(counter.get().first())
       let author = state.author.get()
       line(length: 100%, stroke: 0.5pt)
       v(-5pt)
@@ -185,7 +174,7 @@
             Autor: #author
           ]
           #h(1fr)
-          #counter.display("1")
+          #counter.get()
         ] <footer>
       ] else [
         #align(left)[

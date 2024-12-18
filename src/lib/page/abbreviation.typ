@@ -1,9 +1,9 @@
-#import "../util.typ": blank_page, author
+#import "../util.typ": blank_page
 #import "../state.typ" as state
 
 #let create_page() = context [
   = Abkürzungsverzeichnis
-  #author(none)
+  #state.author.update(none)
   <ABBR_BEGIN>
   #context {
     for name in state.abbr.get().keys() [
