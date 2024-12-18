@@ -1,9 +1,9 @@
 #import "../util.typ": insert_blank_page
 
 #let create_page(
-  literatur: []
+  bibliography: []
 ) = context [
-  #literatur
+  #bibliography
   <BIB_BEGIN>
   #hide("BIB_END")
   <BIB_END>

@@ -1,8 +1,8 @@
 #import "../util.typ": blank_page
 
 #let create_page(
-  betreuer,
-  sponsoren,
+  supervisors_incl_ac_degree,
+  sponsors,
 ) = [
   #blank_page()
   = Präambel
@@ -12,12 +12,12 @@
   II 177/2012) in der derzeit geltenden Fassung.
   #v(2em)
   #strong[Liste der betreuenden Lehrer:] \
-  #for b in betreuer [
-    #b \
+  #for supervisor in supervisors_incl_ac_degree [
+    #supervisor \
   ]
   #v(2em)
   #strong[Liste der Kooperationspartner:] \
-  #for s in sponsoren [
-    #s \
+  #for sponsor in sponsors [
+    #sponsor \
   ]
 ]

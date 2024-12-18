@@ -1,9 +1,9 @@
 #import "../util.typ": format_date, blank_page
 
 #let create_page(
-  autoren,
-  datum,
-  generative_ki_tools_klausel,
+  authors,
+  date,
+  generative_ai_clause,
 ) = [
   #blank_page()
   = Ehrenwörtliche Erklärung
@@ -19,15 +19,15 @@
   Für die Erstellung der Arbeit habe ich auch folgende Hilfsmittel generativer KI-Tools
   zu folgendem Zweck verwendet:
 
-  #if generative_ki_tools_klausel == none [
+  #if generative_ai_clause == none [
     Es wurden keine Hilfsmittel generativer KI-Tools für die Erstellung der Arbeit verwendet.
   ] else [
-    #generative_ki_tools_klausel
+    #generative_ai_clause
   ]
   #v(3em)
-  Wien, am #format_date(datum)
+  Wien, am #format_date(date)
   #v(7em)
-  #let fields = autoren.map((autor) => {
+  #let fields = authors.map((author) => {
     box(block(
       width: 7.5cm,
       height: 1cm,
@@ -35,7 +35,7 @@
         top: 0.5pt + black
       ),
     )[#align(center + horizon)[
-      #autor.name
+      #author.name
     ]])
   })
   #let fields = fields.chunks(2).map((a) => [

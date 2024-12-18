@@ -2,15 +2,15 @@
 #import "../util.typ": format_date, format_department
 
 #let create_page(
-  titel: "Meine Diplomarbeit",
-  titel_zusatz: "Wir sind super toll!",
-  abteilung: "IT",
-  schuljahr: "2024/2025",
-  autoren: (
-    (name: "Max Mustermann", betreuung: "Otto Normalverbraucher", rolle: "Projektleiter"),
-    (name: "Erika Mustermann", betreuung: "Lieschen Müller", rolle: "Stv. Projektleiter"),
+  title: "Meine Diplomarbeit",
+  subtitle: "Wir sind super toll!",
+  department: "IT",
+  school_year: "2024/2025",
+  authors: (
+    (name: "Max Mustermann", supervisor: "Otto Normalverbraucher", role: "Projektleiter"),
+    (name: "Erika Mustermann", supervisor: "Lieschen Müller", role: "Stv. Projektleiter"),
   ),
-  datum: datetime(year: 2024, month: 12, day: 1),
+  date: datetime(year: 2024, month: 12, day: 1),
 ) = {
   // Header
   block(
@@ -59,8 +59,8 @@
       size: 24pt,
       font: settings.FONT_TEXT_DISPLAY,
       strong[
-        #titel \
-        #titel_zusatz
+        #title \
+        #subtitle
       ]
     )
   ]
@@ -70,9 +70,9 @@
       size: 10pt,
       [
         ausgeführt an der \
-        Höheren Abteilung für #format_department(abteilung) \
+        Höheren Abteilung für #format_department(department) \
         der Höheren Technischen Lehranstalt Wien 3 Rennweg \
-        im Schuljahr #schuljahr
+        im Schuljahr #school_year
       ]
     )
   ]
@@ -85,8 +85,8 @@
         #v(-5pt)
         #line(length: 100%, stroke: 0.5pt)
         #v(-5pt)
-        #for autor in autoren [
-          #text(size: 14pt, strong(autor.name)) #h(1fr) #autor.betreuung \
+        #for author in authors [
+          #text(size: 14pt, strong(author.name)) #h(1fr) #author.supervisor \
         ]
       ]
     )
@@ -96,7 +96,7 @@
     #text(
       size: 10pt,
       [
-        Wien, #format_date(datum)
+        Wien, #format_date(date)
       ]
     )
   ])

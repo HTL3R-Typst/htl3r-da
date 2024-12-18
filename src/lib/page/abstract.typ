@@ -1,13 +1,13 @@
 #import "../util.typ": blank_page
 
 #let create_page(
-  kurzfassung_text,
-  abstract_text,
+  abstract_german,
+  abstract_english,
 ) = [
   #blank_page()
   = Kurzfassung
-  #kurzfassung_text
+  #abstract_german
   #blank_page()
   = Abstract
-  #abstract_text
+  #abstract_english
 ]

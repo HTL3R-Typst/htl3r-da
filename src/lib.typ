@@ -7,7 +7,7 @@
 #import "lib/page/tot.typ" as tot
 #import "lib/page/tof.typ" as tof
 #import "lib/page/tol.typ" as tol
-#import "lib/page/abbreviation.typ" as abbreviation
+#import "lib/page/abbreviation.typ" as abbrev
 #import "lib/page/glossary.typ" as glossary
 #import "lib/page/bibliography.typ" as bib
 #import "lib/page/printref.typ" as printref
@@ -29,30 +29,30 @@
 
 // TODO: fix bug with page counter not updating correctly after body
 #let diplomarbeit(
-  titel: "Meine Diplomarbeit",
-  titel_zusatz: "Wir sind super toll!",
-  abteilung: "ITN",
-  schuljahr: "2024/2025",
-  autoren: (
-    (name: "Max Mustermann", betreuung: "Otto Normalverbraucher", rolle: "Projektleiter"),
-    (name: "Erika Mustermann", betreuung: "Lieschen Müller", rolle: "Stv. Projektleiter"),
+  title: "Meine Diplomarbeit",
+  subtitle: "Wir sind super toll!",
+  department: "ITN",
+  school_year: "2024/2025",
+  authors: (
+    (name: "Max Mustermann", supervisor: "Otto Normalverbraucher", role: "Projektleiter"),
+    (name: "Erika Mustermann", supervisor: "Lieschen Müller", role: "Stv. Projektleiter"),
   ),
-  betreuer_inkl_titel: ("Prof, Dipl.-Ing. Otto Normalverbraucher", "Prof, Dipl.-Ing. Lieschen Müller"),
-  sponsoren: ("Knallhart GmbH", "Gartenbedarfs GmbH", "Huber e.U.", "Huberit Vetrieb GmbH & Co. KG"),
-  datum: datetime(year: 2024, month: 12, day: 1),
-  druck_referenz: true,
-  kurzfassung_text: [#lorem(180)],
-  abstract_text: [#lorem(180)],
-  generative_ki_tools_klausel: [Es wurden keine Hilfsmittel generativer KI-Tools für die Erstellung der Arbeit verwendet.],
-  abkuerzungen: (),
-  literatur: [],
+  supervisor_incl_ac_degree: ("Prof, Dipl.-Ing. Otto Normalverbraucher", "Prof, Dipl.-Ing. Lieschen Müller"),
+  sponsors: ("Knallhart GmbH", "Gartenbedarfs GmbH", "Huber e.U.", "Huberit Vetrieb GmbH & Co. KG"),
+  date: datetime(year: 2024, month: 12, day: 1),
+  print_ref: true,
+  abstract_german: [#lorem(180)],
+  abstract_english: [#lorem(180)],
+  generative_ai_clause: [Es wurden keine Hilfsmittel generativer KI-Tools für die Erstellung der Arbeit verwendet.],
+  abbreviation: (),
+  bibliography: [],
   body,
 ) = context {
   // validate
-  assert(("ITN", "ITM", "M").contains(abteilung), message: "Abteilung muss entweder \"ITN\", \"ITM\" oder \"M\" sein.")
+  assert(("ITN", "ITM", "M").contains(department), message: "Abteilung muss entweder \"ITN\", \"ITM\" oder \"M\" sein.")
 
   // state
-  global.abbr.update(abkuerzungen)
+  global.abbr.update(abbreviation)
 
   // document
   show: codly-init.with()
@@ -66,8 +66,8 @@
     header-repeat: true,
   )
   set document(
-    title: titel,
-    author: autoren.map((v) => v.name),
+    title: title,
+    author: authors.map((v) => v.name),
   )
   show heading: h => {
     set text(font: settings.FONT_TEXT_DISPLAY, size: settings.HEADING_SIZES.at(h.level - 1).size)
@@ -98,12 +98,12 @@
     ),
   )
   cover.create_page(
-    titel: titel,
-    titel_zusatz: titel_zusatz,
-    abteilung: abteilung,
-    schuljahr: schuljahr,
-    autoren: autoren,
-    datum: datum,
+    title: title,
+    subtitle: subtitle,
+    department: department,
+    school_year: school_year,
+    authors: authors,
+    date: date,
   )
   set page(
     paper: "a4",
@@ -157,9 +157,9 @@
     let is-odd = calc.odd(i)
     set page(binding: if is-odd { right } else { left })
   }
-  abstract.create_page(kurzfassung_text, abstract_text)
-  preamble.create_page(betreuer_inkl_titel, sponsoren)
-  erklaerung.create_page(autoren, datum, generative_ki_tools_klausel)
+  abstract.create_page(abstract_german, abstract_english)
+  preamble.create_page(supervisor_incl_ac_degree, sponsors)
+  erklaerung.create_page(authors, date, generative_ai_clause)
   util.blank_page()
   toc.create_page()
   tot.create_page()
@@ -196,10 +196,10 @@
     util.blank_page()
   }
   set heading(numbering: none)
-  abbreviation.create_page()
+  abbrev.create_page()
   glossary.create_page()
-  bib.create_page(literatur: literatur)
-  if druck_referenz {
+  bib.create_page(bibliography: bibliography)
+  if print_ref {
     printref.create_page()
   } else {
     util.blank_page()
