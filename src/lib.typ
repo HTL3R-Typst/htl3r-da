@@ -117,15 +117,23 @@
   set page(
     header-ascent: 1cm,
     header: context {
-      let page_number = counter(page).at(here()).first()
-      let before = query(heading.where(level: 1).before(here()))
-      if before.len() > 0 {
-        let current = box(height: 28pt, align(left + horizon, before.last().body))
-        if calc.odd(page_number) {
-          [#current #h(1fr) #box(height: 28pt, image("lib/assets/htl3r_logo.svg"))]
-        } else {
-          [#box(height: 28pt, image("lib/assets/htl3r_logo.svg")) #h(1fr) #current]
-        }
+      let page_number = here().page()
+      let after = query(heading.where(level: 1).after(here()))
+      let before_l1 = query(heading.where(level: 1).before(here()))
+      let before_l2 = query(heading.where(level: 2).before(here()))
+      let before = (..before_l1, ..before_l2).sorted(key: it => it.location().page())
+      let reference = none
+      if after.len() > 0 and after.first().location().page() == page_number {
+        reference = after.first()
+      } else if before.len() > 0 {
+        reference = before.last()
+      }
+
+      let current = box(height: 28pt, align(left + horizon, reference.body))
+      if calc.odd(page_number) {
+        [#current #h(1fr) #box(height: 28pt, image("lib/assets/htl3r_logo.svg"))]
+      } else {
+        [#box(height: 28pt, image("lib/assets/htl3r_logo.svg")) #h(1fr) #current]
       }
       v(-5pt)
       line(length: 100%, stroke: 0.5pt)

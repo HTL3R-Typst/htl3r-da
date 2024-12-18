@@ -3,7 +3,8 @@
 #let create_page() = [
   #outline(
     title: [Abbildungsverzeichnis],
-    target: figure.where(kind: image)
+    target: figure.where(kind: image),
+    fill: line(length: 100%, stroke: (dash: ("dot", 1em))),
   )
   <TOF_BEGIN>
   #hide("TOF_END")

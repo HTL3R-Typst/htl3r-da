@@ -3,7 +3,8 @@
 #let create_page() = [
   #outline(
     title: [Tabellenverzeichnis],
-    target: figure.where(kind: table)
+    target: figure.where(kind: table),
+    fill: line(length: 100%, stroke: (dash: ("dot", 1em))),
   )
   <TOT_BEGIN>
   #hide("TOT_END")

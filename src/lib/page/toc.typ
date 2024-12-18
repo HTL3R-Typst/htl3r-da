@@ -3,9 +3,11 @@
 #let create_page() = context [
   #show outline.entry.where(
     level: 1,
-  ): e => {
-    if e.element.numbering == none {
-      v(1em)
+  ): e => context {
+    if e.element.level == 1 {
+      v(2em, weak: true)
+    }
+    if e.element.level == 1 {
       strong(e)
     } else {
       e
@@ -13,7 +15,9 @@
   }
   #outline(
     target: selector(heading).after(<DA_BEGIN>),
-    depth: 3
+    depth: 3,
+    indent: 1em,
+    fill: line(length: 100%, stroke: (dash: ("dot", 1em))),
   )
   <TOC_BEGIN>
   #hide("TOC_END")
