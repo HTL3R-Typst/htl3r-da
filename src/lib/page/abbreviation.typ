@@ -32,13 +32,15 @@
     ]
     // list abbr locations
     #let refs = query(label("ABBR_"+name))
-    #par(hanging-indent: 2em, spacing: 6pt, first-line-indent: 2em)[
-      #for (index, a) in refs.enumerate() [
-        #let loc = a.location()
-        #let nr = loc.page() - query(<DA_BEGIN>).first().location().page() + 1
-        #let delim = if index + 1 == refs.len() {""} else {","}
-        #link(loc)[#emph[(S. #{nr})#{delim} ]]
-      ]
+    #let ref_entries = refs.map(ref => (ref.location().page() - query(<DA_BEGIN>).first().location().page() + 1, ref.location())).dedup(key: it => it.at(0)).filter(it => it.at(0) > 0)
+    #if ref_entries.len() > 0 [
+      #par(hanging-indent: 2em, spacing: 6pt, first-line-indent: 2em, emph[
+        S.:
+        #for (index, (nr, loc)) in ref_entries.enumerate() [
+          #let delim = if index + 1 == ref_entries.len() {""} else {","}
+          #link(loc)[#nr#delim ]
+        ]
+      ])
     ]
     #v(1em)
   ]
