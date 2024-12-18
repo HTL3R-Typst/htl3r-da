@@ -8,3 +8,7 @@ description = "HTL-Rennweg diploma thesis template."
 homepage = "https://www.htlrennweg.at"
 keywords = ["Diplomarbeit", "thesis", "diploma", "HTL Rennweg", "htl3r", "wien"]
 categories = ["thesis"]
+
+[template]
+path = "template"
+entrypoint = "main.typ"
