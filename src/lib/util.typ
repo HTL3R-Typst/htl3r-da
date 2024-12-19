@@ -82,7 +82,7 @@
   let shave = gutter * (figures.len() - 1) / figures.len()
   let width = 100% / figures.len() - shave
   let columns = range(figures.len()).map((_) => width)
-  set block(width: 100%, above: 1em, below: 1em)
+  set block(width: 100%, above: 2em, below: 2em)
   align(center)[#block(width: total_width)[
     #show figure: set image(width: 100%)
     #grid(
