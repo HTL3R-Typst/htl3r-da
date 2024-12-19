@@ -8,7 +8,7 @@
   #set page(header: none, footer: none)
   #heading(outlined: false, level: 1)[Druckgrößenkontrolle]
   Diese Seite sollte nach dem Probedruck entfernt werden.
-  Einfach das ``` druck_referenz``` Argument auf ``` false``` setzen.
+  Einfach das ``` print_ref``` Argument auf ``` false``` setzen.
   #align(center + horizon, block(
     width: 100mm,
     height: 50mm,
