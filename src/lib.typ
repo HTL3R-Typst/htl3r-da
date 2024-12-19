@@ -22,9 +22,9 @@
 #let code = util.code
 #let code_file = util.code_file
 
-#let shorts = abbr.shorts
+#let short = abbr.short
 #let shortpl = abbr.shortpl
-#let longs = abbr.longs
+#let long = abbr.long
 #let longpl = abbr.longpl
 
 // TODO: fix bug with page counter not updating correctly after body

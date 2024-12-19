@@ -23,7 +23,7 @@
   display(name, value)
 }
 
-#let shorts(abbr) = {
+#let short(abbr) = {
   link(abbr, "short", "singular")
 }
 
@@ -31,7 +31,7 @@
   link(abbr, "short", "plural")
 }
 
-#let longs(abbr) = {
+#let long(abbr) = {
   link(abbr, "long", "singular")
 }
 
