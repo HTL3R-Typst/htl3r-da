@@ -3,7 +3,8 @@
 > [!IMPORTANT]  
 > If you are not a student of HTL Rennweg, this template will be of little use to you.
 
-
+Dieses Template dient als Vorlage für ein Diplomarbeitsbuch an der HTL Rennweg
+und orientiert sich am LaTeX-Template mit Stand 2024/25.
 
 ## Template adaptation checklist
 
@@ -32,7 +33,7 @@
 These instructions will get you a copy of the project up and running on the typst web app. Perhaps a short code example on importing the package and a very simple teaser usage.
 
 ```typ
-#import "@preview/my-package:0.1.0": *
+#import "@preview/htl3r-da:0.1.0": *
 
 #show: my-show-rule.with()
 #my-func()
@@ -57,10 +58,3 @@ A more in-depth description of usage. Any template arguments? A complicated exam
 
 #let my-complicated-example = ...
 ```
-
-## Additional Documentation and Acknowledgments
-
-* Project folder on server:
-* Confluence link:
-* Asana board:
-* etc...
