@@ -74,7 +74,6 @@
     lang: "de"
   )
   set figure(numbering: "1.1",)
-  show figure: set par(justify: false)
   show figure: set block(breakable: true)
   // show link: underline
   set page(
