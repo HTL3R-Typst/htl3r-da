@@ -50,7 +50,7 @@ resultiert in:
 )
 
 #pagebreak()
-Mit der `fspace`-Funktion können auch mehrere Figures nebeneinander gestellt werden. 
+Mit der `fspace`-Funktion können auch mehrere Figures nebeneinander gestellt werden.
 
 #htl3r.code()[
 ```typ

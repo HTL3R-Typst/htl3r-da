@@ -165,7 +165,7 @@
   tot.create_page()
   tof.create_page()
   tol.create_page()
-  text[#metadata("DA_BEGIN")<DA_BEGIN>]
+  [#metadata("DA_BEGIN")<DA_BEGIN>]
   counter(page).update(1)
   set page(
     footer: context {
@@ -190,9 +190,9 @@
     }
   )
   set heading(numbering: "1.1")
-  let page_count_begin = counter(page).get().first()
   body
-  if not calc.odd(counter(page).get().first() - page_count_begin) {
+  [#metadata("DA_END")#label("DA_END")]
+  context if calc.odd(counter(page).at(label("DA_END")).first()) {
     util.blank_page()
   }
   set heading(numbering: none)

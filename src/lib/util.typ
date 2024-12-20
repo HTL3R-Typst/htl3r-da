@@ -27,7 +27,7 @@
 }
 
 /// Creates a completly blank page, useful for book binding
-#let blank_page() = {
+#let blank_page() = context {
   page(header: none, footer: none, [])
 }
 
