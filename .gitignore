@@ -5,4 +5,4 @@
 docs/manual.pdf
 
 # REMOVE THIS IN FINAL VERSION
-# tests/???/out NO TESTS YET
+tests/**/out
