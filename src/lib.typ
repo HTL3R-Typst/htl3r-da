@@ -148,7 +148,7 @@
   }
   pages.abstract.create_page(abstract_german, abstract_english)
   pages.preamble.create_page(supervisor_incl_ac_degree, sponsors)
-  pages.erklaerung.create_page(authors, date, generative_ai_clause)
+  pages.sworn_statement.create_page(authors, date, generative_ai_clause)
   util.blank_page()
   pages.create_tables()
   [#metadata("DA_BEGIN")<DA_BEGIN>]
