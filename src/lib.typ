@@ -1,16 +1,5 @@
 #import "lib/settings.typ" as settings
-#import "lib/page/cover.typ" as cover
-#import "lib/page/abstract.typ" as abstract
-#import "lib/page/preamble.typ" as preamble
-#import "lib/page/erklaerung.typ" as erklaerung
-#import "lib/page/toc.typ" as toc
-#import "lib/page/tot.typ" as tot
-#import "lib/page/tof.typ" as tof
-#import "lib/page/tol.typ" as tol
-#import "lib/page/abbreviation.typ" as abbrev
-#import "lib/page/glossary.typ" as glossary
-#import "lib/page/bibliography.typ" as bib
-#import "lib/page/printref.typ" as printref
+#import "lib/pages.typ" as pages
 #import "lib/util.typ" as util
 #import "lib/abbr.typ" as abbr
 #import "lib/global.typ" as global
@@ -97,7 +86,7 @@
       outside: settings.PAGE_MARGIN_OUTER,
     ),
   )
-  cover.create_page(
+  pages.cover.create_page(
     title: title,
     subtitle: subtitle,
     department: department,
@@ -157,14 +146,11 @@
     let is-odd = calc.odd(i)
     set page(binding: if is-odd { right } else { left })
   }
-  abstract.create_page(abstract_german, abstract_english)
-  preamble.create_page(supervisor_incl_ac_degree, sponsors)
-  erklaerung.create_page(authors, date, generative_ai_clause)
+  pages.abstract.create_page(abstract_german, abstract_english)
+  pages.preamble.create_page(supervisor_incl_ac_degree, sponsors)
+  pages.erklaerung.create_page(authors, date, generative_ai_clause)
   util.blank_page()
-  toc.create_page()
-  tot.create_page()
-  tof.create_page()
-  tol.create_page()
+  pages.create_tables()
   [#metadata("DA_BEGIN")<DA_BEGIN>]
   counter(page).update(1)
   set page(
@@ -197,14 +183,14 @@
   }
   set heading(numbering: none)
   if abbreviation != none {
-    abbrev.create_page()
-    glossary.create_page()
+    pages.abbreviation.create_page()
+    pages.glossary.create_page()
   }
   if bibliography != none {
-    bib.create_page(bibliography: bibliography)
+    pages.bibliography.create_page(bibliography: bibliography)
   }
   if print_ref {
-    printref.create_page()
+    pages.printref.create_page()
   } else {
     util.blank_page()
   }
