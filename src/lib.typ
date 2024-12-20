@@ -44,8 +44,8 @@
   abstract_german: [#lorem(180)],
   abstract_english: [#lorem(180)],
   generative_ai_clause: [Es wurden keine Hilfsmittel generativer KI-Tools für die Erstellung der Arbeit verwendet.],
-  abbreviation: (),
-  bibliography: [],
+  abbreviation: none,
+  bibliography: none,
   body,
 ) = context {
   // validate
@@ -196,9 +196,13 @@
     util.blank_page()
   }
   set heading(numbering: none)
-  abbrev.create_page()
-  glossary.create_page()
-  bib.create_page(bibliography: bibliography)
+  if abbreviation != none {
+    abbrev.create_page()
+    glossary.create_page()
+  }
+  if bibliography != none {
+    bib.create_page(bibliography: bibliography)
+  }
   if print_ref {
     printref.create_page()
   } else {
