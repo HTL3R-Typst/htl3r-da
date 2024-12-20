@@ -2,7 +2,7 @@
 .idea
 .zed
 
-template/main.pdf
+docs/manual.pdf
 
 # REMOVE THIS IN FINAL VERSION
-tests/doc/out
+# tests/???/out NO TESTS YET
