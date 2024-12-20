@@ -138,5 +138,27 @@ Diese Abkürzungen können im Dokument verwendet werden.
 #htl3r.abbr.long[da] \
 #htl3r.abbr.longpl[da] \
 
-= Wichtige Details
-#htl3r.author("Viktor Kreuzer")
+== Fußnoten
+Mit ```typ #footnote[]``` kann eine Fußnote eingefügt werden.
+
+#htl3r.code()[
+  ```typ
+  Das ist ein Text #footnote[Das ist eine Anmerkung]
+  ```
+]
+
+Output:
+
+Das ist ein Text #footnote[Das ist eine Anmerkung]
+
+== Zitation
+Mit ```typ @<quellenname>``` kann man auf eine Quelle verweisen.
+
+Diese Quelle muss in der (im Header definierten) Bibliographie definiert sein.
+
+== Linksammlung
+#{show link: set text(fill: blue)
+[
+  https://typst.app/docs/reference/syntax/ \
+  https://typst.app/docs/reference/model/bibliography/ \
+]}
