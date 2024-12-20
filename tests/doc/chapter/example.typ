@@ -14,7 +14,7 @@ Allerdings war die existierende LaTeX Vorlage unbrauchbar und die hohe Komplexit
 Somit war klar, dass etwas neues gebraucht wird. Typst ist der perfekte Ersatz für LaTeX.
 
 == Kompilierung einer Typst-Datei
-Typst hat eine CLI, über welche die Quellcodedateien kompiliert werden. Um eine Datei zu kompileren wird diese CLI aufgerufen:
+Typst hat eine CLI, über welche die Quellcodedateien zu PDF kompiliert werden. Um eine Datei zu kompileren wird diese CLI aufgerufen:
 ```bash
 typst compile $DATEI
 ```
@@ -24,21 +24,23 @@ typst compile $DATEI
 
 Der Autor des Kapitels muss explizit angegeben werden!
 
+#htl3r.code()[
 ```typ
 #htl3r.author("Max Mustermann")
-```
+```]
 
 == Abbildungen
-Damit die Abbildungen mit richtigem Spacing auf der Seite angezeigt werden, müssen sie mit einer Funktion gewrappt werden.
+Damit die Abbildungen mit richtigem Spacing auf der Seite angezeigt werden, müssen sie mit der `fspace`-Funktion gewrappt werden.
 
 Damit kann die Breite der Figure angepasst werden.
 
+#htl3r.code()[
 ```typ
 #htl3r.fspace(
   total_width: 50%,
   figure(image("../assets/16x9.png"), caption: [Bild mit 16:9]),
 )
-```
+```]
 
 resultiert in:
 
@@ -50,12 +52,13 @@ resultiert in:
 #pagebreak()
 Mit der `fspace`-Funktion können auch mehrere Figures nebeneinander gestellt werden. 
 
+#htl3r.code()[
 ```typ
 #htl3r.fspace(
   figure(image("../assets/16x9.png"), caption: [Bild mit 16:9]),
   figure(image("../assets/1x1.png"), caption: [Bild mit 1:1]),
 )
-```
+```]
 
 resultiert in:
 
@@ -64,13 +67,55 @@ resultiert in:
   figure(image("../assets/1x1.png"), caption: [Bild mit 1:1]),
 )
 
-#pagebreak()
+== Tabellen
+Tabellen müssen auch mit der `fspace`-Funktion gewrappt werden.
+
+Beispiel:
+#htl3r.code(caption: none, description: none, skips: ((3, 3),))[
+```typ
+#htl3r.fspace(
+  total_width: 100%,
+  table(columns: 3,
+  )
+)
+```]
+
+#htl3r.fspace(
+  total_width: 100%,
+  table(columns: 3,
+  table.header([Column1], [Column2], [Column3]),
+  [Test1], [Test2], [Test3],
+  [Daten1], [Daten2], [Daten3]
+  )
+)
+
+== Codeblöcke
+Für Codeblöcke gibt es eine eigene Funktion:
+
+#htl3r.code()[
+#raw(block: true, lang: "typ", "#htl3r.code(caption: [Advanced Bash Skript], description: [Beispielcode])[
+```bash
+rm -rf /
+```
+]")
+]
+
+Output:
+"#htl3r.code(caption: [Advanced Bash Skript], description: [Beispielbefehl])[
+```bash
+rm -rf /
+```
+]
+
+#htl3r.code_file(lang: "bash", text: read("../assets/code_example.sh"))
+
 == Abkürzungen
 Die verwendeten Abkürzungen werden zentral in einer YAML-Datei definiert. \
+Mithilfe dieser YAML-Datei wird das Abkürzungsverzeichnis generiert.
 
 Beispiel:
 ```yaml
-da:
+da: # <- Das ist der Key für die Abkürzung
   short:
     singular: DA
     plural: DA

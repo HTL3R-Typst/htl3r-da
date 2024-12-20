@@ -26,7 +26,8 @@ und orientiert sich am LaTeX-Template mit Stand 2024/25.
 - [ ] (add your actual code, docs and tests)
 - [ ] remove this section from the README
 - [ ] OXIpng komprimieren
-- [ ] Figure Umbruch fixen
+- [ ] Tests aus dem gitignore nehmen und CI enablen
+- [X] Figure Umbruch fixen
 
 ## Getting Started
 
