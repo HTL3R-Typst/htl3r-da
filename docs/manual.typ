@@ -1,8 +1,9 @@
 #import "@preview/htl3r-da:0.1.0" as htl3r
 
-/*#show: htl3r.diplomarbeit.with(
-  manual_mode: true,
-)*/
+#show: htl3r.diplomarbeit.with(
+  disable_cover: true,
+  print_ref: false,
+)
 
 = Allgemeiner Typst Syntax
 #{
