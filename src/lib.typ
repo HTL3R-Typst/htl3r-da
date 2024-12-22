@@ -56,6 +56,7 @@
   generative_ai_clause: [Es wurden keine Hilfsmittel generativer KI-Tools für die Erstellung der Arbeit verwendet.],
   abbreviation: none,
   bibliography: none,
+  disable_cover: false,
   body,
 ) = context {
   // validate
@@ -103,30 +104,32 @@
   set figure(numbering: "1.1")
   show figure: set block(breakable: true)
   // show link: underline
+  if not disable_cover {
+    set page(
+      paper: "a4",
+      margin: (
+        top: settings.PAGE_MARGIN_VERTICAL,
+        bottom: settings.PAGE_MARGIN_VERTICAL,
+        inside: settings.PAGE_MARGIN_OUTER,
+        outside: settings.PAGE_MARGIN_OUTER,
+      ),
+    )
+    pages.cover.create_page(
+      title: title,
+      subtitle: subtitle,
+      department: department,
+      school_year: school_year,
+      authors: authors,
+      date: date,
+    )
+    util.insert_blank_page()
+  }
   set page(
     paper: "a4",
     margin: (
       top: settings.PAGE_MARGIN_VERTICAL,
       bottom: settings.PAGE_MARGIN_VERTICAL,
-      inside: settings.PAGE_MARGIN_OUTER,
-      outside: settings.PAGE_MARGIN_OUTER,
-    ),
-  )
-  pages.cover.create_page(
-    title: title,
-    subtitle: subtitle,
-    department: department,
-    school_year: school_year,
-    authors: authors,
-    date: date,
-  )
-  util.insert_blank_page()
-  set page(
-    paper: "a4",
-    margin: (
-      top: settings.PAGE_MARGIN_VERTICAL,
-      bottom: settings.PAGE_MARGIN_VERTICAL,
-      inside: settings.PAGE_MARGIN_INNER,
+      inside: if disable_cover { settings.PAGE_MARGIN_OUTER } else { settings.PAGE_MARGIN_OUTER },
       outside: settings.PAGE_MARGIN_OUTER,
     ),
   )
@@ -181,14 +184,16 @@
     let is-odd = calc.odd(i)
     set page(binding: if is-odd { right } else { left })
   }
-  pages.abstract.create_page(abstract_german, abstract_english)
-  util.insert_blank_page()
-  pages.preamble.create_page(supervisor_incl_ac_degree, sponsors)
-  util.insert_blank_page()
-  pages.sworn_statement.create_page(authors, date, generative_ai_clause)
-  util.insert_blank_page()
-  pages.create_tables()
-  util.insert_blank_page()
+  if not disable_cover {
+    pages.abstract.create_page(abstract_german, abstract_english)
+    util.insert_blank_page()
+    pages.preamble.create_page(supervisor_incl_ac_degree, sponsors)
+    util.insert_blank_page()
+    pages.sworn_statement.create_page(authors, date, generative_ai_clause)
+    util.insert_blank_page()
+    pages.create_tables()
+    util.insert_blank_page()
+  }
   counter(page).update(1)
   set page(
     footer: context {
@@ -197,7 +202,7 @@
       let author = global.author.get()
       line(length: 100%, stroke: 0.5pt)
       v(-5pt)
-      if is-odd [
+      if is-odd or disable_cover [
         #if author != none [
           Autor: #author
         ]
@@ -214,17 +219,19 @@
   )
   set heading(numbering: "1.1")
   body
-  util.insert_blank_page()
-  set heading(numbering: none)
-  if abbreviation != none {
-    pages.abbreviation.create_page()
+  if not disable_cover {
     util.insert_blank_page()
-    pages.glossary.create_page()
-    util.insert_blank_page()
-  }
-  if bibliography != none {
-    pages.bibliography.create_page(bibliography: bibliography)
-    util.insert_blank_page()
+    set heading(numbering: none)
+    if abbreviation != none {
+      pages.abbreviation.create_page()
+      util.insert_blank_page()
+      pages.glossary.create_page()
+      util.insert_blank_page()
+    }
+    if bibliography != none {
+      pages.bibliography.create_page(bibliography: bibliography)
+      util.insert_blank_page()
+    }
   }
   if print_ref {
     pages.printref.create_page()
