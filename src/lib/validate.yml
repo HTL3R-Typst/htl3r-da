@@ -1,0 +1,60 @@
+title:
+  type: string
+  optional: false
+subtitle:
+  type: string
+  optional: false
+department:
+  type: string
+  optional: false
+  allowed:
+    - ITN
+    - ITM
+    - M
+school_year:
+  type: string
+  optional: false
+  guide: yyyy/yyyy
+authors:
+  type: array
+  optional: false
+  contains:
+    type: dictionary
+    fields:
+      - name:
+          type: string
+      - supervisor:
+          type: string
+supervisor_incl_ac_degree:
+  type: array
+  optional: false
+  contains:
+    type: string
+sponsors:
+  type: array
+  optional: false
+  contains:
+    type: string
+date:
+  type: date
+  optional: false
+abstract_german:
+  type: content
+  optional: false
+abstract_english:
+  type: content
+  optional: false
+generative_ai_clause:
+  type: content
+  optional: false
+abbreviation:
+  type: any
+  optional: true
+bibliography:
+  type: content
+  optional: true
+print_ref:
+  type: boolean
+disable_cover:
+  type: boolean
+  optional: true
