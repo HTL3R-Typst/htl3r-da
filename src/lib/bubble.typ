@@ -1,4 +1,4 @@
-#import "settings.typ" as settings
+#import "settings.typ": BUBBLE_COLORS as BC
 
 #let bubble(text_color: rgb("#975E10"), fill: rgb("#FFEFD6"), stroke: rgb("#F9D9AD"), body) = {
   let inset = 1.2em
@@ -27,13 +27,13 @@
 }
 
 #let todo(body) = {
-  bubble(text_color: rgb("#975E10"), fill: rgb("#FFEFD6"), stroke: rgb("#F9D9AD"), body)
+  bubble(text_color: BC.todo.text, fill: BC.todo.fill, stroke: BC.todo.stroke, body)
 }
 
 #let info(body) = {
-  bubble(text_color: rgb("#0C2BAE"), fill: rgb("#EBEFFD"), stroke: rgb("#A0ACDF"), body)
+  bubble(text_color: BC.info.text, fill: BC.info.fill, stroke: BC.info.stroke, body)
 }
 
 #let warn(body) = {
-  bubble(text_color: rgb("#810707"), fill: rgb("#FBECEC"), stroke: rgb("#EDABAB"), body)
+  bubble(text_color: BC.warn.text, fill: BC.warn.fill, stroke: BC.warn.stroke, body)
 }
