@@ -2,8 +2,8 @@
 #import "global.typ" as global
 
 #let display(abbr, display) = {
-  // link(label("ABBR_DES_"+abbr))[#display#label("ABBR_"+abbr)]
-  text[#display#label("ABBR_"+abbr)]
+  link(label("ABBR_DES_"+abbr))[#display#label("ABBR_"+abbr)]
+  // text[#display#label("ABBR_"+abbr)]
 }
 
 #let link(abbr, length, form) = context {

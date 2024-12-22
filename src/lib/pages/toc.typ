@@ -19,8 +19,4 @@
     indent: 1em,
     fill: line(length: 100%, stroke: (dash: ("dot", 1em))),
   )
-  <TOC_BEGIN>
-  #hide("TOC_END")
-  <TOC_END>
-  #insert_blank_page(<TOC_BEGIN>, <TOC_END>)
 ]

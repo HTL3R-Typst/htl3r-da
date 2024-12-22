@@ -10,10 +10,14 @@
 #import "pages/glossary.typ" as glossary
 #import "pages/bibliography.typ" as bibliography
 #import "pages/printref.typ" as printref
+#import "util.typ" as util
 
 #let create_tables() = {
   toc.create_page()
+  util.insert_blank_page()
   tot.create_page()
+  util.insert_blank_page()
   tof.create_page()
+  util.insert_blank_page()
   tol.create_page()
 }

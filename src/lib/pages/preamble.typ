@@ -1,10 +1,9 @@
-#import "../util.typ": blank_page
+#import "../util.typ": insert_blank_page
 
 #let create_page(
   supervisors_incl_ac_degree,
   sponsors,
 ) = [
-  #blank_page()
   = Präambel
   Die Inhalte dieser Diplomarbeit entsprechen § 7(1) und § 24 der Verordnung des
   Bundesministers für Bildung über die abschließenden Prüfungen in den berufsbildenden

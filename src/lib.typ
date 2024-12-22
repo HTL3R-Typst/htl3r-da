@@ -93,6 +93,7 @@
     authors: authors,
     date: date,
   )
+  util.insert_blank_page()
   set page(
     paper: "a4",
     margin: (
@@ -146,11 +147,13 @@
     set page(binding: if is-odd { right } else { left })
   }
   pages.abstract.create_page(abstract_german, abstract_english)
+  util.insert_blank_page()
   pages.preamble.create_page(supervisor_incl_ac_degree, sponsors)
+  util.insert_blank_page()
   pages.sworn_statement.create_page(authors, date, generative_ai_clause)
-  util.blank_page()
+  util.insert_blank_page()
   pages.create_tables()
-  [#metadata("DA_BEGIN")<DA_BEGIN>]
+  util.insert_blank_page()
   counter(page).update(1)
   set page(
     footer: context {
@@ -176,17 +179,17 @@
   )
   set heading(numbering: "1.1")
   body
-  [#metadata("DA_END")#label("DA_END")]
-  context if calc.odd(counter(page).at(label("DA_END")).first()) {
-    util.blank_page()
-  }
+  util.insert_blank_page()
   set heading(numbering: none)
   if abbreviation != none {
     pages.abbreviation.create_page()
+    util.insert_blank_page()
     pages.glossary.create_page()
+    util.insert_blank_page()
   }
   if bibliography != none {
     pages.bibliography.create_page(bibliography: bibliography)
+    util.insert_blank_page()
   }
   if print_ref {
     pages.printref.create_page()

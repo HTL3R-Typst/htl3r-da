@@ -1,10 +1,6 @@
-#import "../util.typ": blank_page
+#import "../util.typ": insert_blank_page
 
 #let create_page() = context [
-  #let num_pages = counter(page).get().last()
-  #if not calc.odd(num_pages) {
-    blank_page()
-  }
   #set page(header: none, footer: none)
   #heading(outlined: false, level: 1)[Druckgrößenkontrolle]
   Diese Seite sollte nach dem Probedruck entfernt werden.

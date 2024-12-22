@@ -2,7 +2,7 @@
 #import "../global.typ" as global
 
 #let create_page() = context [
-  = Glossar <GLOSSARY_BEGIN>
+  = Glossar
   #for name in global.abbr.get().keys() [
     #let abbr = global.abbr.get().at(name)
     #let desc = abbr.at("description", default: none)
@@ -21,7 +21,4 @@
       ]
     ]
   ]
-  #hide("ABBR_END")
-  <GLOSSARY_END>
-  #insert_blank_page(<GLOSSARY_BEGIN>, <GLOSSARY_END>)
 ]

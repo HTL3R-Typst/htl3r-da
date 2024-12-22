@@ -110,11 +110,7 @@
   }
 }
 
-#let insert_blank_page(begin, end) = context {
-  let begin = query(begin).first()
-  let end = query(end).first()
-  let count = end.location().page() - begin.location().page()
-  if not calc.odd(count) {
-    blank_page()
-  }
+#let insert_blank_page() = {
+  set page(header: none, footer: none)
+  pagebreak(to: "odd", weak: true)
 }
