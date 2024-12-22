@@ -4,6 +4,7 @@
 #import "lib/abbr.typ" as abbr
 #import "lib/global.typ" as global
 #import "lib/bubble.typ" as bubble
+#import "lib/validate.typ": validate
 #import "@preview/codly:1.1.1": *
 #import "@preview/codly-languages:0.1.1": *
 
@@ -60,10 +61,25 @@
   body,
 ) = context {
   // validate
-  assert(
-    ("ITN", "ITM", "M").contains(department),
-    message: "Abteilung muss entweder \"ITN\", \"ITM\" oder \"M\" sein.",
-  )
+  // assert(
+  //   ("ITN", "ITM", "M").contains(department),
+  //   message: "Abteilung muss entweder \"ITN\", \"ITM\" oder \"M\" sein.",
+  // )
+  validate("title", title)
+  validate("subtitle", subtitle)
+  validate("department", department)
+  validate("school_year", school_year)
+  validate("authors", authors)
+  validate("supervisor_incl_ac_degree", supervisor_incl_ac_degree)
+  validate("sponsors", sponsors)
+  validate("date", date)
+  validate("abstract_german", abstract_german)
+  validate("abstract_english", abstract_english)
+  validate("generative_ai_clause", generative_ai_clause)
+  validate("abbreviation", abbreviation)
+  validate("bibliography", bibliography)
+  validate("print_ref", print_ref)
+  validate("disable_cover", disable_cover)
 
   // state
   global.abbr.update(abbreviation)

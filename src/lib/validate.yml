@@ -36,7 +36,7 @@ sponsors:
   contains:
     type: string
 date:
-  type: date
+  type: datetime
   optional: false
 abstract_german:
   type: content
@@ -46,7 +46,7 @@ abstract_english:
   optional: false
 generative_ai_clause:
   type: content
-  optional: false
+  optional: true
 abbreviation:
   type: any
   optional: true
@@ -55,6 +55,7 @@ bibliography:
   optional: true
 print_ref:
   type: boolean
+  optional: true
 disable_cover:
   type: boolean
   optional: true
