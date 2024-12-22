@@ -40,3 +40,6 @@ uninstall-preview: (remove "@preview")
 
 # run ci suite
 ci: test doc
+
+format:
+	typstyle format-all "{{root}}"
