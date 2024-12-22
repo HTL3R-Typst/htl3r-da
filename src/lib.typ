@@ -235,7 +235,7 @@
   }
   if print_ref {
     pages.printref.create_page()
-  } else {
+  } else if not disable_cover {
     util.blank_page()
   }
 }
