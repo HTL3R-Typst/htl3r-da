@@ -8,6 +8,9 @@
 /// Definiert man den Autor nicht, so wird der Autor des vorherigen
 /// Kapitels angenommen.
 #let author(name) = context {
+  if name != global.author.get() {
+    pagebreak(weak: true)
+  }
   global.author.update(name)
 }
 

@@ -2,8 +2,8 @@
 #import "../global.typ" as global
 
 #let create_page() = context [
-  = Abkürzungsverzeichnis
   #global.author.update(none)
+  = Abkürzungsverzeichnis
   #for name in global.abbr.get().keys() [
     #block(breakable: false)[
       #let abbr = global.abbr.get().at(name)
