@@ -23,11 +23,27 @@
   department: "ITN",
   school_year: "2024/2025",
   authors: (
-    (name: "Max Mustermann", supervisor: "Otto Normalverbraucher", role: "Projektleiter"),
-    (name: "Erika Mustermann", supervisor: "Lieschen Müller", role: "Stv. Projektleiter"),
+    (
+      name: "Max Mustermann",
+      supervisor: "Otto Normalverbraucher",
+      role: "Projektleiter",
+    ),
+    (
+      name: "Erika Mustermann",
+      supervisor: "Lieschen Müller",
+      role: "Stv. Projektleiter",
+    ),
   ),
-  supervisor_incl_ac_degree: ("Prof, Dipl.-Ing. Otto Normalverbraucher", "Prof, Dipl.-Ing. Lieschen Müller"),
-  sponsors: ("Knallhart GmbH", "Gartenbedarfs GmbH", "Huber e.U.", "Huberit Vetrieb GmbH & Co. KG"),
+  supervisor_incl_ac_degree: (
+    "Prof, Dipl.-Ing. Otto Normalverbraucher",
+    "Prof, Dipl.-Ing. Lieschen Müller",
+  ),
+  sponsors: (
+    "Knallhart GmbH",
+    "Gartenbedarfs GmbH",
+    "Huber e.U.",
+    "Huberit Vetrieb GmbH & Co. KG",
+  ),
   date: datetime(year: 2024, month: 12, day: 1),
   print_ref: true,
   abstract_german: [#lorem(180)],
@@ -38,7 +54,10 @@
   body,
 ) = context {
   // validate
-  assert(("ITN", "ITM", "M").contains(department), message: "Abteilung muss entweder \"ITN\", \"ITM\" oder \"M\" sein.")
+  assert(
+    ("ITN", "ITM", "M").contains(department),
+    message: "Abteilung muss entweder \"ITN\", \"ITM\" oder \"M\" sein.",
+  )
 
   // state
   global.abbr.update(abbreviation)
@@ -56,10 +75,13 @@
   )
   set document(
     title: title,
-    author: authors.map((v) => v.name),
+    author: authors.map(v => v.name),
   )
   show heading: h => {
-    set text(font: settings.FONT_TEXT_DISPLAY, size: settings.HEADING_SIZES.at(h.level - 1).size)
+    set text(
+      font: settings.FONT_TEXT_DISPLAY,
+      size: settings.HEADING_SIZES.at(h.level - 1).size,
+    )
     if h.level == 1 {
       pagebreak(weak: true)
     }
@@ -71,9 +93,9 @@
   set text(
     font: settings.FONT_TEXT_BODY,
     size: settings.FONT_SIZE,
-    lang: "de"
+    lang: "de",
   )
-  set figure(numbering: "1.1",)
+  set figure(numbering: "1.1")
   show figure: set block(breakable: true)
   // show link: underline
   set page(
@@ -110,7 +132,9 @@
       let after = query(heading.where(level: 1).after(here()))
       let before_l1 = query(heading.where(level: 1).before(here()))
       let before_l2 = query(heading.where(level: 2).before(here()))
-      let before = (..before_l1, ..before_l2).sorted(key: it => it.location().page())
+      let before = (..before_l1, ..before_l2).sorted(
+        key: it => it.location().page(),
+      )
       let reference = none
       if after.len() > 0 and after.first().location().page() == page_number {
         reference = after.first()
@@ -120,9 +144,15 @@
 
       let current = box(height: 28pt, align(left + horizon, reference.body))
       if calc.odd(page_number) {
-        [#current #h(1fr) #box(height: 28pt, image("lib/assets/htl3r_logo.svg"))]
+        [#current #h(1fr) #box(
+            height: 28pt,
+            image("lib/assets/htl3r_logo.svg"),
+          )]
       } else {
-        [#box(height: 28pt, image("lib/assets/htl3r_logo.svg")) #h(1fr) #current]
+        [#box(
+            height: 28pt,
+            image("lib/assets/htl3r_logo.svg"),
+          ) #h(1fr) #current]
       }
       v(-5pt)
       line(length: 100%, stroke: 0.5pt)
@@ -139,7 +169,7 @@
       line(length: 100%, stroke: 0.5pt)
       v(-5pt)
       [#align(aln)[#counter.display("i")]]
-    }
+    },
   )
   show page: p => {
     let i = counter(page).at(here()).first()
@@ -175,7 +205,7 @@
           Autor: #author
         ]
       ]
-    }
+    },
   )
   set heading(numbering: "1.1")
   body

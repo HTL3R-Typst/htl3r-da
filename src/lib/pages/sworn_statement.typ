@@ -26,22 +26,30 @@
   #v(3em)
   Wien, am #format_date(date)
   #v(7em)
-  #let fields = authors.map((author) => {
-    box(block(
-      width: 7.5cm,
-      height: 1cm,
-      stroke: (
-        top: 0.5pt + black
-      ),
-    )[#align(center + horizon)[
-      #author.name
-    ]])
+  #let fields = authors.map(author => {
+    box(
+      block(
+        width: 7.5cm,
+        height: 1cm,
+        stroke: (
+          top: 0.5pt + black,
+        ),
+      )[#align(center + horizon)[
+          #author.name
+        ]],
+    )
   })
-  #let fields = fields.chunks(2).map((a) => [
-    #let first = a.first()
-    #let last = if a.len() == 2 { a.last() } else { box(block(width: 7cm, height: 1cm,)) }
-    #block(width: 100%)[#first #h(1fr) #last #v(6em)]
-  ])
+  #let fields = (
+    fields
+      .chunks(2)
+      .map(a => [
+        #let first = a.first()
+        #let last = if a.len() == 2 { a.last() } else {
+          box(block(width: 7cm, height: 1cm))
+        }
+        #block(width: 100%)[#first #h(1fr) #last #v(6em)]
+      ])
+  )
   #for field in fields [
     #field
   ]

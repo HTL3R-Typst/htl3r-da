@@ -37,5 +37,5 @@
     size: 12pt,
     top: 0.5em,
     bottom: 0.25em,
-  )
+  ),
 )

@@ -7,8 +7,16 @@
   department: "IT",
   school_year: "2024/2025",
   authors: (
-    (name: "Max Mustermann", supervisor: "Otto Normalverbraucher", role: "Projektleiter"),
-    (name: "Erika Mustermann", supervisor: "Lieschen Müller", role: "Stv. Projektleiter"),
+    (
+      name: "Max Mustermann",
+      supervisor: "Otto Normalverbraucher",
+      role: "Projektleiter",
+    ),
+    (
+      name: "Erika Mustermann",
+      supervisor: "Lieschen Müller",
+      role: "Stv. Projektleiter",
+    ),
   ),
   date: datetime(year: 2024, month: 12, day: 1),
 ) = {
@@ -17,12 +25,12 @@
     width: auto,
     height: 52pt,
     stroke: (
-      left: 4pt + settings.COLOR_RED
+      left: 4pt + settings.COLOR_RED,
     ),
     inset: (
       top: 2pt,
       bottom: 2pt,
-      left: 8pt
+      left: 8pt,
     ),
     align(left + horizon)[
       #box(
@@ -30,17 +38,21 @@
         text(
           size: 8pt,
           [
-            #text(size: 8pt, [#strong([Höhere Technische Bundeslehranstalt Wien 3, Rennweg])]) \
+            #text(
+              size: 8pt,
+              [#strong([Höhere Technische Bundeslehranstalt Wien 3, Rennweg])],
+            ) \
             #v(1fr)
             Höhere Abteilung für Mechatronik \
             Höhere Abteilung für Informationstechnologie \
             Fachschule für Informationstechnik
-          ]
-        )
+          ],
+        ),
       )
       #h(1fr)
       #box(
-        height: 100%, image("../assets/htl3r_logo.svg")
+        height: 100%,
+        image("../assets/htl3r_logo.svg"),
       )
     ],
   )
@@ -50,7 +62,7 @@
     #text(
       size: 20pt,
       font: settings.FONT_TEXT_DISPLAY,
-      "Diplomarbeit"
+      "Diplomarbeit",
     )
   ]
   v(1fr)
@@ -61,7 +73,7 @@
       strong[
         #title \
         #subtitle
-      ]
+      ],
     )
   ]
   v(1fr)
@@ -73,32 +85,38 @@
         Höheren Abteilung für #format_department(department) \
         der Höheren Technischen Lehranstalt Wien 3 Rennweg \
         im Schuljahr #school_year
-      ]
+      ],
     )
   ]
   v(1fr)
-  align(center, block(width: 60%)[
-    #par(
-      leading: 1.4em,
-      text(size: 10pt,)[
-        durch #h(1fr) unter Anleitung von \
-        #v(-5pt)
-        #line(length: 100%, stroke: 0.5pt)
-        #v(-5pt)
-        #for author in authors [
-          #text(size: 14pt, strong(author.name)) #h(1fr) #author.supervisor \
-        ]
-      ]
-    )
-  ])
+  align(
+    center,
+    block(width: 60%)[
+      #par(
+        leading: 1.4em,
+        text(size: 10pt)[
+          durch #h(1fr) unter Anleitung von \
+          #v(-5pt)
+          #line(length: 100%, stroke: 0.5pt)
+          #v(-5pt)
+          #for author in authors [
+            #text(size: 14pt, strong(author.name)) #h(1fr) #author.supervisor \
+          ]
+        ],
+      )
+    ],
+  )
   v(1fr)
-  align(center, block(width: 60%)[
-    #text(
-      size: 10pt,
-      [
-        Wien, #format_date(date)
-      ]
-    )
-  ])
+  align(
+    center,
+    block(width: 60%)[
+      #text(
+        size: 10pt,
+        [
+          Wien, #format_date(date)
+        ],
+      )
+    ],
+  )
   v(1fr)
 }

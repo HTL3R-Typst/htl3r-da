@@ -6,10 +6,11 @@
 
 = Allgemeiner Typst Syntax
 #{
-show link: set text(fill: blue, size: 80pt)
-align(center)[
-  #link("https://typst.app/docs/reference/syntax/")[GUCKST \ DU \ HIER] \
-]}
+  show link: set text(fill: blue, size: 80pt)
+  align(center)[
+    #link("https://typst.app/docs/reference/syntax/")[GUCKST \ DU \ HIER] \
+  ]
+}
 
 #show link: set text(fill: blue)
 
@@ -51,20 +52,26 @@ Output:
 
 *Codeblock als Figure:*
 
-#raw(lang: "typ",
-"#htl3r.code(description: [Bashskript], caption: [Codeblock Beispiel])[
+#raw(
+  lang: "typ",
+  "#htl3r.code(description: [Bashskript], caption: [Codeblock Beispiel])[
 ```bash
 #!/bin/bash
 echo test123
 ```
-]")
+]",
+)
 
 #htl3r.code(description: [Bashskript], caption: [Codeblock Beispiel])[
-```bash
-#!/bin/bash
-echo test123
-```
+  ```bash
+  #!/bin/bash
+  echo test123
+  ```
 ]
 
 *Codeblock aus einem File importiert*
-#htl3r.code_file(lang: "bash", filename: [Test], text: read("assets/code_example.sh"))
+#htl3r.code_file(
+  lang: "bash",
+  filename: [Test],
+  text: read("assets/code_example.sh"),
+)

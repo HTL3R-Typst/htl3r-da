@@ -13,8 +13,25 @@
 
 /// Converts a date to a german format, currently not implemented in typst.
 #let format_date(date) = {
-  let months = ("Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember")
-  date.display("[day]. ") + months.at(date.month() - 1) + date.display(" [year]")
+  let months = (
+    "Januar",
+    "Februar",
+    "März",
+    "April",
+    "Mai",
+    "Juni",
+    "Juli",
+    "August",
+    "September",
+    "Oktober",
+    "November",
+    "Dezember",
+  )
+  (
+    date.display("[day]. ")
+      + months.at(date.month() - 1)
+      + date.display(" [year]")
+  )
 }
 
 #let format_department(department) = {
@@ -35,7 +52,7 @@
 /// Die Abkürzung sollte in den definierten Abkürzungen
 /// beinhaltet sein. Ansonsten ist diese nicht nachschlagbar.
 #let abbr(body) = [
-  #link(label("ABBR_DES_"+body.text), body) #label("ABBR_"+body.text)
+  #link(label("ABBR_DES_" + body.text), body) #label("ABBR_" + body.text)
 ]
 
 /// Markiert eine Abkürzung, sodass diese nachgeschlagen werden kann.
@@ -43,8 +60,8 @@
 /// beinhaltet sein. Ansonsten ist diese nicht nachschlagbar.
 /// Die Abkürzung ist dabei im Plural gehalten.
 #let abbrp(body) = [
-  #let singular = body.text.slice(0, body.text.len()-1)
-  #link(label("ABBR_DES_"+singular), body) #label("ABBR_"+singular)
+  #let singular = body.text.slice(0, body.text.len() - 1)
+  #link(label("ABBR_DES_" + singular), body) #label("ABBR_" + singular)
 ]
 
 #let code(caption: none, description: none, skips: none, body) = [
@@ -60,7 +77,15 @@
   )
 ]
 
-#let code_file(caption: none, filename: none, lang: none, text: none, range: none, ranges: none, skips: none) = {
+#let code_file(
+  caption: none,
+  filename: none,
+  lang: none,
+  text: none,
+  range: none,
+  ranges: none,
+  skips: none,
+) = {
   codly(
     header: filename,
     ranges: ranges,
@@ -81,17 +106,17 @@
   let gutter = 2em
   let shave = gutter * (figures.len() - 1) / figures.len()
   let width = 100% / figures.len() - shave
-  let columns = range(figures.len()).map((_) => width)
+  let columns = range(figures.len()).map(_ => width)
   set block(width: 100%, above: 2em, below: 2em, breakable: false)
   align(center)[#block(width: total_width)[
-    #show figure: set image(width: 100%)
-    #grid(
-      columns: columns,
-      gutter: gutter,
-      align: bottom,
-      ..figures
-    )
-  ]]
+      #show figure: set image(width: 100%)
+      #grid(
+        columns: columns,
+        gutter: gutter,
+        align: bottom,
+        ..figures
+      )
+    ]]
 }
 
 #let to_string(content) = {
