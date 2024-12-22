@@ -151,7 +151,7 @@
       }
 
       let current = box(height: 28pt, align(left + horizon, reference.body))
-      if calc.odd(page_number) {
+      if calc.odd(page_number) or disable_cover {
         [#current #h(1fr) #box(
             height: 28pt,
             image("lib/assets/htl3r_logo.svg"),
