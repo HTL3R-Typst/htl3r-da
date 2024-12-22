@@ -44,16 +44,16 @@
   todo: (
     text: rgb("#975E10"),
     fill: rgb("#FFEFD6"),
-    stroke: rgb("#F9D9AD")
+    stroke: rgb("#F9D9AD"),
   ),
   info: (
     text: rgb("#0C2BAE"),
     fill: rgb("#EBEFFD"),
-    stroke: rgb("#A0ACDF")
+    stroke: rgb("#A0ACDF"),
   ),
   warn: (
     text: rgb("#810707"),
     fill: rgb("#FBECEC"),
-    stroke: rgb("#EDABAB")
-  )
+    stroke: rgb("#EDABAB"),
+  ),
 )

@@ -15,7 +15,6 @@
 #show link: set text(fill: blue)
 
 == nützliche Features
-- #link("https://typst.app/docs/reference/model/bibliography/")[Zitieren & Bibliographie]
 - Fußnote mit ```typ #footnote[]```
 
 = Templatespezifische-Funktionen
@@ -62,6 +61,7 @@ echo test123
 ]",
 )
 
+Output:
 #htl3r.code(description: [Bashskript], caption: [Codeblock Beispiel])[
   ```bash
   #!/bin/bash
@@ -69,9 +69,37 @@ echo test123
   ```
 ]
 
-*Codeblock aus einem File importiert*
+*Codeblock aus einem File importiert:*
+```typ
 #htl3r.code_file(
   lang: "bash",
   filename: [Test],
   text: read("assets/code_example.sh"),
 )
+```
+Output:
+#htl3r.code_file(
+  lang: "bash",
+  filename: [Test],
+  text: read("assets/code_example.sh"),
+)
+
+*ToDo-Eintrag:*
+```typ
+#htl3r.todo[SDO stolz machen]
+#htl3r.info[Information hier einfügen]
+#htl3r.warn[Achtung!]
+```
+
+Output:
+
+#htl3r.todo[SDO stolz machen]
+#htl3r.info[Information hier einfügen]
+#htl3r.warn[Achtung!]
+
+*Zitieren:*
++ direktes Zitat
+// To be implemented
+
++ indirektes Zitat
+// To be implemented
