@@ -99,6 +99,7 @@
     v(settings.HEADING_SIZES.at(h.level - 1).bottom)
   }
   set par(justify: true)
+  show raw: set text(font: settings.FONT_TEXT_RAW)
   set text(
     font: settings.FONT_TEXT_BODY,
     size: settings.FONT_SIZE,
