@@ -5,6 +5,7 @@
 #import "lib/global.typ" as global
 #import "lib/bubble.typ" as bubble
 #import "lib/validate.typ": validate
+#import "lib/font.typ": check_missing_fonts
 #import "@preview/codly:1.1.1": *
 #import "@preview/codly-languages:0.1.1": *
 
@@ -41,7 +42,14 @@
   disable_cover: false,
   body,
 ) = context {
-  // validate
+  // validate fonts
+  let missing_fonts = check_missing_fonts()
+  if missing_fonts.len() != 0 {
+    panic("The following fonts couldn't be found on the system: " + missing_fonts.map(it => "'" + it + "'").join(", ", last: " and ") + "! " +
+      "You may be able to download them from Google Fonts (https://fonts.google.com/).")
+  }
+
+  // validate arguments
   if not disable_cover {
     validate("title", title)
     validate("subtitle", subtitle)
@@ -91,6 +99,7 @@
     v(settings.HEADING_SIZES.at(h.level - 1).bottom)
   }
   set par(justify: true)
+  show raw: set text(font: settings.FONT_TEXT_RAW)
   set text(
     font: settings.FONT_TEXT_BODY,
     size: settings.FONT_SIZE,
