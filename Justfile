@@ -41,5 +41,10 @@ uninstall-preview: (remove "@preview")
 # run ci suite
 ci: test doc
 
+# format all typst documents in the project
 format:
 	typstyle format-all "{{root}}"
+
+# optimize all pngs with oxipng
+oxipng:
+	find . -name "*.png" -exec oxipng {} \;
