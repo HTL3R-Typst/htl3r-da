@@ -1,5 +1,6 @@
 #let FONT_TEXT_BODY = "Noto Sans"
 #let FONT_TEXT_DISPLAY = "Noto Sans"
+#let FONT_TEXT_RAW = "Source Code Pro"
 #let FONT_SIZE = 11pt
 #let PAGE_MARGIN_INNER = 3cm
 #let PAGE_MARGIN_OUTER = 2cm
