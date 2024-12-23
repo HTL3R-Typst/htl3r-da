@@ -76,7 +76,7 @@
   )
   set document(
     title: title,
-    author: authors.map(v => v.name),
+    author: if disable_cover and authors == none {()} else { authors.map(v => v.name) },
   )
   show heading: h => {
     set text(
