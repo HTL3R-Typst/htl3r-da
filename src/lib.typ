@@ -24,62 +24,41 @@
 
 // TODO: fix bug with page counter not updating correctly after body
 #let diplomarbeit(
-  title: "Meine Diplomarbeit",
-  subtitle: "Wir sind super toll!",
-  department: "ITN",
-  school_year: "2024/2025",
-  authors: (
-    (
-      name: "Max Mustermann",
-      supervisor: "Otto Normalverbraucher",
-      role: "Projektleiter",
-    ),
-    (
-      name: "Erika Mustermann",
-      supervisor: "Lieschen Müller",
-      role: "Stv. Projektleiter",
-    ),
-  ),
-  supervisor_incl_ac_degree: (
-    "Prof, Dipl.-Ing. Otto Normalverbraucher",
-    "Prof, Dipl.-Ing. Lieschen Müller",
-  ),
-  sponsors: (
-    "Knallhart GmbH",
-    "Gartenbedarfs GmbH",
-    "Huber e.U.",
-    "Huberit Vetrieb GmbH & Co. KG",
-  ),
-  date: datetime(year: 2024, month: 12, day: 1),
-  print_ref: true,
-  abstract_german: [#lorem(180)],
-  abstract_english: [#lorem(180)],
+  title: none,
+  subtitle: none,
+  department: none,
+  school_year: none,
+  authors: none,
+  supervisor_incl_ac_degree: none,
+  sponsors: none,
+  date: none,
+  abstract_german: none,
+  abstract_english: none,
   generative_ai_clause: [Es wurden keine Hilfsmittel generativer KI-Tools für die Erstellung der Arbeit verwendet.],
   abbreviation: none,
   bibliography: none,
+  print_ref: true,
   disable_cover: false,
   body,
 ) = context {
   // validate
-  // assert(
-  //   ("ITN", "ITM", "M").contains(department),
-  //   message: "Abteilung muss entweder \"ITN\", \"ITM\" oder \"M\" sein.",
-  // )
-  validate("title", title)
-  validate("subtitle", subtitle)
-  validate("department", department)
-  validate("school_year", school_year)
-  validate("authors", authors)
-  validate("supervisor_incl_ac_degree", supervisor_incl_ac_degree)
-  validate("sponsors", sponsors)
-  validate("date", date)
-  validate("abstract_german", abstract_german)
-  validate("abstract_english", abstract_english)
-  validate("generative_ai_clause", generative_ai_clause)
-  validate("abbreviation", abbreviation)
-  validate("bibliography", bibliography)
-  validate("print_ref", print_ref)
-  validate("disable_cover", disable_cover)
+  if not disable_cover {
+    validate("title", title)
+    validate("subtitle", subtitle)
+    validate("department", department)
+    validate("school_year", school_year)
+    validate("authors", authors)
+    validate("supervisor_incl_ac_degree", supervisor_incl_ac_degree)
+    validate("sponsors", sponsors)
+    validate("date", date)
+    validate("abstract_german", abstract_german)
+    validate("abstract_english", abstract_english)
+    validate("generative_ai_clause", generative_ai_clause)
+    validate("abbreviation", abbreviation)
+    validate("bibliography", bibliography)
+    validate("print_ref", print_ref)
+    validate("disable_cover", disable_cover)
+  }
 
   // state
   global.abbr.update(abbreviation)
