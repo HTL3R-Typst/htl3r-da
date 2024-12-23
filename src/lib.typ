@@ -45,8 +45,12 @@
   // validate fonts
   let missing_fonts = check_missing_fonts()
   if missing_fonts.len() != 0 {
-    panic("The following fonts couldn't be found on the system: " + missing_fonts.map(it => "'" + it + "'").join(", ", last: " and ") + "! " +
-      "You may be able to download them from Google Fonts (https://fonts.google.com/).")
+    panic(
+      "The following fonts couldn't be found on the system: "
+        + missing_fonts.map(it => "'" + it + "'").join(", ", last: " and ")
+        + "! "
+        + "You may be able to download them from Google Fonts (https://fonts.google.com/).",
+    )
   }
 
   // validate arguments
@@ -84,7 +88,9 @@
   )
   set document(
     title: title,
-    author: if disable_cover and authors == none {()} else { authors.map(v => v.name) },
+    author: if disable_cover and authors == none { () } else {
+      authors.map(v => v.name)
+    },
   )
   show heading: h => {
     set text(
@@ -133,7 +139,9 @@
     margin: (
       top: settings.PAGE_MARGIN_VERTICAL,
       bottom: settings.PAGE_MARGIN_VERTICAL,
-      inside: if disable_cover { settings.PAGE_MARGIN_OUTER } else { settings.PAGE_MARGIN_OUTER },
+      inside: if disable_cover { settings.PAGE_MARGIN_OUTER } else {
+        settings.PAGE_MARGIN_OUTER
+      },
       outside: settings.PAGE_MARGIN_OUTER,
     ),
   )

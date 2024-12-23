@@ -9,20 +9,34 @@
     if definition.type == "string" {
       if definition.keys().contains("allowed") {
         if not definition.allowed.contains(value) {
-          panic("Argument `" + definition.name + "` should be either " + definition.allowed.map(it => "`" + it + "`").join(", ", last: " or "))
+          panic(
+            "Argument `"
+              + definition.name
+              + "` should be either "
+              + definition
+                .allowed
+                .map(it => "`" + it + "`")
+                .join(", ", last: " or "),
+          )
         }
       }
     } else if definition.type == "array" {
-        for (index, v) in value.enumerate() {
-          let def = definition.contains
-          def.name = definition.name + "[" + str(index) + "]"
-          inner_validate(def, v)
-        }
+      for (index, v) in value.enumerate() {
+        let def = definition.contains
+        def.name = definition.name + "[" + str(index) + "]"
+        inner_validate(def, v)
+      }
     } else if definition.type == "dictionary" {
       for field in definition.fields {
         let (name, v) = field.pairs().first()
         if not value.keys().contains(name) {
-          panic("Argument `" + definition.name + "` does not contain key `" + name + "`!")
+          panic(
+            "Argument `"
+              + definition.name
+              + "` does not contain key `"
+              + name
+              + "`!",
+          )
         }
         let def = v
         def.name = definition.name + "." + name
@@ -30,8 +44,18 @@
       }
     }
   } else {
-    panic("Argument `" + definition.name + "` should be type `" + definition.type + "`, but was of type `" + type(value) + "`!" +
-      if definition.keys().contains("guide") { " Formatting: " + definition.guide } else { "" })
+    panic(
+      "Argument `"
+        + definition.name
+        + "` should be type `"
+        + definition.type
+        + "`, but was of type `"
+        + type(value)
+        + "`!"
+        + if definition.keys().contains("guide") {
+          " Formatting: " + definition.guide
+        } else { "" },
+    )
   }
 }
 

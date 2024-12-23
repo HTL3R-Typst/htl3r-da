@@ -18,11 +18,15 @@
 == nützliche Features
 - Fußnote mit ```typ #footnote[]```
 
+#htl3r.author("Viktor Kreuzer")
 = Templatespezifische-Funktionen
 *Angeben des Kapitelautors:*
+Die Autorenangabe muss #underline[*vor*] der Überschrift erfolgen
 ```typ
 #htl3r.author("Viktor Kreuzer")
+= Templatespezifische-Funktionen
 ```
+Output: Im Footer wird der Autor gelistet.
 
 *Figure mit angepasster Breite:*
 ```typ

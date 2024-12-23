@@ -1,7 +1,7 @@
 #import "@preview/htl3r-da:0.1.0" as htl3r
 
-= Einführung Typst
 #htl3r.author("Julian Burger")
+= Einführung Typst
 Typst ist eine Markup basierter Schrifftsatz welcher entwickelt wurde um genau so mächtig wie LaTeX zu sein,
 während er gleichzeitig simpel und einfach zu benutzen ist. Bei unklarheiten ist die Dokumentation unter
 https://typst.app/docs/ aufzufinden. Falls allgemeine Fragen zur Umsetzung gewisser Konzepte aufkommen,
@@ -19,15 +19,16 @@ Typst hat eine CLI, über welche die Quellcodedateien zu PDF kompiliert werden. 
 typst compile $DATEI
 ```
 
-= Grundlagen
 #htl3r.author("Viktor Kreuzer")
+= Grundlagen
 
 Der Autor des Kapitels muss explizit angegeben werden!
 
 #htl3r.code()[
   ```typ
   #htl3r.author("Max Mustermann")
-  ```]
+  ```
+]
 
 == Abbildungen
 Damit die Abbildungen mit richtigem Spacing auf der Seite angezeigt werden, müssen sie mit der `fspace`-Funktion gewrappt werden.
@@ -40,7 +41,8 @@ Damit kann die Breite der Figure angepasst werden.
     total_width: 50%,
     figure(image("../assets/16x9.png"), caption: [Bild mit 16:9]),
   )
-  ```]
+  ```
+]
 
 resultiert in:
 
@@ -58,7 +60,8 @@ Mit der `fspace`-Funktion können auch mehrere Figures nebeneinander gestellt we
     figure(image("../assets/16x9.png"), caption: [Bild mit 16:9]),
     figure(image("../assets/1x1.png"), caption: [Bild mit 1:1]),
   )
-  ```]
+  ```
+]
 
 resultiert in:
 
@@ -70,24 +73,27 @@ resultiert in:
 == Tabellen
 Tabellen müssen auch mit der `fspace`-Funktion gewrappt werden.
 
-Beispiel:
 #htl3r.code(caption: none, description: none, skips: ((3, 3),))[
   ```typ
   #htl3r.fspace(
     total_width: 100%,
-    table(columns: 3,
-    )
+    figure(table(columns: 3,
+    ), caption: [Beispieltabelle])
   )
-  ```]
+  ```
+]
 
 #htl3r.fspace(
   total_width: 100%,
-  table(
-    columns: 3,
-    table.header([Column1], [Column2], [Column3]),
-    [Test1], [Test2], [Test3],
-    [Daten1], [Daten2], [Daten3],
-  ),
+  figure(
+    table(
+      columns: 3,
+      table.header([Column1], [Column2], [Column3]),
+      [Test1], [Test2], [Test3],
+      [Daten1], [Daten2], [Daten3],
+    ),
+    caption: [Beispieltabelle]
+  )
 )
 
 == Codeblöcke
@@ -127,21 +133,19 @@ da: # <- Das ist der Key für die Abkürzung
   long:
     singular: Diplomarbeit
     plural: Diplomarbeiten
+  description: Abschlussarbeit an einer HTL # Beschreibung für das Glossar
 ```
 
 Diese Abkürzungen können im Dokument verwendet werden.
 
 ```typ
-#htl3r.abbr.short[da] // Kurzform Singular
-#htl3r.abbr.shortpl[da] // Kurzform Plural
-#htl3r.abbr.long[da] // Langform Singular
+#htl3r.abbr.short[da] - // Kurzform Singular
+#htl3r.abbr.shortpl[da] - // Kurzform Plural
+#htl3r.abbr.long[da] - // Langform Singular
 #htl3r.abbr.longpl[da] // Langform Plural
 ```
 
-#htl3r.abbr.short[da] \
-#htl3r.abbr.shortpl[da] \
-#htl3r.abbr.long[da] \
-#htl3r.abbr.longpl[da] \
-
-= Wichtige Details
-#htl3r.author("Viktor Kreuzer")
+#htl3r.abbr.short[da] -
+#htl3r.abbr.shortpl[da] -
+#htl3r.abbr.long[da] -
+#htl3r.abbr.longpl[da]
