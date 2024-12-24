@@ -114,7 +114,7 @@
     size: settings.FONT_SIZE,
     lang: "de",
   )
-  set figure(numbering: (..num) => 
+  set figure(numbering: (..num) =>
     numbering("1.1", counter(heading).get().first(), num.pos().first())
   )
   show figure: set block(breakable: true)
