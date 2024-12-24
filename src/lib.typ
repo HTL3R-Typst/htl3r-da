@@ -77,6 +77,16 @@
 
   // document
   set footnote(numbering: "[1]")
+  set footnote.entry(
+    clearance: 0cm,
+    indent: 0em,
+    separator: move(dy: 0.8cm, line(length: 30% + 0pt, stroke: 0.5pt))
+  )
+  show footnote.entry: set text(size: settings.FONT_SIZE_FOOTNOTE)
+  show footnote.entry: set par(hanging-indent: 1em, justify: true)
+  show footnote.entry: it => {
+    move(dy: 0.8cm, it)
+  }
   show: codly-init.with()
   codly(
     display-icon: false,
@@ -154,6 +164,7 @@
   set page(
     header-ascent: 1cm,
     header: context {
+      counter(footnote).update(0)
       let page_number = here().page()
       let after = query(heading.where(level: 1).after(here()))
       let before_l1 = query(heading.where(level: 1).before(here()))
@@ -215,7 +226,6 @@
   counter(page).update(1)
   set page(
     footer: context {
-      counter(footnote).update(0)
       let page_text = counter(page).display("1")
       let is-odd = calc.odd(counter(page).get().first())
       let author = global.author.get()
