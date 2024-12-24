@@ -1,6 +1,6 @@
 #import "../util.typ": insert_blank_page
 
-#let create_page() = context [
+#let create_page() = [
   #outline(
     title: [Quellcodeverzeichnis],
     target: figure.where(kind: "code"),
