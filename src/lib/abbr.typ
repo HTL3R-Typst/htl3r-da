@@ -3,7 +3,12 @@
 
 #let display(abbr, display) = {
   link(label("ABBR_DES_" + abbr))[#display#label("ABBR_" + abbr)]
-  // text[#display#label("ABBR_"+abbr)]
+  // Create footnote
+  let abbr = global.abbr.get().at(abbr)
+  let desc = abbr.at("footnote", default: abbr.at("description", default: none))
+  if not abbr.at("used", default: false) and desc != none {
+    footnote([#emph(abbr.at("long").at("singular")): #desc])
+  }
 }
 
 #let link(abbr, length, form) = context {
