@@ -4,8 +4,6 @@
   #show outline.entry.where(level: 1): e => context {
     if e.element.level == 1 {
       v(2em, weak: true)
-    }
-    if e.element.level == 1 {
       strong(e)
     } else {
       e

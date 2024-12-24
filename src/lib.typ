@@ -99,6 +99,9 @@
     )
     if h.level == 1 {
       pagebreak(weak: true)
+      counter(figure.where(kind: image)).update(0)
+      counter(figure.where(kind: table)).update(0)
+      counter(figure.where(kind: "code")).update(0)
     }
     v(settings.HEADING_SIZES.at(h.level - 1).top)
     h
@@ -111,7 +114,9 @@
     size: settings.FONT_SIZE,
     lang: "de",
   )
-  set figure(numbering: "1.1")
+  set figure(numbering: (..num) => 
+    numbering("1.1", counter(heading).get().first(), num.pos().first())
+  )
   show figure: set block(breakable: true)
   // show link: underline
   if not disable_cover {
