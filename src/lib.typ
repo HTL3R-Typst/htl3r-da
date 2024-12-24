@@ -76,6 +76,7 @@
   global.abbr.update(abbreviation)
 
   // document
+  set footnote(numbering: "[1]")
   show: codly-init.with()
   codly(
     display-icon: false,
@@ -214,6 +215,7 @@
   counter(page).update(1)
   set page(
     footer: context {
+      counter(footnote).update(0)
       let page_text = counter(page).display("1")
       let is-odd = calc.odd(counter(page).get().first())
       let author = global.author.get()
