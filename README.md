@@ -34,7 +34,7 @@ und orientiert sich am LaTeX-Template mit Stand 2024/25.
 
 ## Setup
 
-Das Hauptdokument muss alle Optionen im Aufruf der Funktion korrekt gesetzt haben.
+To adhere to the official style of the book, all template options should be set according to the following template.
 
 ```typ
 #import "@preview/htl3r-da:0.1.0" as htl3r
