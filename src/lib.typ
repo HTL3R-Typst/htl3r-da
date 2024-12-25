@@ -251,6 +251,7 @@
     },
   )
   set heading(numbering: "1.1")
+  [#metadata("DA_BEGIN")<DA_BEGIN>]
   body
   if not disable-cover {
     util.insert-blank-page()
