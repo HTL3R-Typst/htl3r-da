@@ -1,6 +1,6 @@
 #let definitions = yaml("validate.yml")
 
-#let inner_validate(definition, value) = {
+#let inner-validate(definition, value) = {
   if definition.type == "any" {
     return
   }
@@ -24,7 +24,7 @@
       for (index, v) in value.enumerate() {
         let def = definition.contains
         def.name = definition.name + "[" + str(index) + "]"
-        inner_validate(def, v)
+        inner-validate(def, v)
       }
     } else if definition.type == "dictionary" {
       for field in definition.fields {
@@ -40,7 +40,7 @@
         }
         let def = v
         def.name = definition.name + "." + name
-        inner_validate(def, value.at(name))
+        inner-validate(def, value.at(name))
       }
     }
   } else {
@@ -68,5 +68,5 @@
   }
 
   definition.name = name
-  inner_validate(definition, value)
+  inner-validate(definition, value)
 }

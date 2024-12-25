@@ -1,11 +1,11 @@
 #import "../settings.typ" as settings
-#import "../util.typ": format_date, format_department
+#import "../util.typ": format-date, format-department
 
-#let create_page(
+#let create-page(
   title: "Meine Diplomarbeit",
   subtitle: "Wir sind super toll!",
   department: "IT",
-  school_year: "2024/2025",
+  school-year: "2024/2025",
   authors: (
     (
       name: "Max Mustermann",
@@ -52,7 +52,7 @@
       #h(1fr)
       #box(
         height: 100%,
-        image("../assets/htl3r_logo.svg"),
+        image("../assets/htl3r-logo.svg"),
       )
     ],
   )
@@ -82,9 +82,9 @@
       size: 10pt,
       [
         ausgeführt an der \
-        Höheren Abteilung für #format_department(department) \
+        Höheren Abteilung für #format-department(department) \
         der Höheren Technischen Lehranstalt Wien 3 Rennweg \
-        im Schuljahr #school_year
+        im Schuljahr #school-year
       ],
     )
   ]
@@ -113,7 +113,7 @@
       #text(
         size: 10pt,
         [
-          Wien, #format_date(date)
+          Wien, #format-date(date)
         ],
       )
     ],

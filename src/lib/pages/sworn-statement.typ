@@ -1,9 +1,9 @@
-#import "../util.typ": format_date, insert_blank_page
+#import "../util.typ": format-date, insert-blank-page
 
-#let create_page(
+#let create-page(
   authors,
   date,
-  generative_ai_clause,
+  generative-ai-clause,
 ) = [
   = Ehrenwörtliche Erklärung
   Hiermit versichere ich, dass ich die vorliegende Arbeit selbstständig verfasst und keine
@@ -18,13 +18,13 @@
   Für die Erstellung der Arbeit habe ich auch folgende Hilfsmittel generativer KI-Tools
   zu folgendem Zweck verwendet:
 
-  #if generative_ai_clause == none [
+  #if generative-ai-clause == none [
     Es wurden keine Hilfsmittel generativer KI-Tools für die Erstellung der Arbeit verwendet.
   ] else [
-    #generative_ai_clause
+    #generative-ai-clause
   ]
   #v(3em)
-  Wien, am #format_date(date)
+  Wien, am #format-date(date)
   #v(7em)
   #let fields = authors.map(author => {
     box(

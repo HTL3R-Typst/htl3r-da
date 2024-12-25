@@ -38,7 +38,7 @@ Damit kann die Breite der Figure angepasst werden.
 #htl3r.code()[
   ```typ
   #htl3r.fspace(
-    total_width: 50%,
+    total-width: 50%,
     figure(image("../assets/16x9.png"), caption: [Bild mit 16:9]),
   )
   ```
@@ -47,7 +47,7 @@ Damit kann die Breite der Figure angepasst werden.
 resultiert in:
 
 #htl3r.fspace(
-  total_width: 50%,
+  total-width: 50%,
   figure(image("../assets/16x9.png"), caption: [Bild mit 16:9]),
 )
 
@@ -76,7 +76,7 @@ Tabellen müssen auch mit der `fspace`-Funktion gewrappt werden.
 #htl3r.code(caption: none, description: none, skips: ((3, 3),))[
   ```typ
   #htl3r.fspace(
-    total_width: 100%,
+    total-width: 100%,
     figure(table(columns: 3,
     ), caption: [Beispieltabelle])
   )
@@ -84,7 +84,7 @@ Tabellen müssen auch mit der `fspace`-Funktion gewrappt werden.
 ]
 
 #htl3r.fspace(
-  total_width: 100%,
+  total-width: 100%,
   figure(
     table(
       columns: 3,
@@ -118,7 +118,7 @@ Output:
   ```
 ]
 
-#htl3r.code_file(lang: "bash", text: read("../assets/code_example.sh"))
+#htl3r.code-file(lang: "bash", text: read("../assets/code-example.sh"))
 
 == Abkürzungen
 Die verwendeten Abkürzungen werden zentral in einer YAML-Datei definiert. \

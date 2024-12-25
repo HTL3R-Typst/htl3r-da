@@ -1,6 +1,6 @@
 # HTL Rennweg Diplomarbeits Vorlage
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > If you are not a student of HTL Rennweg, this template will be of little use to you.
 
 Dieses Template dient als Vorlage für ein Diplomarbeitsbuch an der HTL Rennweg
@@ -8,7 +8,7 @@ und orientiert sich am LaTeX-Template mit Stand 2024/25.
 
 ## Setup
 
-Das Hauptdokument muss alle Optionen im Aufruf der Funktion korrekt gesetzt haben.
+To adhere to the official style of the book, all template options should be set according to the following template.
 
 ```typ
 #import "@preview/htl3r-da:0.1.0" as htl3r
@@ -17,15 +17,15 @@ Das Hauptdokument muss alle Optionen im Aufruf der Funktion korrekt gesetzt habe
   title: "Mein DA-Titel",
   subtitle: "mit kreativem Untertitel",
   department: "ITN", // kann eine Auswahl sein aus: ITN, ITM, M
-  school_year: "2024/2025",
+  school-year: "2024/2025",
   authors: (
     (name: "Max Mustermann", supervisor: "Peter Professor"),
     (name: "Andreas Arbeiter", supervisor: "Bernd Betreuer"),
     (name: "Theodor Template", supervisor: "Bernd Betreuer"),
   ),
-  abstract_german: [#include "text/kurzfassung.typ"],
-  abstract_english: [#include "text/abstract.typ"],
-  supervisor_incl_ac_degree: (
+  abstract-german: [#include "text/kurzfassung.typ"],
+  abstract-english: [#include "text/abstract.typ"],
+  supervisor-incl-ac-degree: (
     "Prof, Dipl.-Ing. Peter Professor",
     "Prof, Dipl.-Ing. Bernd Betreuer",
   ),
@@ -34,8 +34,8 @@ Das Hauptdokument muss alle Optionen im Aufruf der Funktion korrekt gesetzt habe
     "Ottfried OT-Handels GmbH",
   ),
   date: datetime.today(),
-  print_ref: true,
-  generative_ai_clause: none,
+  print-ref: true,
+  generative-ai-clause: none,
   abbreviation: yaml("abbr.yml"),
   bibliography: bibliography(
     "refs.yml",

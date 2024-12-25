@@ -15,7 +15,7 @@
 }
 
 /// Converts a date to a german format, currently not implemented in typst.
-#let format_date(date) = {
+#let format-date(date) = {
   let months = (
     "Januar",
     "Februar",
@@ -37,7 +37,7 @@
   )
 }
 
-#let format_department(department) = {
+#let format-department(department) = {
   let departments = (
     ITN: "Informationstechnologie/Netzwerktechnik",
     ITM: "Informationstechnologie/Medientechnik",
@@ -47,7 +47,7 @@
 }
 
 /// Creates a completly blank page, useful for book binding
-#let blank_page() = context {
+#let blank-page() = context {
   page(header: none, footer: none, [])
 }
 
@@ -80,7 +80,7 @@
   )
 ]
 
-#let code_file(
+#let code-file(
   caption: none,
   filename: none,
   lang: none,
@@ -104,14 +104,14 @@
 }
 
 /// Positioniert mehrere Abbildungen auf einer Zeile
-#let fspace(total_width: settings.FIGURE_WIDTH, ..figures) = {
+#let fspace(total-width: settings.FIGURE_WIDTH, ..figures) = {
   let figures = figures.pos()
   let gutter = 2em
   let shave = gutter * (figures.len() - 1) / figures.len()
   let width = 100% / figures.len() - shave
   let columns = range(figures.len()).map(_ => width)
   set block(width: 100%, above: 2em, below: 2em, breakable: false)
-  align(center)[#block(width: total_width)[
+  align(center)[#block(width: total-width)[
       #show figure: set image(width: 100%)
       #grid(
         columns: columns,
@@ -122,7 +122,7 @@
     ]]
 }
 
-#let to_string(content) = {
+#let to-string(content) = {
   if content.has("text") {
     if type(content.text) == "string" {
       content.text
@@ -138,7 +138,7 @@
   }
 }
 
-#let insert_blank_page() = {
+#let insert-blank-page() = {
   set page(header: none, footer: none)
   pagebreak(to: "odd", weak: true)
 }

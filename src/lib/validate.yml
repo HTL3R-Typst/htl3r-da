@@ -11,7 +11,7 @@ department:
     - ITN
     - ITM
     - M
-school_year:
+school-year:
   type: string
   optional: false
   guide: yyyy/yyyy
@@ -25,7 +25,7 @@ authors:
           type: string
       - supervisor:
           type: string
-supervisor_incl_ac_degree:
+supervisor-incl-ac-degree:
   type: array
   optional: false
   contains:
@@ -38,13 +38,13 @@ sponsors:
 date:
   type: datetime
   optional: false
-abstract_german:
+abstract-german:
   type: content
   optional: false
-abstract_english:
+abstract-english:
   type: content
   optional: false
-generative_ai_clause:
+generative-ai-clause:
   type: content
   optional: true
 abbreviation:
@@ -53,9 +53,9 @@ abbreviation:
 bibliography:
   type: content
   optional: true
-print_ref:
+print-ref:
   type: boolean
   optional: true
-disable_cover:
+disable-cover:
   type: boolean
   optional: true

@@ -5,14 +5,14 @@
 #import "lib/global.typ" as global
 #import "lib/bubble.typ" as bubble
 #import "lib/validate.typ": validate
-#import "lib/font.typ": check_missing_fonts
+#import "lib/font.typ": check-missing-fonts
 #import "@preview/codly:1.1.1": *
 #import "@preview/codly-languages:0.1.1": *
 
 #let author = util.author
 #let fspace = util.fspace
 #let code = util.code
-#let code_file = util.code_file
+#let code-file = util.code-file
 
 #let short = abbr.short
 #let shortpl = abbr.shortpl
@@ -28,48 +28,48 @@
   title: none,
   subtitle: none,
   department: none,
-  school_year: none,
+  school-year: none,
   authors: none,
-  supervisor_incl_ac_degree: none,
+  supervisor-incl-ac-degree: none,
   sponsors: none,
   date: none,
-  abstract_german: none,
-  abstract_english: none,
-  generative_ai_clause: [Es wurden keine Hilfsmittel generativer KI-Tools für die Erstellung der Arbeit verwendet.],
+  abstract-german: none,
+  abstract-english: none,
+  generative-ai-clause: [Es wurden keine Hilfsmittel generativer KI-Tools für die Erstellung der Arbeit verwendet.],
   abbreviation: none,
   bibliography: none,
-  print_ref: true,
-  disable_cover: false,
+  print-ref: true,
+  disable-cover: false,
   body,
 ) = context {
   // validate fonts
-  let missing_fonts = check_missing_fonts()
-  if missing_fonts.len() != 0 {
+  let missing-fonts = check-missing-fonts()
+  if missing-fonts.len() != 0 {
     panic(
       "The following fonts couldn't be found on the system: "
-        + missing_fonts.map(it => "'" + it + "'").join(", ", last: " and ")
+        + missing-fonts.map(it => "'" + it + "'").join(", ", last: " and ")
         + "! "
         + "You may be able to download them from Google Fonts (https://fonts.google.com/).",
     )
   }
 
   // validate arguments
-  if not disable_cover {
+  if not disable-cover {
     validate("title", title)
     validate("subtitle", subtitle)
     validate("department", department)
-    validate("school_year", school_year)
+    validate("school-year", school-year)
     validate("authors", authors)
-    validate("supervisor_incl_ac_degree", supervisor_incl_ac_degree)
+    validate("supervisor-incl-ac-degree", supervisor-incl-ac-degree)
     validate("sponsors", sponsors)
     validate("date", date)
-    validate("abstract_german", abstract_german)
-    validate("abstract_english", abstract_english)
-    validate("generative_ai_clause", generative_ai_clause)
+    validate("abstract-german", abstract-german)
+    validate("abstract-english", abstract-english)
+    validate("generative-ai-clause", generative-ai-clause)
     validate("abbreviation", abbreviation)
     validate("bibliography", bibliography)
-    validate("print_ref", print_ref)
-    validate("disable_cover", disable_cover)
+    validate("print-ref", print-ref)
+    validate("disable-cover", disable-cover)
   }
 
   // state
@@ -80,7 +80,7 @@
   set footnote.entry(
     clearance: 0cm,
     indent: 0em,
-    separator: move(dy: 0.8cm, line(length: 30% + 0pt, stroke: 0.5pt))
+    separator: move(dy: 0.8cm, line(length: 30% + 0pt, stroke: 0.5pt)),
   )
   show footnote.entry: set text(size: settings.FONT_SIZE_FOOTNOTE)
   show footnote.entry: set par(hanging-indent: 1em, justify: true)
@@ -99,7 +99,7 @@
   )
   set document(
     title: title,
-    author: if disable_cover and authors == none { () } else {
+    author: if disable-cover and authors == none { () } else {
       authors.map(v => v.name)
     },
   )
@@ -125,12 +125,16 @@
     size: settings.FONT_SIZE,
     lang: "de",
   )
-  set figure(numbering: (..num) =>
-    numbering("1.1", counter(heading).get().first(), num.pos().first())
+  set figure(
+    numbering: (..num) => numbering(
+      "1.1",
+      counter(heading).get().first(),
+      num.pos().first(),
+    ),
   )
   show figure: set block(breakable: true)
   // show link: underline
-  if not disable_cover {
+  if not disable-cover {
     set page(
       paper: "a4",
       margin: (
@@ -140,22 +144,22 @@
         outside: settings.PAGE_MARGIN_OUTER,
       ),
     )
-    pages.cover.create_page(
+    pages.cover.create-page(
       title: title,
       subtitle: subtitle,
       department: department,
-      school_year: school_year,
+      school-year: school-year,
       authors: authors,
       date: date,
     )
-    util.insert_blank_page()
+    util.insert-blank-page()
   }
   set page(
     paper: "a4",
     margin: (
       top: settings.PAGE_MARGIN_VERTICAL,
       bottom: settings.PAGE_MARGIN_VERTICAL,
-      inside: if disable_cover { settings.PAGE_MARGIN_OUTER } else {
+      inside: if disable-cover { settings.PAGE_MARGIN_OUTER } else {
         settings.PAGE_MARGIN_OUTER
       },
       outside: settings.PAGE_MARGIN_OUTER,
@@ -165,30 +169,30 @@
     header-ascent: 1cm,
     header: context {
       counter(footnote).update(0)
-      let page_number = here().page()
+      let page-number = here().page()
       let after = query(heading.where(level: 1).after(here()))
-      let before_l1 = query(heading.where(level: 1).before(here()))
-      let before_l2 = query(heading.where(level: 2).before(here()))
-      let before = (..before_l1, ..before_l2).sorted(
+      let before-l1 = query(heading.where(level: 1).before(here()))
+      let before-l2 = query(heading.where(level: 2).before(here()))
+      let before = (..before-l1, ..before-l2).sorted(
         key: it => it.location().page(),
       )
       let reference = none
-      if after.len() > 0 and after.first().location().page() == page_number {
+      if after.len() > 0 and after.first().location().page() == page-number {
         reference = after.first()
       } else if before.len() > 0 {
         reference = before.last()
       }
 
       let current = box(height: 28pt, align(left + horizon, reference.body))
-      if calc.odd(page_number) or disable_cover {
+      if calc.odd(page-number) or disable-cover {
         [#current #h(1fr) #box(
             height: 28pt,
-            image("lib/assets/htl3r_logo.svg"),
+            image("lib/assets/htl3r-logo.svg"),
           )]
       } else {
         [#box(
             height: 28pt,
-            image("lib/assets/htl3r_logo.svg"),
+            image("lib/assets/htl3r-logo.svg"),
           ) #h(1fr) #current]
       }
       v(-5pt)
@@ -213,32 +217,32 @@
     let is-odd = calc.odd(i)
     set page(binding: if is-odd { right } else { left })
   }
-  if not disable_cover {
-    pages.abstract.create_page(abstract_german, abstract_english)
-    util.insert_blank_page()
-    pages.preamble.create_page(supervisor_incl_ac_degree, sponsors)
-    util.insert_blank_page()
-    pages.sworn_statement.create_page(authors, date, generative_ai_clause)
-    util.insert_blank_page()
-    pages.create_tables()
-    util.insert_blank_page()
+  if not disable-cover {
+    pages.abstract.create-page(abstract-german, abstract-english)
+    util.insert-blank-page()
+    pages.preamble.create-page(supervisor-incl-ac-degree, sponsors)
+    util.insert-blank-page()
+    pages.sworn-statement.create-page(authors, date, generative-ai-clause)
+    util.insert-blank-page()
+    pages.create-tables()
+    util.insert-blank-page()
   }
   counter(page).update(1)
   set page(
     footer: context {
-      let page_text = counter(page).display("1")
+      let page-text = counter(page).display("1")
       let is-odd = calc.odd(counter(page).get().first())
       let author = global.author.get()
       line(length: 100%, stroke: 0.5pt)
       v(-5pt)
-      if is-odd or disable_cover [
+      if is-odd or disable-cover [
         #if author != none [
           Autor: #author
         ]
         #h(1fr)
-        #page_text
+        #page-text
       ] else [
-        #page_text
+        #page-text
         #h(1fr)
         #if author != none [
           Autor: #author
@@ -248,23 +252,23 @@
   )
   set heading(numbering: "1.1")
   body
-  if not disable_cover {
-    util.insert_blank_page()
+  if not disable-cover {
+    util.insert-blank-page()
     set heading(numbering: none)
     if abbreviation != none {
-      pages.abbreviation.create_page()
-      util.insert_blank_page()
-      pages.glossary.create_page()
-      util.insert_blank_page()
+      pages.abbreviation.create-page()
+      util.insert-blank-page()
+      pages.glossary.create-page()
+      util.insert-blank-page()
     }
     if bibliography != none {
-      pages.bibliography.create_page(bibliography: bibliography)
-      util.insert_blank_page()
+      pages.bibliography.create-page(bibliography: bibliography)
+      util.insert-blank-page()
     }
   }
-  if print_ref {
-    pages.printref.create_page()
-  } else if not disable_cover {
-    util.blank_page()
+  if print-ref {
+    pages.printref.create-page()
+  } else if not disable-cover {
+    util.blank-page()
   }
 }

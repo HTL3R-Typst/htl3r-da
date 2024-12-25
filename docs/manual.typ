@@ -1,8 +1,8 @@
 #import "@preview/htl3r-da:0.1.0" as htl3r
 
 #show: htl3r.diplomarbeit.with(
-  disable_cover: true,
-  print_ref: false,
+  disable-cover: true,
+  print-ref: false,
 )
 
 = Allgemeiner Typst Syntax
@@ -31,13 +31,13 @@ Output: Im Footer wird der Autor gelistet.
 *Figure mit angepasster Breite:*
 ```typ
 #htl3r.fspace(
-  total_width: 50%,
+  total-width: 50%,
   figure(image("assets/16x9.png"), caption: [Bild mit 16:9]),
 )
 ```
 Output:
 #htl3r.fspace(
-  total_width: 50%,
+  total-width: 50%,
   figure(image("assets/16x9.png"), caption: [Bild mit 16:9]),
 )
 
@@ -76,17 +76,17 @@ Output:
 
 *Codeblock aus einem File importiert:*
 ```typ
-#htl3r.code_file(
+#htl3r.code-file(
   lang: "bash",
   filename: [Test],
-  text: read("assets/code_example.sh"),
+  text: read("assets/code-example.sh"),
 )
 ```
 Output:
-#htl3r.code_file(
+#htl3r.code-file(
   lang: "bash",
   filename: [Test],
-  text: read("assets/code_example.sh"),
+  text: read("assets/code-example.sh"),
 )
 
 #pagebreak()
