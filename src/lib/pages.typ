@@ -1,7 +1,7 @@
 #import "pages/cover.typ" as cover
 #import "pages/abstract.typ" as abstract
 #import "pages/preamble.typ" as preamble
-#import "pages/sworn_statement.typ" as sworn_statement
+#import "pages/sworn-statement.typ" as sworn-statement
 #import "pages/toc.typ" as toc
 #import "pages/tot.typ" as tot
 #import "pages/tof.typ" as tof
@@ -12,12 +12,12 @@
 #import "pages/printref.typ" as printref
 #import "util.typ" as util
 
-#let create_tables() = {
-  toc.create_page()
-  util.insert_blank_page()
-  tot.create_page()
-  util.insert_blank_page()
-  tof.create_page()
-  util.insert_blank_page()
-  tol.create_page()
+#let create-tables() = {
+  toc.create-page()
+  util.insert-blank-page()
+  tot.create-page()
+  util.insert-blank-page()
+  tof.create-page()
+  util.insert-blank-page()
+  tol.create-page()
 }

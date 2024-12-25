@@ -1,4 +1,4 @@
-#import "util.typ": to_string
+#import "util.typ": to-string
 #import "global.typ" as global
 
 #let display(abbr, display) = {
@@ -12,16 +12,16 @@
 }
 
 #let link(abbr, length, form) = context {
-  let name = to_string(abbr)
-  let abbr_dict = global.abbr.get().at(name, default: none)
-  if abbr_dict == none {
+  let name = to-string(abbr)
+  let abbr-dict = global.abbr.get().at(name, default: none)
+  if abbr-dict == none {
     panic("Abbreviation '" + name + "' does not exist!")
   }
-  let form_dict = abbr_dict.at(length, default: none)
-  if form_dict == none {
+  let form-dict = abbr-dict.at(length, default: none)
+  if form-dict == none {
     panic(length + " for '" + name + "' does not exist!")
   }
-  let value = form_dict.at(form, default: none)
+  let value = form-dict.at(form, default: none)
   if value == none {
     panic(length + " for '" + name + "' does not exist in " + form + " form!")
   }

@@ -1,7 +1,7 @@
-#import "../util.typ": insert_blank_page
+#import "../util.typ": insert-blank-page
 
-#let create_page(
-  supervisors_incl_ac_degree,
+#let create-page(
+  supervisors-incl-ac-degree,
   sponsors,
 ) = [
   = Präambel
@@ -11,7 +11,7 @@
   II 177/2012) in der derzeit geltenden Fassung.
   #v(2em)
   #strong[Liste der betreuenden Lehrer:] \
-  #for supervisor in supervisors_incl_ac_degree [
+  #for supervisor in supervisors-incl-ac-degree [
     #supervisor \
   ]
   #v(2em)

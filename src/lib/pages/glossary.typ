@@ -1,7 +1,7 @@
-#import "../util.typ": insert_blank_page
+#import "../util.typ": insert-blank-page
 #import "../global.typ" as global
 
-#let create_page() = context [
+#let create-page() = context [
   = Glossar
   #for name in global.abbr.get().keys() [
     #let abbr = global.abbr.get().at(name)

@@ -1,6 +1,6 @@
-#import "../util.typ": insert_blank_page
+#import "../util.typ": insert-blank-page
 
-#let create_page() = [
+#let create-page() = [
   #show outline.entry.where(level: 1): it => context {
     if it.element.level == 1 {
       v(2em, weak: true)

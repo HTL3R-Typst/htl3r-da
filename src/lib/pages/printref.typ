@@ -1,10 +1,10 @@
-#import "../util.typ": insert_blank_page
+#import "../util.typ": insert-blank-page
 
-#let create_page() = context [
+#let create-page() = context [
   #set page(header: none, footer: none)
   #heading(outlined: false, level: 1)[Druckgrößenkontrolle]
   Diese Seite sollte nach dem Probedruck entfernt werden.
-  Einfach das ``` print_ref``` Argument auf ``` false``` setzen.
+  Einfach das ``` print-ref``` Argument auf ``` false``` setzen.
   #align(
     center + horizon,
     block(

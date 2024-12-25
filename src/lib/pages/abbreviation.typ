@@ -1,7 +1,7 @@
-#import "../util.typ": blank_page, insert_blank_page
+#import "../util.typ": blank-page, insert-blank-page
 #import "../global.typ" as global
 
-#let create_page() = context [
+#let create-page() = context [
   #global.author.update(none)
   = Abkürzungsverzeichnis
   #for name in global.abbr.get().keys() [
@@ -27,17 +27,17 @@
       #par(spacing: 0pt)[
         #strong(short): #label("ABBR_DES_"+name) #long #h(1fr)
         #if description != none [
-          #let page_number = (
+          #let page-number = (
             counter(page)
               .at(query(label("ABBR_G_" + name)).first().location())
               .first()
           )
-          #link(label("ABBR_G_" + name))[#emph[Glossar (S. #page_number)]]
+          #link(label("ABBR_G_" + name))[#emph[Glossar (S. #page-number)]]
         ]
       ]
       // list abbr locations
       #let refs = query(label("ABBR_" + name))
-      #let ref_entries = (
+      #let ref-entries = (
         refs
           .map(ref => (
             counter(page).at(ref.location()).first(),
@@ -51,9 +51,9 @@
         spacing: 6pt,
         first-line-indent: 2em,
         emph[
-          #if ref_entries.len() > 0 [
-            S.: #for (index, (nr, loc)) in ref_entries.enumerate() [
-            #let delim = if index + 1 == ref_entries.len() {""} else {","}
+          #if ref-entries.len() > 0 [
+            S.: #for (index, (nr, loc)) in ref-entries.enumerate() [
+            #let delim = if index + 1 == ref-entries.len() {""} else {","}
             #link(loc)[#nr#delim ]
           ]
           ] else [
