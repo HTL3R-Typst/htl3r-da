@@ -80,7 +80,7 @@
   set footnote.entry(
     clearance: 0cm,
     indent: 0em,
-    separator: move(dy: 0.8cm, line(length: 30% + 0pt, stroke: 0.5pt))
+    separator: move(dy: 0.8cm, line(length: 30% + 0pt, stroke: 0.5pt)),
   )
   show footnote.entry: set text(size: settings.FONT_SIZE_FOOTNOTE)
   show footnote.entry: set par(hanging-indent: 1em, justify: true)
@@ -125,8 +125,12 @@
     size: settings.FONT_SIZE,
     lang: "de",
   )
-  set figure(numbering: (..num) =>
-    numbering("1.1", counter(heading).get().first(), num.pos().first())
+  set figure(
+    numbering: (..num) => numbering(
+      "1.1",
+      counter(heading).get().first(),
+      num.pos().first(),
+    ),
   )
   show figure: set block(breakable: true)
   // show link: underline
