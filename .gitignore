@@ -2,7 +2,8 @@
 .idea
 .zed
 
-docs/manual.pdf
+tests/doc/test.pdf
 
 # REMOVE THIS IN FINAL VERSION
 tests/**/out
+docs/manual.pdf
