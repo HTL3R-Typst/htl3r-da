@@ -32,33 +32,58 @@ und orientiert sich am LaTeX-Template mit Stand 2024/25.
 - [X] Figure Umbruch fixen
 - [ ] Autor für L2 Headings
 
-## Getting Started
+## Setup
 
-These instructions will get you a copy of the project up and running on the typst web app. Perhaps a short code example on importing the package and a very simple teaser usage.
-
-```typ
-#import "@preview/htl3r-da:0.1.0": *
-
-#show: my-show-rule.with()
-#my-func()
-```
-
-### Installation
-
-A step by step guide that will tell you how to get the development environment up and running. This should example how to clone the repo and where to (maybe a link to the typst documentation on it), along with any pre-requisite software and installation steps.
-
-```
-$ First step
-$ Another step
-$ Final step
-```
-
-## Usage
-
-A more in-depth description of usage. Any template arguments? A complicated example that showcases most if not all of the functions the package provides? This is also an excellent place to signpost the manual.
+Das Hauptdokument muss alle Optionen im Aufruf der Funktion korrekt gesetzt haben.
 
 ```typ
-#import "@preview/my-package:0.1.0": *
+#import "@preview/htl3r-da:0.1.0" as htl3r
 
-#let my-complicated-example = ...
+#show: htl3r.diplomarbeit.with(
+  title: "Mein DA-Titel",
+  subtitle: "mit kreativem Untertitel",
+  department: "ITN", // kann eine Auswahl sein aus: ITN, ITM, M
+  school_year: "2024/2025",
+  authors: (
+    (name: "Max Mustermann", supervisor: "Peter Professor"),
+    (name: "Andreas Arbeiter", supervisor: "Bernd Betreuer"),
+    (name: "Theodor Template", supervisor: "Bernd Betreuer"),
+  ),
+  abstract_german: [#include "text/kurzfassung.typ"],
+  abstract_english: [#include "text/abstract.typ"],
+  supervisor_incl_ac_degree: (
+    "Prof, Dipl.-Ing. Peter Professor",
+    "Prof, Dipl.-Ing. Bernd Betreuer",
+  ),
+  sponsors: (
+    "Scherzartikel GmbH",
+    "Ottfried OT-Handels GmbH",
+  ),
+  date: datetime.today(),
+  print_ref: true,
+  generative_ai_clause: none,
+  abbreviation: yaml("abbr.yml"),
+  bibliography: bibliography(
+    "refs.yml",
+    full: true,
+    title: [Literaturverzeichnis],
+    style: "harvard-cite-them-right",
+  ),
+)
 ```
+
+## Template functions
+For an overview of the function see the [manual](docs/manual.pdf).
+
+## Installation (for devs)
+
+The Justfile provides useful developement tasks.
+
+The basic setup is as follows:
+
+```
+$ git clone https://github.com/HTL3R-Typst/htl3r-da
+$ just install-preview # to install into the "preview" namespace
+```
+
+Now you are able to compile documents using the template system-wide.

@@ -8,6 +8,16 @@ description = "HTL-Rennweg diploma thesis template."
 homepage = "https://www.htlrennweg.at"
 keywords = ["Diplomarbeit", "thesis", "diploma", "HTL Rennweg", "htl3r", "wien"]
 categories = ["thesis"]
+compiler = "0.12.0"
+exclude = [
+  ".git",
+  ".github",
+  "docs",
+  "scripts",
+  "tests",
+  ".typstignore",
+  "Justfile"
+]
 
 [template]
 path = "template"

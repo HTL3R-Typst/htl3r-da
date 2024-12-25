@@ -92,8 +92,8 @@ Tabellen müssen auch mit der `fspace`-Funktion gewrappt werden.
       [Test1], [Test2], [Test3],
       [Daten1], [Daten2], [Daten3],
     ),
-    caption: [Beispieltabelle]
-  )
+    caption: [Beispieltabelle],
+  ),
 )
 
 == Codeblöcke
