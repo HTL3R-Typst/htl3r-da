@@ -47,17 +47,24 @@ To adhere to the official style of the book, all template options should be set 
 ```
 
 ## Template functions
-For an overview of the function see the [manual](docs/manual.pdf).
+For an overview of the functions see the [manual](docs/manual.pdf).
 
 ## Installation (for devs)
 
-The Justfile provides useful developement tasks.
+The Justfile provides useful recipes for installation/development.
 
-The basic setup is as follows:
+The basic setup under Linux is as follows:
 
 ```
 $ git clone https://github.com/HTL3R-Typst/htl3r-da
 $ just install-preview # to install into the "preview" namespace
+```
+
+The setup under Windows is very similar, simply prepend `w-` to the recipe name:
+
+```
+$ git clone https://github.com/HTL3R-Typst/htl3r-da
+$ just w-install-preview # to install into the "preview" namespace
 ```
 
 Now you are able to compile documents using the template system-wide.
