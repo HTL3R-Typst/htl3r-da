@@ -3,10 +3,11 @@
 #let create-page(
   abstract-german,
   abstract-english,
+  skip-blank-pages: false
 ) = [
   = Kurzfassung
   #abstract-german
-  #insert-blank-page()
+  #if not skip-blank-pages { insert-blank-page() }
   = Abstract
   #abstract-english
 ]

@@ -40,6 +40,7 @@
   bibliography: none,
   print-ref: true,
   disable-cover: false,
+  skip-blank-pages: false,
   body,
 ) = context {
   // validate fonts
@@ -70,6 +71,7 @@
     validate("bibliography", bibliography)
     validate("print-ref", print-ref)
     validate("disable-cover", disable-cover)
+    validate("skip-blank-pages", skip-blank-pages)
   }
 
   // state
@@ -152,7 +154,7 @@
       authors: authors,
       date: date,
     )
-    util.insert-blank-page()
+    if not skip-blank-pages { util.insert-blank-page() }
   }
   set page(
     paper: "a4",
@@ -218,14 +220,14 @@
     set page(binding: if is-odd { right } else { left })
   }
   if not disable-cover {
-    pages.abstract.create-page(abstract-german, abstract-english)
-    util.insert-blank-page()
+    pages.abstract.create-page(abstract-german, abstract-english, skip-blank-pages: skip-blank-pages)
+    if not skip-blank-pages { util.insert-blank-page() }
     pages.preamble.create-page(supervisor-incl-ac-degree, sponsors)
-    util.insert-blank-page()
+    if not skip-blank-pages { util.insert-blank-page() }
     pages.sworn-statement.create-page(authors, date, generative-ai-clause)
-    util.insert-blank-page()
-    pages.create-tables()
-    util.insert-blank-page()
+    if not skip-blank-pages { util.insert-blank-page() }
+    pages.create-tables(skip-blank-pages: skip-blank-pages)
+    if not skip-blank-pages { util.insert-blank-page() }
   }
   counter(page).update(1)
   set page(
@@ -254,22 +256,22 @@
   [#metadata("DA_BEGIN")<DA_BEGIN>]
   body
   if not disable-cover {
-    util.insert-blank-page()
+    if not skip-blank-pages { util.insert-blank-page() }
     set heading(numbering: none)
     if abbreviation != none {
       pages.abbreviation.create-page()
-      util.insert-blank-page()
+      if not skip-blank-pages { util.insert-blank-page() }
       pages.glossary.create-page()
-      util.insert-blank-page()
+      if not skip-blank-pages { util.insert-blank-page() }
     }
     if bibliography != none {
       pages.bibliography.create-page(bibliography: bibliography)
-      util.insert-blank-page()
+      if not skip-blank-pages { util.insert-blank-page() }
     }
   }
   if print-ref {
     pages.printref.create-page()
   } else if not disable-cover {
-    util.blank-page()
+    if not skip-blank-pages { util.insert-blank-page() }
   }
 }

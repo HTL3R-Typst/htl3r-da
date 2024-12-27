@@ -12,12 +12,12 @@
 #import "pages/printref.typ" as printref
 #import "util.typ" as util
 
-#let create-tables() = {
+#let create-tables(skip-blank-pages: false) = {
   toc.create-page()
-  util.insert-blank-page()
+  if not skip-blank-pages { util.insert-blank-page }
   tot.create-page()
-  util.insert-blank-page()
+  if not skip-blank-pages { util.insert-blank-page }
   tof.create-page()
-  util.insert-blank-page()
+  if not skip-blank-pages { util.insert-blank-page }
   tol.create-page()
 }
