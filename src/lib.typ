@@ -5,6 +5,7 @@
 #import "lib/global.typ" as global
 #import "lib/bubble.typ" as bubble
 #import "lib/validate.typ": validate
+#import "lib/breadcrumbs.typ": breadcrumbs
 #import "lib/font.typ": check-missing-fonts
 #import "@preview/codly:1.1.1": *
 #import "@preview/codly-languages:0.1.1": *
@@ -22,6 +23,8 @@
 #let todo = bubble.todo
 #let info = bubble.info
 #let warn = bubble.warn
+
+#let breadcrumbs = breadcrumbs
 
 // TODO: fix bug with page counter not updating correctly after body
 #let diplomarbeit(

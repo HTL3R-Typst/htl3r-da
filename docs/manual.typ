@@ -103,6 +103,10 @@ Output:
 #htl3r.info[Information hier einfügen]
 #htl3r.warn[Achtung!]
 
+*Breadcrumbs*
+
+#lorem(20) #htl3r.breadcrumbs(("Server", "Policies", "root", "Boot Policies", "skill-san-boot")), #lorem(20)
+
 *Zitieren:*
 + direktes Zitat
 // To be implemented
