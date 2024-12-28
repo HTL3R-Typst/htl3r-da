@@ -4,10 +4,11 @@
 #let display(abbr, display) = {
   link(label("ABBR_DES_" + abbr))[#display#label("ABBR_" + abbr)]
   // Create footnote
-  let abbr = global.abbr.get().at(abbr)
-  let desc = abbr.at("footnote", default: abbr.at("description", default: none))
-  if not abbr.at("used", default: false) and desc != none {
-    footnote([#emph(abbr.at("long").at("singular")): #desc])
+  let abbr_state = global.abbr.get().at(abbr)
+  let desc = abbr_state.at("footnote", default: abbr_state.at("description", default: none))
+  if state("noted_" + abbr).get() == none and desc != none {
+    state("noted_" + abbr).update(true)
+    footnote([#emph(abbr_state.at("long").at("singular")): #desc])
   }
 }
 
