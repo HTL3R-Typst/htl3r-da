@@ -6,6 +6,7 @@ authors = [
     "Julian Burger <https://github.com/cauvmou>",
     "Viktor Kreuzer <https://github.com/kre9>",
     "David Koch <https://github.com/Davideko212>",
+    "Bernd Reither <https://github.com/sidious38>",
 ]
 license = "0BSD"
 description = "HTL-Rennweg diploma thesis template."
