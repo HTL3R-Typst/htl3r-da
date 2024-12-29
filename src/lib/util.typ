@@ -142,3 +142,12 @@
   set page(header: none, footer: none)
   pagebreak(to: "odd", weak: true)
 }
+
+#let bibstyling(bib-call) = (
+  context {
+    set bibliography(
+      style: "assets/harvard-htl3r.csl",
+    )
+    bib-call
+  }
+)

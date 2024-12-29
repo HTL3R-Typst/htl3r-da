@@ -28,7 +28,6 @@
     "refs.yml",
     full: true,
     title: [Literaturverzeichnis],
-    style: "harvard-cite-them-right",
   ),
 )
 

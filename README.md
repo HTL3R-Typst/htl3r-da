@@ -41,7 +41,6 @@ To adhere to the official style of the book, all template options should be set 
     "refs.yml",
     full: true,
     title: [Literaturverzeichnis],
-    style: "harvard-cite-them-right",
   ),
 )
 ```

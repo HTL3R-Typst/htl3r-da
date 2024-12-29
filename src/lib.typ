@@ -263,7 +263,7 @@
       util.insert-blank-page()
     }
     if bibliography != none {
-      pages.bibliography.create-page(bibliography: bibliography)
+      pages.bibliography.create-page(bibliography: util.bibstyling(bibliography))
       util.insert-blank-page()
     }
   }
@@ -272,4 +272,5 @@
   } else if not disable-cover {
     util.blank-page()
   }
+  set cite(style: "lib/assets/harvard-htl3r.csl")
 }
