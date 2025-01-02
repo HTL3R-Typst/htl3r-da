@@ -5,6 +5,7 @@
 #import "lib/global.typ" as global
 #import "lib/bubble.typ" as bubble
 #import "lib/validate.typ": validate
+#import "lib/breadcrumbs.typ": breadcrumbs
 #import "lib/font.typ": check-missing-fonts
 #import "@preview/codly:1.1.1": *
 #import "@preview/codly-languages:0.1.1": *
@@ -23,6 +24,8 @@
 #let info = bubble.info
 #let warn = bubble.warn
 
+#let breadcrumbs = breadcrumbs
+
 // TODO: fix bug with page counter not updating correctly after body
 #let diplomarbeit(
   title: none,
@@ -40,6 +43,7 @@
   bibliography: none,
   print-ref: true,
   disable-cover: false,
+  disable-book-binding: false,
   body,
 ) = context {
   // validate fonts
@@ -70,10 +74,12 @@
     validate("bibliography", bibliography)
     validate("print-ref", print-ref)
     validate("disable-cover", disable-cover)
+    validate("disable-book-binding", disable-book-binding)
   }
 
   // state
   global.abbr.update(abbreviation)
+  global.disable-book-binding.update(disable-book-binding)
 
   // document
   set footnote(numbering: "[1]")
@@ -159,8 +165,8 @@
     margin: (
       top: settings.PAGE_MARGIN_VERTICAL,
       bottom: settings.PAGE_MARGIN_VERTICAL,
-      inside: if disable-cover { settings.PAGE_MARGIN_OUTER } else {
-        settings.PAGE_MARGIN_OUTER
+      inside: if disable-book-binding { settings.PAGE_MARGIN_OUTER } else {
+        settings.PAGE_MARGIN_INNER
       },
       outside: settings.PAGE_MARGIN_OUTER,
     ),
@@ -184,7 +190,7 @@
       }
 
       let current = box(height: 28pt, align(left + horizon, reference.body))
-      if calc.odd(page-number) or disable-cover {
+      if calc.odd(page-number) or disable-book-binding {
         [#current #h(1fr) #box(
             height: 28pt,
             image("lib/assets/htl3r-logo.svg"),
@@ -270,7 +276,7 @@
   if print-ref {
     pages.printref.create-page()
   } else if not disable-cover {
-    util.blank-page()
+    util.insert-blank-page()
   }
   set cite(style: "lib/assets/harvard-htl3r.csl")
 }

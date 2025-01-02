@@ -2,6 +2,7 @@
 
 #show: htl3r.diplomarbeit.with(
   disable-cover: true,
+  disable-book-binding: true,
   print-ref: false,
 )
 
@@ -102,6 +103,10 @@ Output:
 #htl3r.todo[SDO stolz machen]
 #htl3r.info[Information hier einfügen]
 #htl3r.warn[Achtung!]
+
+*Breadcrumbs*
+
+#lorem(20) #htl3r.breadcrumbs(("Server", "Policies", "root", "Boot Policies", "skill-san-boot")), #lorem(20)
 
 *Zitieren:*
 + direktes Zitat

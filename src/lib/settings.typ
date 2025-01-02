@@ -59,3 +59,13 @@
     stroke: rgb("#EDABAB"),
   ),
 )
+
+#let BREADCRUMBS_COLOR = (
+  fill: rgb("#f1f1f1"),
+  stroke: (
+    cap: "round",
+    thickness: 0.5pt,
+    join: "bevel",
+    paint: rgb("#bbbbbb"),
+  ),
+)

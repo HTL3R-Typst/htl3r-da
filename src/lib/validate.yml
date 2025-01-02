@@ -59,3 +59,6 @@ print-ref:
 disable-cover:
   type: boolean
   optional: true
+disable-book-binding:
+  type: boolean
+  optional: true
