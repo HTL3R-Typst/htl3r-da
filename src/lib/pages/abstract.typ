@@ -3,7 +3,6 @@
 #let create-page(
   abstract-german,
   abstract-english,
-  skip-blank-pages: false
 ) = [
   = Kurzfassung
   #abstract-german

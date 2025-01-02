@@ -221,7 +221,7 @@
     set page(binding: if is-odd { right } else { left })
   }
   if not disable-cover {
-    pages.abstract.create-page(abstract-german, abstract-english, skip-blank-pages: skip-blank-pages)
+    pages.abstract.create-page(abstract-german, abstract-english)
     util.insert-blank-page()
     pages.preamble.create-page(supervisor-incl-ac-degree, sponsors)
     util.insert-blank-page()
