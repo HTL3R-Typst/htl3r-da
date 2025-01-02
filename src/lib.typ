@@ -40,7 +40,7 @@
   bibliography: none,
   print-ref: true,
   disable-cover: false,
-  skip-blank-pages: false,
+  disable-book-binding: false,
   body,
 ) = context {
   // validate fonts
@@ -71,11 +71,12 @@
     validate("bibliography", bibliography)
     validate("print-ref", print-ref)
     validate("disable-cover", disable-cover)
-    validate("skip-blank-pages", skip-blank-pages)
+    validate("disable-book-binding", disable-book-binding)
   }
 
   // state
   global.abbr.update(abbreviation)
+  global.disable-book-binding.update(disable-book-binding)
 
   // document
   set footnote(numbering: "[1]")
@@ -154,15 +155,15 @@
       authors: authors,
       date: date,
     )
-    if not skip-blank-pages { util.insert-blank-page() }
+    util.insert-blank-page()
   }
   set page(
     paper: "a4",
     margin: (
       top: settings.PAGE_MARGIN_VERTICAL,
       bottom: settings.PAGE_MARGIN_VERTICAL,
-      inside: if disable-cover { settings.PAGE_MARGIN_OUTER } else {
-        settings.PAGE_MARGIN_OUTER
+      inside: if disable-book-binding { settings.PAGE_MARGIN_OUTER } else {
+        settings.PAGE_MARGIN_INNER
       },
       outside: settings.PAGE_MARGIN_OUTER,
     ),
@@ -186,7 +187,7 @@
       }
 
       let current = box(height: 28pt, align(left + horizon, reference.body))
-      if calc.odd(page-number) or disable-cover {
+      if calc.odd(page-number) or disable-book-binding {
         [#current #h(1fr) #box(
             height: 28pt,
             image("lib/assets/htl3r-logo.svg"),
@@ -221,13 +222,13 @@
   }
   if not disable-cover {
     pages.abstract.create-page(abstract-german, abstract-english, skip-blank-pages: skip-blank-pages)
-    if not skip-blank-pages { util.insert-blank-page() }
+    util.insert-blank-page()
     pages.preamble.create-page(supervisor-incl-ac-degree, sponsors)
-    if not skip-blank-pages { util.insert-blank-page() }
+    util.insert-blank-page()
     pages.sworn-statement.create-page(authors, date, generative-ai-clause)
-    if not skip-blank-pages { util.insert-blank-page() }
-    pages.create-tables(skip-blank-pages: skip-blank-pages)
-    if not skip-blank-pages { util.insert-blank-page() }
+    util.insert-blank-page()
+    pages.create-tables()
+    util.insert-blank-page()
   }
   counter(page).update(1)
   set page(
@@ -256,22 +257,22 @@
   [#metadata("DA_BEGIN")<DA_BEGIN>]
   body
   if not disable-cover {
-    if not skip-blank-pages { util.insert-blank-page() }
+    util.insert-blank-page()
     set heading(numbering: none)
     if abbreviation != none {
       pages.abbreviation.create-page()
-      if not skip-blank-pages { util.insert-blank-page() }
+      util.insert-blank-page()
       pages.glossary.create-page()
-      if not skip-blank-pages { util.insert-blank-page() }
+      util.insert-blank-page()
     }
     if bibliography != none {
       pages.bibliography.create-page(bibliography: bibliography)
-      if not skip-blank-pages { util.insert-blank-page() }
+      util.insert-blank-page()
     }
   }
   if print-ref {
     pages.printref.create-page()
   } else if not disable-cover {
-    if not skip-blank-pages { util.insert-blank-page() }
+    util.insert-blank-page()
   }
 }

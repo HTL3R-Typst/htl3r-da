@@ -2,6 +2,7 @@
 
 #show: htl3r.diplomarbeit.with(
   disable-cover: true,
+  disable-book-binding: true,
   print-ref: false,
 )
 

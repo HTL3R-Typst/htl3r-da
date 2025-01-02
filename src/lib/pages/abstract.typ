@@ -7,7 +7,7 @@
 ) = [
   = Kurzfassung
   #abstract-german
-  #if not skip-blank-pages { insert-blank-page() }
+  #insert-blank-page()
   = Abstract
   #abstract-english
 ]
