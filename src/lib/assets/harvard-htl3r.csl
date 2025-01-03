@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <style class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="de" xmlns="http://purl.org/net/xbiblio/csl">
+  <!-- This style was edited with the Visual CSL Editor (https://editor.citationstyles.org/visualEditor/) -->
   <info>
     <title>Cite Them Right 12th edition - Harvard (Anpassung HTL3R)</title>
     <title-short>Harvard HTL3R</title-short>
@@ -22,7 +23,7 @@
     <category field="generic-base"/>
     <summary>Harvard Cite them Right, angepasst an die Anforderungen der HTL3R.</summary>
     <published>2024</published>
-    <updated>2024-12-29T01:00:00+00:00</updated>
+    <updated>2025-01-03T10:23:50+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale xml:lang="de">
@@ -116,7 +117,8 @@
       <if variable="DOI">
         <group text-decoration="none" delimiter=" ">
           <text value="[Online]"/>
-          <text term="available at" text-case="capitalize-first" prefix="&#10;" suffix=":"/>
+          <text term="available at" text-case="capitalize-first" prefix="
+" suffix=":"/>
           <group text-decoration="underline">
             <text variable="DOI" text-decoration="none" prefix="https://doi.org/"/>
           </group>
@@ -124,11 +126,13 @@
       </if>
       <else-if variable="URL">
         <text value="[Online]" suffix=" "/>
-        <text term="available at" text-case="capitalize-first" prefix="&#10;" suffix=": "/>
+        <text term="available at" text-case="capitalize-first" prefix="
+" suffix=": "/>
         <text variable="URL" text-decoration="underline"/>
-        <group delimiter=" " prefix="&#10;[" suffix="]">
+        <group delimiter=" " prefix="
+[" suffix="]">
           <text term="accessed" text-case="capitalize-first"/>
-          <date delimiter=" " variable="accessed">
+          <date delimiter="." variable="accessed">
             <date-part name="day"/>
             <date-part name="month" form="numeric"/>
             <date-part name="year"/>
@@ -294,7 +298,7 @@
     <sort>
       <key macro="year-date"/>
     </sort>
-    <layout prefix="(" suffix=")" delimiter="; ">
+    <layout delimiter="; ">
       <group delimiter=", ">
         <choose>
           <if match="any" position="ibid">
