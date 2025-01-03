@@ -145,3 +145,7 @@
   set page(header: none, footer: none)
   pagebreak(to: "odd", weak: true)
 }
+
+#let comp(content) = {
+  return ("comp", content)
+}

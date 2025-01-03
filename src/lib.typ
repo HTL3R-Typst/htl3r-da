@@ -14,7 +14,7 @@
 #let fspace = util.fspace
 #let code = util.code
 #let code-file = util.code-file
-// #let bibstyling = util.bibstyling
+#let comp = util.comp
 
 #let short = abbr.short
 #let shortpl = abbr.shortpl
@@ -86,8 +86,22 @@
     style: "lib/assets/harvard-htl3r.csl",
   )
   show cite: it => {
-    if it.supplement != none and util.to-string(it.supplement) == "comp" {
-      it = [(vgl. #cite(it.key, form: "prose", style: it.style))]
+    let command = none
+    let supplement = none
+    if it.supplement != none {
+      let value = none
+      if util.to-string(it.supplement).starts-with("(") and util.to-string(it.supplement).ends-with(")") {
+        value = eval(util.to-string(it.supplement))
+      }
+      if type(value) == "array" {
+        command = value.first()
+        supplement = value.last()
+      } else if util.to-string(it.supplement) == "comp" {
+        command = "comp"
+      }
+    }
+    if command == "comp" {
+      it = [(Vgl. #cite(it.key, form: "prose", style: it.style)#if supplement != none [, #supplement] else [])]
     }
     it
   }
