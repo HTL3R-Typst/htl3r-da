@@ -23,6 +23,7 @@
 #let todo = bubble.todo
 #let info = bubble.info
 #let warn = bubble.warn
+#let inline-todo = bubble.inline
 
 #let breadcrumbs = breadcrumbs
 

@@ -91,7 +91,7 @@ Output:
 )
 
 #pagebreak()
-*ToDo-Eintrag:*
+*Todo-Eintrag:*
 ```typ
 #htl3r.todo[SDO stolz machen]
 #htl3r.info[Information hier einfügen]
@@ -103,6 +103,16 @@ Output:
 #htl3r.todo[SDO stolz machen]
 #htl3r.info[Information hier einfügen]
 #htl3r.warn[Achtung!]
+
+*Inline-Todo-Eintrag:*
+
+```typ
+#lorem(30)#htl3r.inline-todo[Das geht so nicht!]#lorem(30)
+```
+
+Output:
+
+#lorem(30)#htl3r.inline-todo[Das geht so nicht!]#lorem(30)
 
 *Breadcrumbs*
 
