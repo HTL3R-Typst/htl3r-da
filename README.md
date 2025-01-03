@@ -1,4 +1,4 @@
-# HTL Rennweg Diplomarbeits Vorlage
+# HTL Rennweg Diplomarbeitsvorlage
 
 > [!IMPORTANT]
 > If you are not a student of HTL Rennweg, this template will be of little use to you.

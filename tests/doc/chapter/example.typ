@@ -10,7 +10,7 @@ aufzusuchen.
 
 == Warum wurde sich für Typst entschieden?
 Innerhalb der Klasse 5CN um Schuljahr 2024/25 gab es mehrere Diplomarbeiten welche interesse an LaTeX gezeigt haben.
-Allerdings war die existierende LaTeX Vorlage unbrauchbar und die hohe Komplexität von LaTeX selbst ist eine Zumutung.
+Allerdings war die existierende LaTeX-Vorlage unbrauchbar und die hohe Komplexität von LaTeX selbst ist eine Zumutung.
 Somit war klar, dass etwas neues gebraucht wird. Typst ist der perfekte Ersatz für LaTeX.
 
 == Kompilierung einer Typst-Datei
