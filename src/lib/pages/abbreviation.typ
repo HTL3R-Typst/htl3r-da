@@ -9,7 +9,7 @@
       #let abbr = global.abbr.get().at(name)
       #let short = abbr.at("short", default: none)
       #if short == none {
-        panic("Short for '" + name + "' does not exist!")
+        continue
       }
       #let short = short.at("singular", default: none)
       #if short == none {

@@ -64,10 +64,6 @@
   )
 }
 
-#let inline-shape(value) = context {
-
-}
-
 #let inline(body) = {
   set text(fill: BC.todo.text)
   let outset = 2pt
