@@ -50,7 +50,7 @@ generative-ai-clause:
 abbreviation:
   type: any
   optional: true
-bibliography:
+bibliography-content:
   type: content
   optional: true
 print-ref:

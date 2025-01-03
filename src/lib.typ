@@ -14,6 +14,7 @@
 #let fspace = util.fspace
 #let code = util.code
 #let code-file = util.code-file
+// #let bibstyling = util.bibstyling
 
 #let short = abbr.short
 #let shortpl = abbr.shortpl
@@ -26,7 +27,6 @@
 
 #let breadcrumbs = breadcrumbs
 
-// TODO: fix bug with page counter not updating correctly after body
 #let diplomarbeit(
   title: none,
   subtitle: none,
@@ -40,7 +40,7 @@
   abstract-english: none,
   generative-ai-clause: [Es wurden keine Hilfsmittel generativer KI-Tools für die Erstellung der Arbeit verwendet.],
   abbreviation: none,
-  bibliography: none,
+  bibliography-content: none,
   print-ref: true,
   disable-cover: false,
   disable-book-binding: false,
@@ -71,7 +71,7 @@
     validate("abstract-english", abstract-english)
     validate("generative-ai-clause", generative-ai-clause)
     validate("abbreviation", abbreviation)
-    validate("bibliography", bibliography)
+    validate("bibliography-content", bibliography-content)
     validate("print-ref", print-ref)
     validate("disable-cover", disable-cover)
     validate("disable-book-binding", disable-book-binding)
@@ -82,6 +82,15 @@
   global.disable-book-binding.update(disable-book-binding)
 
   // document
+  set bibliography(
+    style: "lib/assets/harvard-htl3r.csl",
+  )
+  show cite: it => {
+    if it.supplement != none and util.to-string(it.supplement) == "comp" {
+      it = [(vgl. #cite(it.key, form: "prose", style: it.style))]
+    }
+    it
+  }
   set footnote(numbering: "[1]")
   set footnote.entry(
     clearance: 0cm,
@@ -268,8 +277,8 @@
       pages.glossary.create-page()
       util.insert-blank-page()
     }
-    if bibliography != none {
-      pages.bibliography.create-page(bibliography: util.bibstyling(bibliography))
+    if bibliography-content != none {
+      pages.bibliography.create-page(bibliography: bibliography-content)
       util.insert-blank-page()
     }
   }
