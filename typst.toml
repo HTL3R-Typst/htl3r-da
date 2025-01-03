@@ -8,7 +8,7 @@ authors = [
     "David Koch <https://github.com/Davideko212>",
     "Bernd Reither <https://github.com/sidious38>",
 ]
-license = "0BSD"
+license = "0BSD AND CC-BY-SA-4.0"
 description = "HTL-Rennweg diploma thesis template."
 homepage = "https://www.htlrennweg.at"
 keywords = ["Diplomarbeit", "thesis", "diploma", "HTL Rennweg", "htl3r", "wien"]
