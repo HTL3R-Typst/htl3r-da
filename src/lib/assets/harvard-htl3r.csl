@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <style class="in-text" version="1.0" demote-non-dropping-particle="sort-only" default-locale="de" xmlns="http://purl.org/net/xbiblio/csl">
-  <!-- This style was edited with the Visual CSL Editor (https://editor.citationstyles.org/visualEditor/) -->
   <info>
     <title>Cite Them Right 12th edition - Harvard (Anpassung HTL3R)</title>
     <title-short>Harvard HTL3R</title-short>
@@ -23,7 +22,7 @@
     <category field="generic-base"/>
     <summary>Harvard Cite them Right, angepasst an die Anforderungen der HTL3R.</summary>
     <published>2024</published>
-    <updated>2025-01-03T10:23:50+00:00</updated>
+    <updated>2025-01-03T10:30:00+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale xml:lang="de">
