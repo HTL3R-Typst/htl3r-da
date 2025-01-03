@@ -149,7 +149,3 @@
 #let comp(content) = {
   return ("comp", content)
 }
-
-#let nested-citation() = {
-  return ("nested", none)
-}
