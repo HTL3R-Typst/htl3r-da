@@ -89,6 +89,9 @@
     let command = none
     let supplement = none
     if it.supplement != none {
+      if util.to-string(it.supplement) == none and it.supplement.has("value") and it.supplement.value == "nested" {
+        return it
+      }
       let value = none
       if util.to-string(it.supplement).starts-with("(") and util.to-string(it.supplement).ends-with(")") {
         value = eval(util.to-string(it.supplement))
@@ -100,8 +103,12 @@
         command = "comp"
       }
     }
+    let form = it.form
     if command == "comp" {
-      it = [(Vgl. #cite(it.key, form: "prose", style: it.style)#if supplement != none [, #supplement] else [])]
+      it = [vgl. #cite(it.key, form: "normal", style: it.style, supplement: [#metadata("nested")])#if supplement != none [, #supplement] else []]
+    }
+    if form == "normal" and command != "nested" {
+      it = [(#it)]
     }
     it
   }
