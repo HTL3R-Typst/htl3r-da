@@ -61,9 +61,9 @@ $ just install-preview # to install into the "preview" namespace
 
 Now you are able to compile documents using the template system-wide.
 
-# Licence
+## License
 
-Files in the directory `src/lib/assets/htl3r-citestyle` are licenced under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
-as compatible with the origial work licenced under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
+Files in the directory `src/lib/assets/htl3r-citestyle` are licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+as compatible with the original work licensed under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
 
 Other files in this project are licensed under [0BSD](https://opensource.org/license/0bsd).
