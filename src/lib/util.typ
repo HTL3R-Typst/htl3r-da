@@ -139,9 +139,17 @@
 }
 
 #let insert-blank-page() = {
-  if state("disable-book-binding").get() {
+  if global.disable-book-binding.get() {
     return
   }
   set page(header: none, footer: none)
   pagebreak(to: "odd", weak: true)
+}
+
+#let comp(content) = {
+  return ("comp", content)
+}
+
+#let nested-citation() = {
+  return ("nested", none)
 }

@@ -14,6 +14,7 @@
 #let fspace = util.fspace
 #let code = util.code
 #let code-file = util.code-file
+#let comp = util.comp
 
 #let short = abbr.short
 #let shortpl = abbr.shortpl
@@ -27,7 +28,6 @@
 
 #let breadcrumbs = breadcrumbs
 
-// TODO: fix bug with page counter not updating correctly after body
 #let diplomarbeit(
   title: none,
   subtitle: none,
@@ -41,7 +41,7 @@
   abstract-english: none,
   generative-ai-clause: [Es wurden keine Hilfsmittel generativer KI-Tools für die Erstellung der Arbeit verwendet.],
   abbreviation: none,
-  bibliography: none,
+  bibliography-content: none,
   print-ref: true,
   disable-cover: false,
   disable-book-binding: false,
@@ -72,7 +72,7 @@
     validate("abstract-english", abstract-english)
     validate("generative-ai-clause", generative-ai-clause)
     validate("abbreviation", abbreviation)
-    validate("bibliography", bibliography)
+    validate("bibliography-content", bibliography-content)
     validate("print-ref", print-ref)
     validate("disable-cover", disable-cover)
     validate("disable-book-binding", disable-book-binding)
@@ -83,6 +83,36 @@
   global.disable-book-binding.update(disable-book-binding)
 
   // document
+  set bibliography(
+    style: "lib/assets/htl3r-citestyle/harvard-htl3r.csl",
+  )
+  show cite: it => {
+    let command = none
+    let supplement = none
+    if it.supplement != none {
+      if util.to-string(it.supplement) == none and it.supplement.has("value") and it.supplement.value == "nested" {
+        return it
+      }
+      let value = none
+      if util.to-string(it.supplement).starts-with("(") and util.to-string(it.supplement).ends-with(")") {
+        value = eval(util.to-string(it.supplement))
+      }
+      if type(value) == "array" {
+        command = value.first()
+        supplement = value.last()
+      } else if util.to-string(it.supplement) == "comp" {
+        command = "comp"
+      }
+    }
+    let form = it.form
+    if command == "comp" {
+      it = [vgl. #cite(it.key, form: "normal", style: it.style, supplement: [#metadata("nested")])#if supplement != none [, #supplement] else []]
+    }
+    if form == "normal" and command != "nested" {
+      it = [(#it)]
+    }
+    it
+  }
   set footnote(numbering: "[1]")
   set footnote.entry(
     clearance: 0cm,
@@ -269,8 +299,8 @@
       pages.glossary.create-page()
       util.insert-blank-page()
     }
-    if bibliography != none {
-      pages.bibliography.create-page(bibliography: bibliography)
+    if bibliography-content != none {
+      pages.bibliography.create-page(bibliography: bibliography-content)
       util.insert-blank-page()
     }
   }
@@ -279,4 +309,5 @@
   } else if not disable-cover {
     util.insert-blank-page()
   }
+  set cite(style: "lib/assets/htl3r-citestyle/harvard-htl3r.csl")
 }
