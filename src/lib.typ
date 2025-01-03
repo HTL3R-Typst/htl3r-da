@@ -83,7 +83,7 @@
 
   // document
   set bibliography(
-    style: "lib/assets/harvard-htl3r.csl",
+    style: "lib/assets/htl3r-citestyle/harvard-htl3r.csl",
   )
   show cite: it => {
     let command = none
@@ -308,5 +308,5 @@
   } else if not disable-cover {
     util.insert-blank-page()
   }
-  set cite(style: "lib/assets/harvard-htl3r.csl")
+  set cite(style: "lib/assets/htl3r-citestyle/harvard-htl3r.csl")
 }
