@@ -54,9 +54,9 @@ The Justfile provides useful recipes for installation/development.
 
 The basic setup is as follows:
 
-```
-$ git clone https://github.com/HTL3R-Typst/htl3r-da
-$ just install-preview # to install into the "preview" namespace
+```bash
+git clone https://github.com/HTL3R-Typst/htl3r-da
+just install-preview # to install into the "preview" namespace
 ```
 
 Now you are able to compile documents using the template system-wide.
