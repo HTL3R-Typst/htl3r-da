@@ -2,10 +2,15 @@
 #import "global.typ" as global
 
 #let display(abbr, display, link-glossary: false) = {
-  link(if link-glossary { label("ABBR_G_" + abbr) } else { label("ABBR_DES_" + abbr) })[#display#label("ABBR_" + abbr)]
+  link(if link-glossary { label("ABBR_G_" + abbr) } else {
+    label("ABBR_DES_" + abbr)
+  })[#display#label("ABBR_" + abbr)]
   // Create footnote
   let abbr_state = global.abbr.get().at(abbr)
-  let desc = abbr_state.at("footnote", default: abbr_state.at("description", default: none))
+  let desc = abbr_state.at(
+    "footnote",
+    default: abbr_state.at("description", default: none),
+  )
   if state("noted_" + abbr).get() == none and desc != none {
     state("noted_" + abbr).update(true)
     footnote([#emph(abbr_state.at("long").at("singular")): #desc])

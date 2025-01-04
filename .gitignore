@@ -5,6 +5,5 @@
 tests/doc/test.pdf
 template/main.pdf
 
-# REMOVE THIS IN FINAL VERSION
+# Remove this when test finally work
 tests/**/out
-docs/manual.pdf

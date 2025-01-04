@@ -6,21 +6,33 @@
   let skew = 5pt
   let text_dimensions = measure(box(text(size: FONT_SIZE - 2pt, value)))
   let height = text_dimensions.height + outset * 2
-  let width = text_dimensions.width + outset * if not first {3} else {1} + if not (last or first) {0pt} else {outset}
-  box(width: width, height: text_dimensions.height, {
-    place(
-      dy: -outset,
-      polygon(
-        fill: BREADCRUMBS_COLOR.fill,
-        stroke: BREADCRUMBS_COLOR.stroke,
-        (0pt, height),
-        (if not first {skew} else {0pt}, 0pt),
-        (width + if not last {skew} else {0pt}, 0pt),
-        (width, height),
+  let width = (
+    text_dimensions.width
+      + outset * if not first { 3 } else { 1 }
+      + if not (last or first) { 0pt } else { outset }
+  )
+  box(
+    width: width,
+    height: text_dimensions.height,
+    {
+      place(
+        dy: -outset,
+        polygon(
+          fill: BREADCRUMBS_COLOR.fill,
+          stroke: BREADCRUMBS_COLOR.stroke,
+          (0pt, height),
+          (if not first { skew } else { 0pt }, 0pt),
+          (width + if not last { skew } else { 0pt }, 0pt),
+          (width, height),
+        ),
       )
-    )
-    place(dy: 0pt, dx: if not first {skew} else {outset}, box(text(size: FONT_SIZE - 2pt, value)))
-  })
+      place(
+        dy: 0pt,
+        dx: if not first { skew } else { outset },
+        box(text(size: FONT_SIZE - 2pt, value)),
+      )
+    },
+  )
 }
 
 #let breadcrumbs(layers) = context {

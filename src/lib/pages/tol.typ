@@ -2,7 +2,9 @@
 
 #let create-page() = [
   #show outline.entry: it => {
-    if counter(figure.where(kind: "code")).at(it.element.location()).first() == 1 {
+    if (
+      counter(figure.where(kind: "code")).at(it.element.location()).first() == 1
+    ) {
       v(2em, weak: true)
     }
     it

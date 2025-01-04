@@ -67,48 +67,54 @@
 #let inline(body) = {
   set text(fill: BC.todo.text)
   let outset = 2pt
-  box(layout(page-size => {
-  let page-width = page-size.width
   box(
-    figure(
-      kind: "todo",
-      supplement: [TODO],
-      context {
-        let outset = 2pt
-        let hint-height = 4pt
-        let text_dimensions = measure(box(body))
-        let height = text_dimensions.height + outset * 2
-        let width = text_dimensions.width + outset * 2
-        let x-position = here().position().x
-        place(
-          dy: -outset,
-          dx: -x-position,
-          polygon(
-            fill: BC.todo.stroke,
-            (0pt, height),
-            (0pt, 0pt),
-            (PAGE_MARGIN_OUTER - 1em, 0pt),
-            (PAGE_MARGIN_OUTER - 0.5em, height/2),
-            (PAGE_MARGIN_OUTER - 1em, height),
-          )
-        )
-        h(outset)
-        box(width: width, height: text_dimensions.height, {
-          place(
-            dy: -outset,
-            polygon(
-              fill: BC.todo.fill,
-              (0pt, height),
-              (0pt, 0pt),
-              (width, 0pt),
-              (width, height),
+    layout(page-size => {
+      let page-width = page-size.width
+      box(
+        figure(
+          kind: "todo",
+          supplement: [TODO],
+          context {
+            let outset = 2pt
+            let hint-height = 4pt
+            let text_dimensions = measure(box(body))
+            let height = text_dimensions.height + outset * 2
+            let width = text_dimensions.width + outset * 2
+            let x-position = here().position().x
+            place(
+              dy: -outset,
+              dx: -x-position,
+              polygon(
+                fill: BC.todo.stroke,
+                (0pt, height),
+                (0pt, 0pt),
+                (PAGE_MARGIN_OUTER - 1em, 0pt),
+                (PAGE_MARGIN_OUTER - 0.5em, height / 2),
+                (PAGE_MARGIN_OUTER - 1em, height),
+              ),
             )
-          )
-          place(dy: 0pt, dx: outset, box(body))
-        })
-        h(outset)
-      }
-    )
+            h(outset)
+            box(
+              width: width,
+              height: text_dimensions.height,
+              {
+                place(
+                  dy: -outset,
+                  polygon(
+                    fill: BC.todo.fill,
+                    (0pt, height),
+                    (0pt, 0pt),
+                    (width, 0pt),
+                    (width, height),
+                  ),
+                )
+                place(dy: 0pt, dx: outset, box(body))
+              },
+            )
+            h(outset)
+          },
+        ),
+      )
+    }),
   )
-  }))
 }
