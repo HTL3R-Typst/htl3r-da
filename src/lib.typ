@@ -83,20 +83,27 @@
   global.disable-book-binding.update(disable-book-binding)
 
   // document
-  set bibliography(
-    style: "lib/assets/htl3r-citestyle/harvard-htl3r.csl",
-  )
+  set bibliography(style: "lib/assets/htl3r-citestyle/harvard-htl3r.csl")
   show cite: it => {
     let command = none
     let supplement = none
     if it.supplement != none {
-      if util.to-string(it.supplement) == none and it.supplement.has("value") and it.supplement.value == "nested" {
+      if (
+        util.to-string(it.supplement) == none
+          and it.supplement.has("value")
+          and it.supplement.value == "nested"
+      ) {
         return it
-      } else if util.to-string(it.supplement) == none and not it.supplement.has("value") {
+      } else if (
+        util.to-string(it.supplement) == none and not it.supplement.has("value")
+      ) {
         return [(#it)]
       }
       let value = none
-      if util.to-string(it.supplement).starts-with("(") and util.to-string(it.supplement).ends-with(")") {
+      if (
+        util.to-string(it.supplement).starts-with("(")
+          and util.to-string(it.supplement).ends-with(")")
+      ) {
         value = eval(util.to-string(it.supplement))
       }
       if type(value) == "array" {
