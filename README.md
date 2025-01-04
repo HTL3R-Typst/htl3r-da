@@ -37,11 +37,7 @@ To adhere to the official style of the book, all template options should be set 
   print-ref: true,
   generative-ai-clause: none,
   abbreviation: yaml("abbr.yml"),
-  bibliography: bibliography(
-    "refs.yml",
-    full: true,
-    title: [Literaturverzeichnis],
-  ),
+  bibliography-content: bibliography("refs.yml", title: [Literaturverzeichnis])
 )
 ```
 
