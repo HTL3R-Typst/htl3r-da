@@ -90,8 +90,10 @@
     let command = none
     let supplement = none
     if it.supplement != none {
-      if util.to-string(it.supplement) == none or it.supplement.has("value") and it.supplement.value == "nested" {
+      if util.to-string(it.supplement) == none and it.supplement.has("value") and it.supplement.value == "nested" {
         return it
+      } else if util.to-string(it.supplement) == none and not it.supplement.has("value") {
+        return [(#it)]
       }
       let value = none
       if util.to-string(it.supplement).starts-with("(") and util.to-string(it.supplement).ends-with(")") {
