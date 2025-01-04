@@ -48,7 +48,7 @@ For an overview of the functions see the [manual](docs/manual.pdf).
 
 The Justfile provides useful recipes for installation/development.
 
-The basic setup is as follows:
+The basic setup is as follows (requires "git" and "just"):
 
 ```bash
 git clone https://github.com/HTL3R-Typst/htl3r-da
