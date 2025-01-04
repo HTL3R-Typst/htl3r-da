@@ -122,22 +122,49 @@ Können als Darstellung eines Pfades oder einer Menüstruktur verwendet werden.
 
 *Zitieren:*
 
+Die Referenzdatei kann entweder in einer BibLaTeX `.bib` Datei oder in einer Datei im 
+#text(link("https://github.com/typst/hayagriva/blob/main/docs/file-format.md")[Hayagriva-Format], fill: blue)
+erfolgen.
+
+#htl3r.info[Bei aufeinanderfolgendem Zitieren der gleichen Quelle wird diese mit "ebd." (ebenda) abgekürzt.
+```typ
+@htl3r-website[comp] \
+@htl3r-website[#htl3r.comp[S. 12]]
+```
+Output:
+#image("assets/zit_ebd.png")
+]
+
+Beispiel:
+
+#htl3r.code-file(
+  lang: "yaml",
+  filename: [refs.yml],
+  text: read("refs.yml"),
+)
+
 + direktes Zitat
   ```typ
   // Direktes Zitat = normaler Typst Syntax
-  @reference-key
+  @htl3r-website[]
   ```
+  Output:
+  #image("assets/zit_dir.png")
 
 + direktes Zitat mit Supplement
   ```typ
-  @reference-key[S. 12]
+  @htl3r-website[, S. 12]
   ```
+  Output:
+  #image("assets/zit_dir_suppl.png")
 
 + indirektes Zitat
   ```typ
   // Merkhilfe: comp ... comparison
-  @reference-key[comp]
+  @htl3r-website[comp]
   ```
+  Output:
+  #image("assets/zit_ind.png")
 
   #htl3r.warn[Der String "`comp`" ist im Template hardcoded und kann damit *NICHT* als Supplement eingesetzt werden! \
   (Warum auch immer man das auch machen würde)]
@@ -145,5 +172,8 @@ Können als Darstellung eines Pfades oder einer Menüstruktur verwendet werden.
 + indirektes Zitat mit Supplement
   ```typ
   // Merkhilfe: comp ... comparison
-  @reference-key[#htl3r.comp[S. 12]]
+  @htl3r-website[#htl3r.comp[S. 12]]
   ```
+
+  Output:
+  #image("assets/zit_ind_suppl.png")

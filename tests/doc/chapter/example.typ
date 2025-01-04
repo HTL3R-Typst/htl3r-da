@@ -108,14 +108,21 @@ rm -rf /
 ]
 
 Output:
-"#htl3r.code(caption: [Advanced Bash Skript], description: [Beispielbefehl])[
+#htl3r.code(caption: [Advanced Bash Skript], description: [Beispielbefehl])[
   ```bash
   rm -rf /
   ```
 ]
 
+Codeblöcke können auch aus einer Datei gelesen werden:
+
+```typ
+#htl3r.code-file(lang: "bash", text: read("../assets/code-example.sh"))
+```
+Output:
 #htl3r.code-file(lang: "bash", text: read("../assets/code-example.sh"))
 
+#pagebreak()
 == Abkürzungen
 Die verwendeten Abkürzungen werden zentral in einer YAML-Datei definiert. \
 Mithilfe dieser YAML-Datei werden Abkürzungsverzeichnis und Glossar generiert.
@@ -136,7 +143,6 @@ cisco:
     singular: Cisco
   description: US-Amerikanischer Netzwerkgerätehersteller
 ```]
-#pagebreak(weak: true)
 
 Diese Abkürzungen können im Dokument verwendet werden.
 
@@ -152,6 +158,7 @@ Diese Abkürzungen können im Dokument verwendet werden.
 #htl3r.long[da] -
 #htl3r.longpl[da]
 
+#pagebreak()
 == Zitation
 Die Referenzdatei kann entweder in einer BibLaTeX `.bib` Datei oder im 
 #text(link("https://github.com/typst/hayagriva/blob/main/docs/file-format.md")[Hayagriva-Format], fill: blue)
@@ -168,17 +175,17 @@ htl3r-website: # <- Reference-Key
 
 + Direktes Zitat
 
-  ```typ @htl3r-website```
+  ```typ @htl3r-website[] ```
   
   Output: \
-  @htl3r-website
+  @htl3r-website[]
 
 + Direktes Zitat mit Supplement
 
-  ```typ @htl3r-website[ S. 12]```
+  ```typ @htl3r-website[, S. 12]```
   
   Output: \
-  @htl3r-website[ S. 12]
+  @htl3r-website[, S. 12]
 
 + Indirektes Zitat
 
@@ -189,7 +196,8 @@ htl3r-website: # <- Reference-Key
 
 + Indirektes Zitat mit Supplement
 
-  ```typ @htl3r-website[ S. 12]```
+  ```typ @htl3r-website[#htl3r.comp[S. 12]]```
   
   Output: \
-  @htl3r-website[#htl3r.comp[ S. 12]]
+
+  @htl3r-website[#htl3r.comp[S. 12]]
