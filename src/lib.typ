@@ -90,7 +90,7 @@
     let command = none
     let supplement = none
     if it.supplement != none {
-      if util.to-string(it.supplement) == none and it.supplement.has("value") and it.supplement.value == "nested" {
+      if util.to-string(it.supplement) == none or it.supplement.has("value") and it.supplement.value == "nested" {
         return it
       }
       let value = none
