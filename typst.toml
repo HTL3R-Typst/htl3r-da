@@ -10,7 +10,7 @@ authors = [
 ]
 license = "0BSD AND CC-BY-SA-4.0"
 description = "HTL-Rennweg diploma thesis template."
-homepage = "https://www.htlrennweg.at"
+repository = "https://github.com/HTL3R-Typst/htl3r-da"
 keywords = ["Diplomarbeit", "thesis", "diploma", "HTL Rennweg", "htl3r", "wien"]
 categories = ["thesis"]
 compiler = "0.12.0"
