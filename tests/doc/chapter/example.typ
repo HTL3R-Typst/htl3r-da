@@ -10,7 +10,7 @@ Allerdings war die existierende LaTeX-Vorlage unbrauchbar und die hohe Komplexit
 Somit war klar, dass etwas neues gebraucht wird. Typst ist somit der perfekte Ersatz für LaTeX.
 
 == Kompilierung einer Typst-Datei
-Typst hat eine CLI, über welche die Quellcodedateien zu PDF kompiliert werden. Um eine Datei zu kompileren wird diese CLI aufgerufen:
+Typst hat eine CLI, über welche die Quellcodedateien zu PDF kompiliert werden. Um eine Datei zu kompilieren, kann diese CLI folgend aufgerufen werden:
 ```bash
 typst compile $DATEI
 ```
