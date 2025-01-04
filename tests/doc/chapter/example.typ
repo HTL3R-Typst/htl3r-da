@@ -118,9 +118,9 @@ Output:
 
 == Abkürzungen
 Die verwendeten Abkürzungen werden zentral in einer YAML-Datei definiert. \
-Mithilfe dieser YAML-Datei wird das Abkürzungsverzeichnis generiert.
+Mithilfe dieser YAML-Datei werden Abkürzungsverzeichnis und Glossar generiert.
 
-Beispiel:
+#htl3r.code(description: [Datei "abbr.yml"])[
 ```yaml
 da: # <- Das ist der Key für die Abkürzung
   short:
@@ -130,18 +130,66 @@ da: # <- Das ist der Key für die Abkürzung
     singular: Diplomarbeit
     plural: Diplomarbeiten
   description: Abschlussarbeit an einer HTL # Beschreibung für das Glossar
-```
+
+cisco:
+  long: # Abkürzung ohne "short" Key -> Glossareintrag
+    singular: Cisco
+  description: US-Amerikanischer Netzwerkgerätehersteller
+```]
+#pagebreak(weak: true)
 
 Diese Abkürzungen können im Dokument verwendet werden.
 
 ```typ
-#htl3r.abbr.short[da] - // Kurzform Singular
-#htl3r.abbr.shortpl[da] - // Kurzform Plural
-#htl3r.abbr.long[da] - // Langform Singular
-#htl3r.abbr.longpl[da] // Langform Plural
+#htl3r.short[da] - // Kurzform Singular
+#htl3r.shortpl[da] - // Kurzform Plural
+#htl3r.long[da] - // Langform Singular
+#htl3r.longpl[da] // Langform Plural
 ```
 
-#htl3r.abbr.short[da] -
-#htl3r.abbr.shortpl[da] -
-#htl3r.abbr.long[da] -
-#htl3r.abbr.longpl[da]
+#htl3r.short[da] -
+#htl3r.shortpl[da] -
+#htl3r.long[da] -
+#htl3r.longpl[da]
+
+== Zitation
+Die Referenzdatei kann entweder in einer BibLaTeX `.bib` Datei oder im 
+#text(link("https://github.com/typst/hayagriva/blob/main/docs/file-format.md")[Hayagriva-Format], fill: blue)
+erfolgen.
+#htl3r.code(description: [Datei "refs.yml" (Hayagriva-Format)])[
+```yaml
+htl3r-website: # <- Reference-Key
+  author: HTL Rennweg
+  title: Schulwebsite
+  type: Web
+  url: https://www.htlrennweg.at/
+  date: 2024-12-19
+```]
+
++ Direktes Zitat
+
+  ```typ @htl3r-website```
+  
+  Output: \
+  @htl3r-website
+
++ Direktes Zitat mit Supplement
+
+  ```typ @htl3r-website[ S. 12]```
+  
+  Output: \
+  @htl3r-website[ S. 12]
+
++ Indirektes Zitat
+
+  ```typ @htl3r-website[comp]```
+  
+  Output: \
+  @htl3r-website[comp]
+
++ Indirektes Zitat mit Supplement
+
+  ```typ @htl3r-website[ S. 12]```
+  
+  Output: \
+  @htl3r-website[#htl3r.comp[ S. 12]]
