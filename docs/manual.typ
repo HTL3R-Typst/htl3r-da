@@ -4,11 +4,14 @@
   disable-cover: true,
   disable-book-binding: true,
   print-ref: false,
+  /* funktioniert nicht, da die Page nicht geladen wird.
+
+  bibliography-content: bibliography("refs.yml", title: [Literaturverzeichnis])*/
 )
 
 = Allgemeiner Typst Syntax
 #{
-  show link: set text(fill: blue, size: 80pt)
+  show link: set text(fill: blue, size: 60pt)
   align(center)[
     #link("https://typst.app/docs/reference/syntax/")[GUCKST \ DU \ HIER] \
   ]
@@ -29,28 +32,18 @@ Die Autorenangabe muss #underline[*vor*] der Überschrift erfolgen
 ```
 Output: Im Footer wird der Autor gelistet.
 
-*Figure mit angepasster Breite:*
+*Breite von Figures festlegen:*
 ```typ
 #htl3r.fspace(
   total-width: 50%,
-  figure(image("assets/16x9.png"), caption: [Bild mit 16:9]),
-)
-```
-Output:
-#htl3r.fspace(
-  total-width: 50%,
-  figure(image("assets/16x9.png"), caption: [Bild mit 16:9]),
-)
-
-*Figures nebeneinandergestellt:*
-```typ
-#htl3r.fspace(
+  // hier können mehrere Figures nebeneinandergestellt werden!
   figure(image("assets/16x9.png"), caption: [Bild mit 16:9]),
   figure(image("assets/1x1.png"), caption: [Bild mit 1:1]),
 )
 ```
 Output:
 #htl3r.fspace(
+  total-width: 50%,
   figure(image("assets/16x9.png"), caption: [Bild mit 16:9]),
   figure(image("assets/1x1.png"), caption: [Bild mit 1:1]),
 )
@@ -90,7 +83,6 @@ Output:
   text: read("assets/code-example.sh"),
 )
 
-#pagebreak()
 *Todo-Eintrag:*
 ```typ
 #htl3r.todo[SDO stolz machen]
@@ -107,20 +99,81 @@ Output:
 *Inline-Todo-Eintrag:*
 
 ```typ
-#lorem(30)#htl3r.inline-todo[Das geht so nicht!]#lorem(30)
+#lorem(10) #htl3r.inline-todo[Das geht so nicht!] #lorem(20)
 ```
 
 Output:
 
-#lorem(30)#htl3r.inline-todo[Das geht so nicht!]#lorem(30)
+#lorem(10) #htl3r.inline-todo[Das geht so nicht!] #lorem(20)
 
 *Breadcrumbs*
 
-#lorem(20) #htl3r.breadcrumbs(("Server", "Policies", "root", "Boot Policies", "skill-san-boot")), #lorem(20)
+Können als Darstellung eines Pfades oder einer Menüstruktur verwendet werden.
+
+```typ
+#lorem(10)
+#htl3r.breadcrumbs(("Das", "ist", "eine", "mögliche", "Menüstruktur"))
+#lorem(10)
+```
+
+#lorem(10)
+#htl3r.breadcrumbs(("Das", "ist", "eine", "mögliche", "Menüstruktur"))
+#lorem(10)
 
 *Zitieren:*
+
+Die Referenzdatei kann entweder in einer BibLaTeX `.bib` Datei oder in einer Datei im 
+#text(link("https://github.com/typst/hayagriva/blob/main/docs/file-format.md")[Hayagriva-Format], fill: blue)
+erfolgen.
+
+#htl3r.info[Bei aufeinanderfolgendem Zitieren der gleichen Quelle wird diese mit "ebd." (ebenda) abgekürzt.
+```typ
+@htl3r-website[comp] \
+@htl3r-website[#htl3r.comp[S. 12]]
+```
+Output:
+#image("assets/zit_ebd.png")
+]
+
+Beispiel:
+
+#htl3r.code-file(
+  lang: "yaml",
+  filename: [refs.yml],
+  text: read("refs.yml"),
+)
+
 + direktes Zitat
-// To be implemented
+  ```typ
+  // Direktes Zitat = normaler Typst Syntax
+  @htl3r-website[]
+  ```
+  Output:
+  #image("assets/zit_dir.png")
+
++ direktes Zitat mit Supplement
+  ```typ
+  @htl3r-website[, S. 12]
+  ```
+  Output:
+  #image("assets/zit_dir_suppl.png")
 
 + indirektes Zitat
-// To be implemented
+  ```typ
+  // Merkhilfe: comp ... comparison
+  @htl3r-website[comp]
+  ```
+  Output:
+  #image("assets/zit_ind.png")
+
+  #htl3r.warn[Der String "`comp`" ist im Template hardcoded und kann damit *NICHT* als Supplement eingesetzt werden! \
+  (Warum auch immer man das auch machen würde)]
+
++ indirektes Zitat mit Supplement
+  ```typ
+  // Merkhilfe: comp ... comparison
+  @htl3r-website[#htl3r.comp[S. 12]]
+  ```
+
+  Output:
+  #image("assets/zit_ind_suppl.png")

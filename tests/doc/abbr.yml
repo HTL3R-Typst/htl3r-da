@@ -6,3 +6,8 @@ da:
     singular: Diplomarbeit
     plural: Diplomarbeiten
   description: Abschlussarbeit an einer HTL
+
+cisco:
+  long:
+    singular: Cisco
+  description: US-Amerikanischer Netzwerkgerätehersteller
