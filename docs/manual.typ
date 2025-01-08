@@ -10,17 +10,15 @@
 )
 
 = Allgemeiner Typst Syntax
-#{
-  show link: set text(fill: blue, size: 60pt)
-  align(center)[
-    #link("https://typst.app/docs/reference/syntax/")[GUCKST \ DU \ HIER] \
-  ]
-}
-
+#[
 #show link: set text(fill: blue)
 
-== nützliche Features
-- Fußnote mit ```typ #footnote[]```
+Die #link("https://typst.app/docs/")[Typst-Dokumentation] ist die wichtigste Anlaufstelle für Wissen rund um Typst.
+
+Die #link("https://typst.app/docs/reference/syntax/")[Syntax-Referenz] bietet eine Übersicht über den grundlegenden Syntax und die wichtigsten Funktionen.
+
+Bei komplexeren Problemsstellungen ist auch der Typst Discord-Server empfehlenswert. Der aktuelle Link befindet sich in der Kopfzeile der #link("https://typst.app")[Typst-Website].
+]
 
 #htl3r.author("Viktor Kreuzer")
 = Templatespezifische-Funktionen
