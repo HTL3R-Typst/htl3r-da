@@ -1,5 +1,5 @@
-#let FONT_TEXT_BODY = "Noto Sans"
-#let FONT_TEXT_DISPLAY = "Noto Sans"
+#let FONT_TEXT_BODY = "Cambria"
+#let FONT_TEXT_DISPLAY = "Cambria"
 #let FONT_TEXT_RAW = "Source Code Pro"
 #let FONT_SIZE = 11pt
 #let FONT_SIZE_FOOTNOTE = 8pt
