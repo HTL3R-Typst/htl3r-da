@@ -273,7 +273,6 @@
     pages.create-tables()
     util.insert-blank-page()
   }
-  counter(page).update(1)
   set page(
     footer: context {
       let page-text = counter(page).display("1")
@@ -297,6 +296,7 @@
     },
   )
   set heading(numbering: "1.1")
+  counter(page).update(1)
   [#metadata("DA_BEGIN")<DA_BEGIN>]
   body
   if not disable-cover {
