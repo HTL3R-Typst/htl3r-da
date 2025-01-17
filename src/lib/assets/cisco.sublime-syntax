@@ -1,0 +1,96 @@
+%YAML 1.2
+---
+# http://www.sublimetext.com/docs/syntax.html
+name: Cisco
+file_extensions:
+  - ios
+scope: text.cisco
+contexts:
+  main:
+    - match: '^\s*no '
+      scope: invalid.illegal.cisco
+    - match: access-list
+      scope: support.function.cisco
+    - match: 'crypto '
+      scope: string.unquoted.cisco
+    - match: \^C
+      push:
+        - meta_scope: string.quoted.cisco
+        - match: \^C
+          pop: true
+    - match: 'any[46]? '
+      scope: string.unquoted.cisco
+    - match: 'deny '
+      scope: support.constant.cisco
+    - match: 'permit '
+      scope: constant.character.escape.cisco
+    - match: object-group
+      scope: markup.list.cisco
+    - match: object
+      scope: markup.list.cisco
+    - match: host
+      scope: markup.list.cisco
+    - match: '^[\s]*!(.*)'
+      scope: comment.cisco
+    - match: static
+      scope: constant.numeric.cisco
+    - match: tunnel-group
+      scope: support.class.cisco
+    - match: crypto
+      scope: support.class.cisco
+    - match: '\d+\.\d+\.\d+\.\d+(/\d{1,2})?'
+      scope: constant.numeric.cisco
+    - match: '[0-9a-fA-F]{0,4}:([0-9a-fA-F]{0,4}:)+[0-9a-fA-F]{0,4}(/\d{1,3})?'
+      scope: constant.numeric.cisco
+    - match: (\bshutdown\b|^boot-(start|end)-marker)
+      scope: invalid.illegal.cisco
+    - match: ((^$|no )(interface|line|ip (access-list (extended|standard)|dhcp (pool|excluded-address)|route|classless|subnet-zero|nat|http|local pool|flow-export|flow-top-talkers|inspect|domain|ips|host)|router|voice-(card|port)|dial-peer|voice (translation-(rule|profile)|register (global|pool|dn)|service)|application$|crypto (pki|keyring|isakmp (profile|policy|client configuration)|ipsec (profile|transform-set)|(dynamic-)?map)|telephony-service|ephone(-dn)?|banner|(class|policy|route)-map|map-class)|\b(ssid|pvc|certificate)|service|clock|boot|logging|control-plane|aaa|(tftp|snmp|radius)-server|ntp|bridge|(access|dialer)-list|archive)\b
+      scope: support.control.cisco
+    - match: '\b([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}|\h{1,4}\.\h{1,4}\.\h{1,4}(\.\h{1,2})?)\b'
+      scope: constant.numeric.cisco
+    - match: '\b((Fast|Gigabit|TenGigabit|FortyGigabit)?Ethernet|Dialer|Dot11Radio|ATM|BRI|Tunnel(Group-)?Async|BVI|[Ll]oopback|Null|[Pp]ort-channel|Virtual-(Access|Dot11Radio|PPP|Template)|TenGigE|TwentyFiveGigE|HundredGigE|tunnel-ip|Bundle-Ether|MgmtEth0)'
+      scope: constant.language.cisco
+    - match: \binterface
+      scope: constant.language.cisco
+    - match: ^!.*$
+      scope: comment.bang.cisco
+    - match: \b(description|remark|system message)\s.*$
+      scope: comment.documentation.cisco
+    - match: \bno\b
+      scope: constant.language.cisco
+    - match: ^version.*$
+      scope: constant.language.cisco
+    - match: ^(username|hostname|enable)\b
+      scope: keyword.other.cisco
+    - match: \b(network|passive-interface|redistribute|auto-summary|synchronization|bgp|neighbor|default-information)\b
+      scope: keyword.other.routing.cisco
+    - match: \b(ip (address|unnumbered|proxy-arp|nat|nbar|virtual-reassembly|access-group|verify)|speed|(full-|half-)?duplex|cdp enable|encapsulation|dialer(-group)?|compress|ppp|crypto|channel|station-role|encryption|broadcast-key|snmp|isdn|dsl|tunnel|bandwidth|fair-queue|physical-layer|async mode|peer default|switchport|media-type|clockrate)\b
+      scope: keyword.other.interface.cisco
+    - match: \b(ipv(4|6) (address|address-family|unnumbered|proxy-arp|nat|nbar|virtual-reassembly|access-group|verify)|speed|(full-|half-)?duplex|cdp enable|encapsulation|dialer(-group)?|compress|ppp|crypto|channel|station-role|encryption|broadcast-key|snmp|isdn|dsl|tunnel|bandwidth|fair-queue|physical-layer|async mode|peer default|switchport|media-type|clockrate|bundle|vrf|mtu|lacp|bfd)\b
+      scope: keyword.control.cisco
+    - match: \b((session|exec)-timeout|login|password|stopbits|access-class|transport (input|output))\b
+      scope: keyword.other.line.cisco
+    - match: \b(domain-name|default-router|dns-server|host|client-(name|identifier)|option)\b
+      scope: keyword.other.dhcp.cisco
+    - match: \baddress-family\b
+      scope: constant.language.address-family.cisco
+    - match: \b(device-security-mode|mac-address|type|button|video|username)\b
+      scope: keyword.other.ephone.cisco
+    - match: \b(number|name|call-forward|hold-alert)\b
+      scope: keyword.other.ephonedn.cisco
+    - match: \b(load|max-ephones|max-dn|ip|auto|calling-number|timeouts|time-zone|time-format|date-format|dialplan-pattern|max-conferences|moh|web|(dn|time)-webedit|transfer-(system|pattern)|create)\b
+      scope: keyword.other.telephony.cisco
+    - match: \b(translation-profile|answer-address|destination-pattern|progress_ind|incoming|direct-inward-dial|port|max-conn|information-type|session (target|protocol)|dtmf-relay|codec|vad)\b
+      scope: keyword.other.dial-peer.cisco
+    - match: \b(compand-type|comfort-noise|cptone)\b
+      scope: keyword.other.voice-port.cisco
+    - match: \b(permit|deny|log|established|evaluate)\b
+      scope: keyword.other.acl.cisco
+    - match: \b(auth(entic|oriz)ation|accounting)\b
+      scope: keyword.other.aaa.cisco
+    - match: \bmatch (ip precedence|protocol|access-group)\b
+      scope: keyword.other.class-map.cisco
+    - match: \b(class(-default)?|set ip dscp|priority)\b
+      scope: keyword.other.policy-map.cisco
+    - match: \b(frame-relay|service-policy)\b
+      scope: keyword.other.map-class.cisco
