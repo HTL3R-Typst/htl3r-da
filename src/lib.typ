@@ -151,7 +151,7 @@
   )
   show heading: h => {
     set text(
-      font: settings.FONT_TEXT_DISPLAY,
+      font: settings.FONT_HEADING,
       size: settings.HEADING_SIZES.at(h.level - 1).size,
     )
     if h.level == 1 {
@@ -164,7 +164,7 @@
     h
     v(settings.HEADING_SIZES.at(h.level - 1).bottom)
   }
-  set par(justify: true)
+  set par(justify: true, spacing: 16pt)
   show raw: set text(font: settings.FONT_TEXT_RAW)
   set text(
     font: settings.FONT_TEXT_BODY,
