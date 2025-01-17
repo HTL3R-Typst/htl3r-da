@@ -299,19 +299,17 @@
   counter(page).update(1)
   [#metadata("DA_BEGIN")<DA_BEGIN>]
   body
-  if not disable-cover {
+  util.insert-blank-page()
+  set heading(numbering: none)
+  if abbreviation != none {
+    pages.abbreviation.create-page()
     util.insert-blank-page()
-    set heading(numbering: none)
-    if abbreviation != none {
-      pages.abbreviation.create-page()
-      util.insert-blank-page()
-      pages.glossary.create-page()
-      util.insert-blank-page()
-    }
-    if bibliography-content != none {
-      pages.bibliography.create-page(bibliography: bibliography-content)
-      util.insert-blank-page()
-    }
+    pages.glossary.create-page()
+    util.insert-blank-page()
+  }
+  if bibliography-content != none {
+    pages.bibliography.create-page(bibliography: bibliography-content)
+    util.insert-blank-page()
   }
   if print-ref {
     pages.printref.create-page()
