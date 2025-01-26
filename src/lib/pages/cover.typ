@@ -71,7 +71,15 @@
       size: 24pt,
       font: settings.FONT_TEXT_DISPLAY,
       strong[
-        #title \
+        #title
+      ],
+    )
+    #linebreak()
+    #v(-5pt)
+    #text(
+      size: 18pt,
+      font: settings.FONT_TEXT_DISPLAY,
+      strong[
         #subtitle
       ],
     )
@@ -96,9 +104,11 @@
         leading: 1.4em,
         text(size: 10pt)[
           durch #h(1fr) unter Anleitung von \
+          /* we thought this would look better, but the LaTeX Template doesn't have a line
           #v(-5pt)
           #line(length: 100%, stroke: 0.5pt)
           #v(-5pt)
+          */
           #for author in authors [
             #text(size: 14pt, strong(author.name)) #h(1fr) #author.supervisor \
           ]
