@@ -1,8 +1,9 @@
-#let FONT_TEXT_BODY = "Noto Sans"
-#let FONT_TEXT_DISPLAY = "Noto Sans"
+#let FONT_HEADING = "Calibri"
+#let FONT_TEXT_BODY = "Cambria"
+#let FONT_TEXT_DISPLAY = "Cambria"
 #let FONT_TEXT_RAW = "Source Code Pro"
-#let FONT_SIZE = 11pt
-#let FONT_SIZE_FOOTNOTE = 8pt
+#let FONT_SIZE = 12pt
+#let FONT_SIZE_FOOTNOTE = 11pt
 #let PAGE_MARGIN_INNER = 3cm
 #let PAGE_MARGIN_OUTER = 2cm
 #let PAGE_MARGIN_VERTICAL = 4cm
@@ -11,34 +12,34 @@
 #let COLOR_RED = rgb(255, 51, 0)
 #let HEADING_SIZES = (
   (
-    size: 24pt,
+    size: 28pt,
     top: 0em,
-    bottom: 1em,
+    bottom: 24pt,
   ),
   (
     size: 20pt,
-    top: 1em,
-    bottom: 0.5em,
-  ),
-  (
-    size: 18pt,
-    top: 0.5em,
-    bottom: 0.25em,
+    top: 24pt,
+    bottom: 6pt,
   ),
   (
     size: 16pt,
-    top: 0.5em,
-    bottom: 0.25em,
-  ),
-  (
-    size: 14pt,
-    top: 0.5em,
-    bottom: 0.25em,
+    top: 18pt,
+    bottom: 6pt,
   ),
   (
     size: 12pt,
-    top: 0.5em,
-    bottom: 0.25em,
+    top: 15pt,
+    bottom: 6pt,
+  ),
+  (
+    size: 12pt,
+    top: 15pt,
+    bottom: 6pt,
+  ),
+  (
+    size: 12pt,
+    top: 15pt,
+    bottom: 6pt,
   ),
 )
 

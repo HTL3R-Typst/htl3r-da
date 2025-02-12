@@ -2,10 +2,10 @@
 
 #htl3r.author("Julian Burger")
 = Einführung Typst
-Typst ist ein Markup-basierter Schrifftsatz, welcher entwickelt wurde, um genau so mächtig wie LaTeX zu sein, während er gleichzeitig simpel und einfach zu benutzen ist. Bei Unklarheiten ist die Dokumentation unter https://typst.app/docs/ aufzufinden. Falls allgemeine Fragen zur Umsetzung gewisser Konzepte aufkommen, so ist entweder das Forum (https://forum.typst.app/) oder der Discord-Server (https://discord.gg/2uDybryKPe) aufzusuchen.
+Typst ist ein Markup-basierter Schriftsatz, welcher entwickelt wurde, um genau so mächtig wie LaTeX zu sein, während er gleichzeitig simpel und einfach zu benutzen ist. Bei Unklarheiten ist die Dokumentation unter https://typst.app/docs/ zu finden. Falls allgemeine Fragen zur Umsetzung gewisser Konzepte aufkommen, so ist entweder das Forum (https://forum.typst.app/) oder der Discord-Server (https://discord.gg/2uDybryKPe) aufzusuchen.
 
 == Warum wurde sich für Typst entschieden?
-Innerhalb der Klasse 5CN im Schuljahr 2024/25 gab es mehrere Diplomarbeiten, welche Interesse an LaTeX gezeigt haben.
+Innerhalb der Klasse 5CN im Schuljahr 2024/25 gab es mehrere Diplomarbeiten, welche Interesse an der Verwendung von LaTeX gezeigt haben.
 Allerdings war die existierende LaTeX-Vorlage unbrauchbar und die hohe Komplexität von LaTeX selbst ist für viele eine Zumutung.
 Somit war klar, dass etwas neues gebraucht wird. Typst ist somit der perfekte Ersatz für LaTeX.
 

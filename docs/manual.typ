@@ -9,7 +9,7 @@
   bibliography-content: bibliography("refs.yml", title: [Literaturverzeichnis])*/
 )
 
-= Allgemeiner Typst Syntax
+= Typst Syntax und Requirements
 #[
 #show link: set text(fill: blue)
 
@@ -18,6 +18,23 @@ Die #link("https://typst.app/docs/")[Typst-Dokumentation] ist die wichtigste Anl
 Die #link("https://typst.app/docs/reference/syntax/")[Syntax-Referenz] bietet eine Übersicht über den grundlegenden Syntax und die wichtigsten Funktionen.
 
 Bei komplexeren Problemsstellungen ist auch der Typst Discord-Server empfehlenswert. Der aktuelle Link befindet sich in der Kopfzeile der #link("https://typst.app")[Typst-Website].
+]
+
+== Schriftarten
+Damit das Dokument korrekt kompilieren kann, ist es notwendig, dass folgende Schriftarten am System vorhanden sind:
+- *Calibri:* Verwendet für _Überschriften_.
+- *Cambria:* Verwendet für _Text_.
+- *Source Code Pro:* Verwendet für _Quellcode_.
+
+Unter Windows sollten die Schriftarten schon vorhanden sein. Unter Linux können diese mit einem Package Manager heruntergeladen werden:
+- *Arch Linux:* `yay -S ttf-vista-fonts adobe-source-code-pro-fonts`
+- *Ubuntu:* `sudo apt install ttf-mscorefonts-installer # Source Code Pro exkludiert.`
+
+#htl3r.info[
+  Unter Ubuntu ist es am leichtesten sich _Source Code Pro_ via Google-Fonts zu beziehen: https://fonts.google.com/specimen/Source+Code+Pro
+
+  Unter Arch Linux kann, falls `yay` nicht installiert, folgender Befehl anstatt dessen ausgeführt werden:\
+  `git clone https://aur.archlinux.org/ttf-vista-fonts.git && makepkg -i -D ./ttf-vista-fonts && sudo pacman -S adobe-source-code-pro-fonts`
 ]
 
 #htl3r.author("Viktor Kreuzer")
