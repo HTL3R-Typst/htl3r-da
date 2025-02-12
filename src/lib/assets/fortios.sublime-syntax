@@ -1,0 +1,41 @@
+%YAML 1.2
+---
+# http://www.sublimetext.com/docs/3/syntax.html
+name: FortiGate
+file_extensions:
+  - fortigate
+  - fg
+  - fortios
+  - forti
+scope: source.fortigate
+contexts:
+  main:
+    - include: comments
+    - include: keywords
+    - include: strings
+    - include: numbers
+    - include: enable
+    - include: disable
+  comments:
+    - match: "#.*$"
+      scope: comment.line.number-sign.fortigate
+  disable:
+    - match: " (?:disable|disabled|deny|block|off|down)$"
+      scope: invalid.illegal.fortigate
+  enable:
+    - match: " (?:enable|accept|pass|allow|up)$"
+      scope: storage.modifier.fortigate
+  keywords:
+    - match: '^\s*(?:config [a-zA-Z0-9 -]+|end|edit|next|set|unset)\b(?!-)'
+      scope: keyword.control.fortigate
+  numbers:
+    - match: '(?<![^\s:])[0-9a-f:,]*/?[\d:]+(?:[\.-]\d+)*\b(?![\.-])'
+      scope: constant.numeric.fortigate
+  strings:
+    - match: '"'
+      push:
+        - meta_scope: string.quoted.double.fortigate
+        - match: '"'
+          pop: true
+        - match: \\.
+          scope: constant.character.escape.fortigate
