@@ -20,6 +20,8 @@
 #let shortpl = abbr.shortpl
 #let long = abbr.long
 #let longpl = abbr.longpl
+#let full = abbr.full
+#let fullpl = abbr.fullpl
 
 #let todo = bubble.todo
 #let info = bubble.info
