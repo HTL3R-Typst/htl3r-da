@@ -220,16 +220,8 @@
       counter(footnote).update(0)
       let page-number = here().page()
       let after = query(heading.where(level: 1).after(here()))
-      let after-l2 = query(heading.where(level: 2).after(here()))
       let before-l1 = query(heading.where(level: 1).before(here()))
       let before-l2 = query(heading.where(level: 2).before(here()))
-
-      // This is a fix for level 2 headings (pfusch): https://github.com/HTL3R-Typst/htl3r-da/issues/70
-      if after-l2.len() > 0 and int(after-l2.first().location().position().y.pt()) == 133 {
-        after = (..after, ..after-l2).sorted(
-          key: it => it.location().page(),
-        )
-      }
       let before = (..before-l1, ..before-l2).sorted(
         key: it => it.location().page(),
       )
