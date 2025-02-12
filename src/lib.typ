@@ -20,6 +20,8 @@
 #let shortpl = abbr.shortpl
 #let long = abbr.long
 #let longpl = abbr.longpl
+#let full = abbr.full
+#let fullpl = abbr.fullpl
 
 #let todo = bubble.todo
 #let info = bubble.info
@@ -83,6 +85,9 @@
   global.disable-book-binding.update(disable-book-binding)
 
   // document
+  set raw(syntaxes: "lib/assets/cisco.sublime-syntax")
+  set raw(syntaxes: "lib/assets/fortios.sublime-syntax")
+  set raw(syntaxes: "lib/assets/splunk.sublime-syntax")
   set bibliography(style: "lib/assets/htl3r-citestyle/harvard-htl3r.csl")
   show cite: it => {
     let command = none
@@ -217,8 +222,16 @@
       counter(footnote).update(0)
       let page-number = here().page()
       let after = query(heading.where(level: 1).after(here()))
+      let after-l2 = query(heading.where(level: 2).after(here()))
       let before-l1 = query(heading.where(level: 1).before(here()))
       let before-l2 = query(heading.where(level: 2).before(here()))
+
+      // This is a fix for level 2 headings (pfusch): https://github.com/HTL3R-Typst/htl3r-da/issues/70
+      if after-l2.len() > 0 and int(after-l2.first().location().position().y.pt()) == 133 {
+        after = (..after, ..after-l2).sorted(
+          key: it => it.location().page(),
+        )
+      }
       let before = (..before-l1, ..before-l2).sorted(
         key: it => it.location().page(),
       )

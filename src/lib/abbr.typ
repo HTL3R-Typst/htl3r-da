@@ -49,3 +49,11 @@
 #let longpl(abbr) = {
   link(abbr, "long", "plural")
 }
+
+#let full(abbr) = {
+  [#long(abbr) (#short(abbr))]
+}
+
+#let fullpl(abbr) = {
+  [#longpl(abbr) (#shortpl(abbr))]
+}
