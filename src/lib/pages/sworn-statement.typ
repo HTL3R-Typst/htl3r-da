@@ -23,9 +23,9 @@
   ] else [
     #generative-ai-clause
   ]
-  #v(3em)
+  #v(2em)
   Wien, am #format-date(date)
-  #v(7em)
+  #v(5em)
   #let fields = authors.map(author => {
     box(
       block(
@@ -47,7 +47,7 @@
         #let last = if a.len() == 2 { a.last() } else {
           box(block(width: 7cm, height: 1cm))
         }
-        #block(width: 100%)[#first #h(1fr) #last #v(6em)]
+        #block(width: 100%)[#first #h(1fr) #last #v(2cm)]
       ])
   )
   #for field in fields [
