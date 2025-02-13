@@ -23,7 +23,7 @@
   // Header
   block(
     width: auto,
-    height: 52pt,
+    height: 2cm,
     stroke: (
       left: 4pt + settings.COLOR_RED,
     ),
@@ -36,13 +36,15 @@
       #box(
         height: 100%,
         text(
-          size: 8pt,
+          size: 10pt,
+          font: settings.FONT_HEADING,
           [
             #text(
-              size: 8pt,
+              size: 10pt,
+              font: settings.FONT_HEADING,
               [#strong([Höhere Technische Bundeslehranstalt Wien 3, Rennweg])],
             ) \
-            #v(1fr)
+            #v(0cm)
             Höhere Abteilung für Mechatronik \
             Höhere Abteilung für Informationstechnologie \
             Fachschule für Informationstechnik
@@ -60,16 +62,17 @@
   // Body
   align(center)[
     #text(
-      size: 20pt,
-      font: settings.FONT_TEXT_DISPLAY,
+      size: 24pt,
+      font: settings.FONT_HEADING,
+      weight: "bold",
       "Diplomarbeit",
     )
   ]
   v(1fr)
   align(center)[
     #text(
-      size: 24pt,
-      font: settings.FONT_TEXT_DISPLAY,
+      size: 16pt,
+      font: settings.FONT_HEADING,
       strong[
         #title
       ],
@@ -77,8 +80,8 @@
     #linebreak()
     #v(-5pt)
     #text(
-      size: 18pt,
-      font: settings.FONT_TEXT_DISPLAY,
+      size: 16pt,
+      font: settings.FONT_HEADING,
       strong[
         #subtitle
       ],
@@ -87,11 +90,19 @@
   v(1fr)
   align(center)[
     #text(
-      size: 10pt,
+      size: 12pt,
       [
         ausgeführt an der \
         Höheren Abteilung für #format-department(department) \
-        der Höheren Technischen Lehranstalt Wien 3 Rennweg \
+        der Höheren Technischen Lehranstalt Wien 3 Rennweg
+      ],
+    )
+  ]
+  v(1fr)
+  align(center)[
+    #text(
+      size: 12pt,
+      [
         im Schuljahr #school-year
       ],
     )
@@ -110,7 +121,7 @@
           #v(-5pt)
           */
           #for author in authors [
-            #text(size: 14pt, strong(author.name)) #h(1fr) #author.supervisor \
+            #text(size: 12pt, strong(author.name)) #h(1fr) #text(size: 12pt, author.supervisor) \
           ]
         ],
       )
@@ -128,5 +139,4 @@
       )
     ],
   )
-  v(1fr)
 }
