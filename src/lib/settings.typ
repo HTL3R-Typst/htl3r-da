@@ -1,4 +1,4 @@
-#let FONT_HEADING = "Calibri"
+#let FONT_HEADING = "Cambria" // "Calibri"
 #let FONT_TEXT_BODY = "Cambria"
 #let FONT_TEXT_DISPLAY = "Cambria"
 #let FONT_TEXT_RAW = "Source Code Pro"
