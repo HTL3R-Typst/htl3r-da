@@ -4,6 +4,7 @@
   disable-cover: true,
   disable-book-binding: true,
   print-ref: false,
+  abbreviation: yaml("abbr.yml")
   /* funktioniert nicht, da die Page nicht geladen wird.
 
   bibliography-content: bibliography("refs.yml", title: [Literaturverzeichnis])*/
@@ -22,8 +23,11 @@ Bei komplexeren Problemsstellungen ist auch der Typst Discord-Server empfehlensw
 
 == Schriftarten
 Damit das Dokument korrekt kompilieren kann, ist es notwendig, dass folgende Schriftarten am System vorhanden sind:
+/*
+See issue #69
 - *Calibri:* Verwendet für _Überschriften_.
-- *Cambria:* Verwendet für _Text_.
+*/
+- *Cambria:* Verwendet für _Text_ und _Überschriften_.
 - *Source Code Pro:* Verwendet für _Quellcode_.
 
 Unter Windows sollten die Schriftarten schon vorhanden sein. Unter Linux können diese mit einem Package Manager heruntergeladen werden:
@@ -31,10 +35,17 @@ Unter Windows sollten die Schriftarten schon vorhanden sein. Unter Linux können
 - *Ubuntu:* `sudo apt install ttf-mscorefonts-installer # Source Code Pro exkludiert.`
 
 #htl3r.info[
-  Unter Ubuntu ist es am leichtesten sich _Source Code Pro_ via Google-Fonts zu beziehen: https://fonts.google.com/specimen/Source+Code+Pro
+  Unter Ubuntu ist es am leichtesten sich _Source Code Pro_ auf Google-Fonts herunterzuladen:
+  https://fonts.google.com/specimen/Source+Code+Pro
 
-  Unter Arch Linux kann, falls `yay` nicht installiert, folgender Befehl anstatt dessen ausgeführt werden:\
-  `git clone https://aur.archlinux.org/ttf-vista-fonts.git && makepkg -i -D ./ttf-vista-fonts && sudo pacman -S adobe-source-code-pro-fonts`
+  Unter Arch Linux kann, falls `yay` nicht installiert ist, kann das Package manuell installiert werden:
+  #htl3r.code[
+  ```bash
+  git clone https://aur.archlinux.org/ttf-vista-fonts.git
+  makepkg -i -D ./ttf-vista-fonts
+  sudo pacman -S adobe-source-code-pro-fonts
+  ```
+  ]
 ]
 
 #htl3r.author("Viktor Kreuzer")
@@ -62,6 +73,8 @@ Output:
   figure(image("assets/16x9.png"), caption: [Bild mit 16:9]),
   figure(image("assets/1x1.png"), caption: [Bild mit 1:1]),
 )
+
+#pagebreak()
 
 *Codeblock als Figure:*
 
@@ -97,6 +110,8 @@ Output:
   filename: [Test],
   text: read("assets/code-example.sh"),
 )
+
+#pagebreak()
 
 *Todo-Eintrag:*
 ```typ
@@ -135,6 +150,29 @@ Können als Darstellung eines Pfades oder einer Menüstruktur verwendet werden.
 #htl3r.breadcrumbs(("Das", "ist", "eine", "mögliche", "Menüstruktur"))
 #lorem(10)
 
+*Abkürzungen:*
+
+Folgende Arten der Abkürzungen werden unterstützt:
+
+```typ
+Kurzform Singular: #htl3r.short[da] \
+Kurzform Plural:   #htl3r.shortpl[da] \
+Langform Singular: #htl3r.long[da] \
+Langform Plural:   #htl3r.longpl[da] \
+Vollform Singular: #htl3r.full[da] \
+Vollform Plural:   #htl3r.fullpl[da] \
+```
+
+Output:
+
+Kurzform Singular: #htl3r.short[da] \
+Kurzform Plural:   #htl3r.shortpl[da] \
+Langform Singular: #htl3r.long[da] \
+Langform Plural:   #htl3r.longpl[da] \
+Vollform Singular: #htl3r.full[da] \
+Vollform Plural:   #htl3r.fullpl[da] \
+
+
 *Zitieren:*
 
 Die Referenzdatei kann entweder in einer BibLaTeX `.bib` Datei oder in einer Datei im
@@ -152,6 +190,8 @@ erfolgen.
   Output:
   #image("assets/zit_ebd.png")
 ]
+
+#pagebreak()
 
 Beispiel:
 
@@ -187,7 +227,9 @@ Beispiel:
   #htl3r.warn[Der String "`comp`" ist im Template hardcoded und kann damit *NICHT* als Supplement eingesetzt werden! \
     (Warum auch immer man das auch machen würde)]
 
-+ indirektes Zitat mit Supplement
+#pagebreak()
+
+4. indirektes Zitat mit Supplement
   ```typ
   // Merkhilfe: comp ... comparison
   @htl3r-website[#htl3r.comp[S. 12]]
