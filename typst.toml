@@ -1,6 +1,6 @@
 [package]
 name = "htl3r-da"
-version = "0.1.0"
+version = "1.0.0"
 entrypoint = "src/lib.typ"
 authors = [
     "Julian Burger <https://github.com/cauvmou>",
@@ -15,13 +15,13 @@ keywords = ["Diplomarbeit", "thesis", "diploma", "HTL Rennweg", "htl3r", "wien"]
 categories = ["thesis"]
 compiler = "0.12.0"
 exclude = [
-  ".git",
-  ".github",
-  "docs",
-  "scripts",
-  "tests",
-  ".typstignore",
-  "Justfile"
+    ".git",
+    ".github",
+    "docs",
+    "scripts",
+    "tests",
+    ".typstignore",
+    "Justfile",
 ]
 
 [template]
