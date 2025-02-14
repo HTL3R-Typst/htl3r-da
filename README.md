@@ -3,8 +3,10 @@
 > [!IMPORTANT]
 > If you are not a student of HTL Rennweg, this template will be of little use to you.
 
-Dieses Template dient als Vorlage für ein Diplomarbeitsbuch an der HTL Rennweg
-und orientiert sich am LaTeX-Template mit Stand 2024/25.
+Dieses Template dient als Vorlage für ein Diplomarbeitsbuch an der HTL Rennweg und orientiert
+sich an der Word-Vorlage mit dem Stand 2024/25. Es gibt jedoch Abweichungen, für welche sich
+absichtlich entschieden wurde. Dies beinhalten vor allem die Schriftarten. Es wird versucht,
+ein einheitliches Gesamtbild zu schaffen.
 
 ## Setup
 
