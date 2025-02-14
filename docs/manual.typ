@@ -16,7 +16,7 @@
 
 Die #link("https://typst.app/docs/")[Typst-Dokumentation] ist die wichtigste Anlaufstelle für Wissen rund um Typst.
 
-Die #link("https://typst.app/docs/reference/syntax/")[Syntax-Referenz] bietet eine Übersicht über den grundlegenden Syntax und die wichtigsten Funktionen.
+Die #link("https://typst.app/docs/reference/syntax/")[Syntax-Referenz] bietet eine Übersicht über die grundlegende Syntax und die wichtigsten Funktionen.
 
 Bei komplexeren Problemsstellungen ist auch der Typst Discord-Server empfehlenswert. Der aktuelle Link befindet sich in der Kopfzeile der #link("https://typst.app")[Typst-Website].
 ]
@@ -51,7 +51,7 @@ Unter Windows sollten die Schriftarten schon vorhanden sein. Unter Linux können
 #htl3r.author("Viktor Kreuzer")
 = Templatespezifische-Funktionen
 *Angeben des Kapitelautors:*
-Die Autorenangabe muss #underline[*vor*] der Überschrift erfolgen
+Die Autorenangabe muss #underline[*vor*] der Überschrift erfolgen.
 ```typ
 #htl3r.author("Viktor Kreuzer")
 = Templatespezifische-Funktionen
@@ -115,15 +115,15 @@ Output:
 
 *Todo-Eintrag:*
 ```typ
-#htl3r.todo[SDO stolz machen]
-#htl3r.info[Information hier einfügen]
+#htl3r.todo[SDO stolz machen.]
+#htl3r.info[Information hier einfügen.]
 #htl3r.warn[Achtung!]
 ```
 
 Output:
 
-#htl3r.todo[SDO stolz machen]
-#htl3r.info[Information hier einfügen]
+#htl3r.todo[SDO stolz machen.]
+#htl3r.info[Information hier einfügen.]
 #htl3r.warn[Achtung!]
 
 *Inline-Todo-Eintrag:*
@@ -136,15 +136,19 @@ Output:
 
 #lorem(10) #htl3r.inline-todo[Das geht so nicht!] #lorem(20)
 
+#pagebreak()
+
 *Breadcrumbs*
 
-Können als Darstellung eines Pfades oder einer Menüstruktur verwendet werden.
+Können zur Darstellung eines Pfades oder einer Menüstruktur verwendet werden.
 
 ```typ
 #lorem(10)
 #htl3r.breadcrumbs(("Das", "ist", "eine", "mögliche", "Menüstruktur"))
 #lorem(10)
 ```
+
+Output:
 
 #lorem(10)
 #htl3r.breadcrumbs(("Das", "ist", "eine", "mögliche", "Menüstruktur"))
@@ -172,15 +176,16 @@ Langform Plural:   #htl3r.longpl[da] \
 Vollform Singular: #htl3r.full[da] \
 Vollform Plural:   #htl3r.fullpl[da] \
 
+#pagebreak()
 
 *Zitieren:*
 
-Die Referenzdatei kann entweder in einer BibLaTeX `.bib` Datei oder in einer Datei im
+Die Literatur kann entweder in einer BibLaTeX `.bib` Datei oder in einer Datei im
 #text(
   link("https://github.com/typst/hayagriva/blob/main/docs/file-format.md")[Hayagriva-Format],
   fill: blue,
 )
-erfolgen.
+hinterlegt werden.
 
 #htl3r.info[Bei aufeinanderfolgendem Zitieren der gleichen Quelle wird diese mit "ebd." (ebenda) abgekürzt.
   ```typ
@@ -191,8 +196,6 @@ erfolgen.
   #image("assets/zit_ebd.png")
 ]
 
-#pagebreak()
-
 Beispiel:
 
 #htl3r.code-file(
@@ -201,7 +204,7 @@ Beispiel:
   text: read("refs.yml"),
 )
 
-+ direktes Zitat
+1. direktes Zitat
   ```typ
   // Direktes Zitat = normaler Typst Syntax
   @htl3r-website[]
@@ -209,14 +212,16 @@ Beispiel:
   Output:
   #image("assets/zit_dir.png")
 
-+ direktes Zitat mit Supplement
+#pagebreak()
+
+2. direktes Zitat mit Supplement
   ```typ
   @htl3r-website[, S. 12]
   ```
   Output:
   #image("assets/zit_dir_suppl.png")
 
-+ indirektes Zitat
+3. indirektes Zitat
   ```typ
   // Merkhilfe: comp ... comparison
   @htl3r-website[comp]
@@ -224,10 +229,7 @@ Beispiel:
   Output:
   #image("assets/zit_ind.png")
 
-  #htl3r.warn[Der String "`comp`" ist im Template hardcoded und kann damit *NICHT* als Supplement eingesetzt werden! \
-    (Warum auch immer man das auch machen würde)]
-
-#pagebreak()
+  #htl3r.warn[Der String "`comp`" ist im Template hardcoded und kann damit *NICHT* als Supplement eingesetzt werden!]
 
 4. indirektes Zitat mit Supplement
   ```typ
