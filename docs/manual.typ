@@ -4,7 +4,7 @@
   disable-cover: true,
   disable-book-binding: true,
   print-ref: false,
-  abbreviation: yaml("abbr.yml")
+  abbreviation: yaml("abbr.yml"),
   /* funktioniert nicht, da die Page nicht geladen wird.
 
   bibliography-content: bibliography("refs.yml", title: [Literaturverzeichnis])*/
@@ -12,13 +12,13 @@
 
 = Typst Syntax und Requirements
 #[
-#show link: set text(fill: blue)
+  #show link: set text(fill: blue)
 
-Die #link("https://typst.app/docs/")[Typst-Dokumentation] ist die wichtigste Anlaufstelle für Wissen rund um Typst.
+  Die #link("https://typst.app/docs/")[Typst-Dokumentation] ist die wichtigste Anlaufstelle für Wissen rund um Typst.
 
-Die #link("https://typst.app/docs/reference/syntax/")[Syntax-Referenz] bietet eine Übersicht über die grundlegende Syntax und die wichtigsten Funktionen.
+  Die #link("https://typst.app/docs/reference/syntax/")[Syntax-Referenz] bietet eine Übersicht über die grundlegende Syntax und die wichtigsten Funktionen.
 
-Bei komplexeren Problemsstellungen ist auch der Typst Discord-Server empfehlenswert. Der aktuelle Link befindet sich in der Kopfzeile der #link("https://typst.app")[Typst-Website].
+  Bei komplexeren Problemsstellungen ist auch der Typst Discord-Server empfehlenswert. Der aktuelle Link befindet sich in der Kopfzeile der #link("https://typst.app")[Typst-Website].
 ]
 
 == Schriftarten
@@ -40,11 +40,11 @@ Unter Windows sollten die Schriftarten schon vorhanden sein. Unter Linux können
 
   Unter Arch Linux kann, falls `yay` nicht installiert ist, kann das Package manuell installiert werden:
   #htl3r.code[
-  ```bash
-  git clone https://aur.archlinux.org/ttf-vista-fonts.git
-  makepkg -i -D ./ttf-vista-fonts
-  sudo pacman -S adobe-source-code-pro-fonts
-  ```
+    ```bash
+    git clone https://aur.archlinux.org/ttf-vista-fonts.git
+    makepkg -i -D ./ttf-vista-fonts
+    sudo pacman -S adobe-source-code-pro-fonts
+    ```
   ]
 ]
 
@@ -170,11 +170,11 @@ Vollform Plural:   #htl3r.fullpl[da] \
 Output:
 
 Kurzform Singular: #htl3r.short[da] \
-Kurzform Plural:   #htl3r.shortpl[da] \
+Kurzform Plural: #htl3r.shortpl[da] \
 Langform Singular: #htl3r.long[da] \
-Langform Plural:   #htl3r.longpl[da] \
+Langform Plural: #htl3r.longpl[da] \
 Vollform Singular: #htl3r.full[da] \
-Vollform Plural:   #htl3r.fullpl[da] \
+Vollform Plural: #htl3r.fullpl[da] \
 
 #pagebreak()
 
