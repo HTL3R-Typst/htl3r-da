@@ -13,6 +13,6 @@
   #outline(
     title: [Quellcodeverzeichnis],
     target: figure.where(kind: "code"),
-    fill: line(length: 100%, stroke: (dash: ("dot", 1em))),
   )
+  #set outline.entry(fill: line(length: 100%, stroke: (dash: ("dot", 1em))))
 ]

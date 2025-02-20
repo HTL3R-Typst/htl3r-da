@@ -13,6 +13,7 @@
   #outline(
     title: [Abbildungsverzeichnis],
     target: figure.where(kind: image),
-    fill: line(length: 100%, stroke: (dash: ("dot", 1em))),
   )
+  #set outline.entry(fill: line(length: 100%, stroke: (dash: ("dot", 1em))))
+)
 ]
