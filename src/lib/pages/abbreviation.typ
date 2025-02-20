@@ -4,7 +4,7 @@
 #let create-page() = context [
   #global.author.update(none)
   = Abkürzungsverzeichnis
-  #for name in global.abbr.get().keys() [
+  #for name in global.abbr.get().keys().sorted() [
     #let abbr = global.abbr.get().at(name)
     #let short = abbr.at("short", default: none)
     #if short == none {

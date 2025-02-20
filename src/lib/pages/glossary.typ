@@ -3,7 +3,7 @@
 
 #let create-page() = context [
   = Glossar
-  #for name in global.abbr.get().keys() [
+  #for name in global.abbr.get().keys().sorted() [
     #let abbr = global.abbr.get().at(name)
     #let desc = abbr.at("description", default: none)
     #let long = abbr.at("long", default: none)
