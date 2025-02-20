@@ -17,8 +17,8 @@
     #if desc != none [
       #par(hanging-indent: 2em)[
         #strong(long): #label("ABBR_G_"+name) #desc \
-        #v(0.5em)
       ]
+      #v(0.5em)
     ]
   ]
 ]
