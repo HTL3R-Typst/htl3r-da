@@ -4,7 +4,7 @@
   if definition.type == "any" {
     return
   }
-  if type(value) == definition.type {
+  if str(type(value)) == definition.type {
     // Handle special cases for some types
     if definition.type == "string" {
       if definition.keys().contains("allowed") {

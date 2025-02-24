@@ -1,6 +1,6 @@
 #import "settings.typ" as settings
-#import "@preview/codly:1.1.1": *
-#import "@preview/codly-languages:0.1.1": *
+#import "@preview/codly:1.2.0": *
+#import "@preview/codly-languages:0.1.7": *
 #import "global.typ" as global
 
 /// Definiert den aktuellen Autor eines Kapitels. Der Autor eines
@@ -124,7 +124,7 @@
 
 #let to-string(content) = {
   if content.has("text") {
-    if type(content.text) == "string" {
+    if type(content.text) == str {
       content.text
     } else {
       to-string(content.text)
