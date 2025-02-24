@@ -15,5 +15,5 @@
     target: figure.where(kind: image),
   )
   #set outline.entry(fill: line(length: 100%, stroke: (dash: ("dot", 1em))))
-)
+  )
 ]

@@ -28,8 +28,11 @@
             image(
               width: 60%,
               bytes(
-                read("assets/warning.svg").replace("black", text-color.to-hex()),
-              )
+                read("assets/warning.svg").replace(
+                  "black",
+                  text-color.to-hex(),
+                ),
+              ),
             ),
           ),
           align(left + horizon, body),
