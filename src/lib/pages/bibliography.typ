@@ -3,8 +3,6 @@
 #let create-page(
   bibliography: [],
 ) = context [
-  #par(
-    justify: false,
-    bibliography,
-  )
+  #set par(justify: false)
+  #bibliography
 ]

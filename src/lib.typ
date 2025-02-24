@@ -7,8 +7,8 @@
 #import "lib/validate.typ": validate
 #import "lib/breadcrumbs.typ": breadcrumbs
 #import "lib/font.typ": check-missing-fonts
-#import "@preview/codly:1.1.1": *
-#import "@preview/codly-languages:0.1.1": *
+#import "@preview/codly:1.2.0": *
+#import "@preview/codly-languages:0.1.7": *
 
 #let author = util.author
 #let fspace = util.fspace
@@ -111,7 +111,7 @@
       ) {
         value = eval(util.to-string(it.supplement))
       }
-      if type(value) == "array" {
+      if type(value) == array {
         command = value.first()
         supplement = value.last()
       } else if util.to-string(it.supplement) == "comp" {

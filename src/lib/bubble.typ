@@ -25,9 +25,14 @@
           column-gutter: inset,
           align(
             center + horizon,
-            image.decode(
+            image(
               width: 60%,
-              read("assets/warning.svg").replace("black", text-color.to-hex()),
+              bytes(
+                read("assets/warning.svg").replace(
+                  "black",
+                  text-color.to-hex(),
+                ),
+              ),
             ),
           ),
           align(left + horizon, body),
