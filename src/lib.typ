@@ -91,42 +91,15 @@
   set raw(syntaxes: "lib/assets/syntax/splunk.sublime-syntax")
   set bibliography(style: "lib/assets/htl3r-citestyle/harvard-htl3r.csl")
   show cite: it => {
-    let command = none
-    let supplement = none
-    if it.supplement != none {
-      if (
-        util.to-string(it.supplement) == none
-          and it.supplement.has("value")
-          and it.supplement.value == "nested"
-      ) {
-        return it
-      } else if (
-        util.to-string(it.supplement) == none and not it.supplement.has("value")
-      ) {
-        return [(#it)]
-      }
-      let value = none
-      if (
-        util.to-string(it.supplement).starts-with("(")
-          and util.to-string(it.supplement).ends-with(")")
-      ) {
-        value = eval(util.to-string(it.supplement))
-      }
-      if type(value) == array {
-        command = value.first()
-        supplement = value.last()
-      } else if util.to-string(it.supplement) == "comp" {
-        command = "comp"
-      }
+    if (it.supplement != none and util.to-string(it.supplement) == "comp") {
+      [(vgl. #cite(it.key, supplement: none)<COMP_CITE>)]
+      return
     }
-    let form = it.form
-    if command == "comp" {
-      it = [vgl. #cite(it.key, form: "normal", style: it.style, supplement: [#metadata("nested")])#if supplement != none [, #supplement] else []]
+    if query(label("COMP_CITE")).any(e => e == it) {
+      it
+    } else {
+      [(#it)]
     }
-    if form == "normal" and command != "nested" {
-      it = [(#it)]
-    }
-    it
   }
   set footnote(numbering: "[1]")
   set footnote.entry(
