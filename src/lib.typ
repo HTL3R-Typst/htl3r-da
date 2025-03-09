@@ -159,15 +159,23 @@
       font: settings.FONT_HEADING,
       size: settings.HEADING_SIZES.at(h.level - 1).size,
     )
+    h
+    v(settings.HEADING_SIZES.at(h.level - 1).bottom)
+  }
+  show heading: h => {
+    if not (0, 113).contains(int(h.location().position().y.pt())) {
+      v(settings.HEADING_SIZES.at(h.level - 1).top)
+    }
+    h
+  }
+  show heading: h => {
     if h.level == 1 {
       pagebreak(weak: true)
       counter(figure.where(kind: image)).update(0)
       counter(figure.where(kind: table)).update(0)
       counter(figure.where(kind: "code")).update(0)
     }
-    v(settings.HEADING_SIZES.at(h.level - 1).top)
     h
-    v(settings.HEADING_SIZES.at(h.level - 1).bottom)
   }
   set par(justify: true, spacing: 16pt)
   show raw: set text(font: settings.FONT_TEXT_RAW)
@@ -229,7 +237,7 @@
       // This is a fix for level 2 headings (pfusch): https://github.com/HTL3R-Typst/htl3r-da/issues/70
       if (
         after-l2.len() > 0
-          and int(after-l2.first().location().position().y.pt()) == 133
+          and (0, 113).contains(int(after-l2.first().location().position().y.pt()))
       ) {
         after = (..after, ..after-l2).sorted(key: it => it.location().page())
       }
