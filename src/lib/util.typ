@@ -10,7 +10,6 @@
 #let author(name) = context {
   if name != global.author.get() {
     pagebreak(weak: true)
-    global.first_heading_after_pb.update(true)
   }
   global.author.update(name)
 }
