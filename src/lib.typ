@@ -165,7 +165,12 @@
       counter(figure.where(kind: table)).update(0)
       counter(figure.where(kind: "code")).update(0)
     }
-    v(settings.HEADING_SIZES.at(h.level - 1).top)
+    if global.first_heading_after_pb.get() {
+      v(settings.HEADING_SIZES.at(0).top)
+      global.first_heading_after_pb.update(false)
+    } else {
+      v(settings.HEADING_SIZES.at(h.level - 1).top)
+    }
     h
     v(settings.HEADING_SIZES.at(h.level - 1).bottom)
   }
