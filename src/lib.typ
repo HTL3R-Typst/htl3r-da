@@ -85,9 +85,10 @@
   global.disable-book-binding.update(disable-book-binding)
 
   // document
-  set raw(syntaxes: "lib/assets/cisco.sublime-syntax")
-  set raw(syntaxes: "lib/assets/fortios.sublime-syntax")
-  set raw(syntaxes: "lib/assets/splunk.sublime-syntax")
+  set raw(syntaxes: "lib/assets/syntax/cisco.sublime-syntax")
+  set raw(syntaxes: "lib/assets/syntax/fortios.sublime-syntax")
+  set raw(syntaxes: "lib/assets/syntax/powershell.sublime-syntax")
+  set raw(syntaxes: "lib/assets/syntax/splunk.sublime-syntax")
   set bibliography(style: "lib/assets/htl3r-citestyle/harvard-htl3r.csl")
   show cite: it => {
     let command = none
