@@ -95,7 +95,8 @@
       [(vgl. #cite(it.key, supplement: none)<COMP_CITE>)]
       return
     }
-    if query(label("COMP_CITE")).any(e => e == it) {
+    let comp_cite_query = query(selector(label("COMP_CITE")).after(here()))
+    if comp_cite_query.len() > 0 and comp_cite_query.at(0) == it {
       it
     } else {
       [(#it)]
