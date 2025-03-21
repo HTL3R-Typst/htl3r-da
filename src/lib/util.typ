@@ -67,18 +67,21 @@
   #link(label("ABBR_DES_" + singular), body) #label("ABBR_" + singular)
 ]
 
-#let code(caption: none, description: none, skips: none, body) = [
-  #codly(
-    header: description,
-    skips: skips,
-  )
-  #figure(
-    body,
+#let code(caption: none, description: none, skips: none, body) = {
+  let nested() = {
+    codly(
+      header: description,
+      skips: skips,
+    )
+    body
+  }
+  return figure(
+    nested(),
     caption: caption,
     supplement: [Quellcode],
     kind: "code",
   )
-]
+}
 
 #let code-file(
   caption: none,
@@ -89,14 +92,17 @@
   ranges: none,
   skips: none,
 ) = {
-  codly(
-    header: filename,
-    ranges: ranges,
-    range: range,
-    skips: skips,
-  )
-  figure(
-    raw(text, block: true, lang: lang),
+  let nested() = {
+    codly(
+      header: filename,
+      ranges: ranges,
+      range: range,
+      skips: skips,
+    )
+    raw(text, block: true, lang: lang)
+  }
+return figure(
+    nested(),
     caption: caption,
     supplement: [Quellcode],
     kind: "code",
