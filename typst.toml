@@ -1,6 +1,7 @@
 [package]
 name = "htl3r-da"
-version = "1.0.0"
+version = "2.0.0"
+version = "2.0.0"
 entrypoint = "src/lib.typ"
 authors = [
     "Julian Burger <https://github.com/cauvmou>",

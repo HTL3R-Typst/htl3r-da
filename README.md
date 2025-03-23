@@ -13,7 +13,7 @@ ein einheitliches Gesamtbild zu schaffen.
 To adhere to the official style of the book, all template options should be set according to the following template.
 
 ```typ
-#import "@preview/htl3r-da:1.0.0" as htl3r
+#import "@preview/htl3r-da:2.0.0" as htl3r
 
 #show: htl3r.diplomarbeit.with(
   title: "Mein DA-Titel",
