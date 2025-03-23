@@ -190,7 +190,7 @@ hinterlegt werden.
 #htl3r.info[Bei aufeinanderfolgendem Zitieren der gleichen Quelle wird diese mit "ebd." (ebenda) abgekürzt.
   ```typ
   @htl3r-website[comp] \
-  @htl3r-website[#htl3r.comp[S. 12]]
+  @htl3r-website[comp]
   ```
   Output:
   #image("assets/zit_ebd.png")
@@ -231,6 +231,10 @@ Beispiel:
 
   #htl3r.warn[Der String "`comp`" ist im Template hardcoded und kann damit *NICHT* als Supplement eingesetzt werden!]
 
+/*
+
+    Broken as of v1.1.0 (2025-03-23)
+
 4. indirektes Zitat mit Supplement
   ```typ
   // Merkhilfe: comp ... comparison
@@ -239,3 +243,4 @@ Beispiel:
 
   Output:
   #image("assets/zit_ind_suppl.png")
+*/
