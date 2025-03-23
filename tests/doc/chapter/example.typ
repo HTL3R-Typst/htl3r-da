@@ -188,7 +188,7 @@ erfolgen.
   ```typ @htl3r-website[, S. 12]```
 
   Output: \
-  @htl3r-website[, S. 12]
+  @htl3r-website[S. 12]
 
 + Indirektes Zitat
 
@@ -197,6 +197,9 @@ erfolgen.
   Output: \
   @htl3r-website[comp]
 
+/*
+    Broken as of v1.1.0 (2025-03-23)
+
 + Indirektes Zitat mit Supplement
 
   ```typ @htl3r-website[#htl3r.comp[S. 12]]```
@@ -204,3 +207,4 @@ erfolgen.
   Output: \
 
   @htl3r-website[#htl3r.comp[S. 12]]
+*/
