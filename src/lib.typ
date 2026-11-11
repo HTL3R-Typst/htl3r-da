@@ -7,7 +7,7 @@
 #import "lib/validate.typ": validate
 #import "lib/breadcrumbs.typ": breadcrumbs
 #import "lib/font.typ": check-missing-fonts
-#import "@preview/codly:1.2.0": *
+#import "@preview/codly:1.3.0": *
 #import "@preview/codly-languages:0.1.7": *
 
 #let author = util.author

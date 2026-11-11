@@ -1,5 +1,5 @@
 #import "settings.typ" as settings
-#import "@preview/codly:1.2.0": *
+#import "@preview/codly:1.3.0": *
 #import "@preview/codly-languages:0.1.7": *
 #import "global.typ" as global
 
